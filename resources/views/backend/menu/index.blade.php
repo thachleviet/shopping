@@ -20,7 +20,7 @@
             <div class="box box-danger">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{$_title}}</h3>
-                    <a href="{{route('product.create')}}" class=" btn btn-sm  btn-success pull-right"> <i class="fa fa-plus"></i> Thêm </a>
+                    <a href="{{route('menu.create')}}" class=" btn btn-sm  btn-success pull-right"> <i class="fa fa-plus"></i> Thêm </a>
                 </div>
                 <div class="box-header">
 
@@ -31,7 +31,7 @@
                             <strong>Success !</strong> {{session()->get('message_success')}}
                         </div>
                     @endif
-                    @include('backend.product.list')
+                    @include('backend.menu.list')
                 </div>
             </div>
         </div>
@@ -46,6 +46,6 @@
     <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
     <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
     <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
-    <script src="{{asset('static/backend')}}/js/product/custom.js"></script>
+    <script src="{{asset('static/backend')}}/js/menu/custom.js"></script>
 @stop
 

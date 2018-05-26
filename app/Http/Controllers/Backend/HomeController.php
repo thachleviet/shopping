@@ -17,21 +17,20 @@ class HomeController extends Controller
     protected $category;
     protected $product;
     protected $order;
-	public function __construct(CategoryRepositoryInterface $categoryRepository,ProductRepositoryInterface $productRepository, OrderRepositoryInterface $orderRepository)
+	public function __construct()
 	{
 		$this->middleware('auth:admin');
-		$this->order    = $orderRepository;
-		$this->category = $categoryRepository;
+
 
 	}
 
 	public function indexAction(){
 		$title = 'Trang chủ ' ;
-		$mTransaction  = new TransactionTable();
+//		$mTransaction  = new TransactionTable();
 
 		return view('backend.home.index' ,array(
 		    'object'=>$title,
-            'totalTransaction'=>$mTransaction->countTransaction()
+            'totalTransaction'=>0
         ));
 	}
 

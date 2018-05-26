@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+    public function setResponse($boolean, $attributes = [], $option = []){
+        return response()->json([
+            'status'=>$boolean,
+            'data'=>$attributes,
+            'option'=>$option
+        ]);
+    }
 }

@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Backend\Product;
+use App\Models\Backend\Slide;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class SlideController extends Controller
 {
-    protected $_product;
-    public function __construct()
-    {
-        $this->_product  = new Product() ;
-
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    protected $slide;
+    public function __construct()
+    {
+        $this->slide  = new Slide();
+    }
+
     public function index(Request $request)
     {
-        return view('backend.product.index' , [
-            '_object'=>$this->_product->getAll(),
-            '_title'=>'Danh sách sản phẩm',
-            '_param'=>$request->only('page', 1)]);
+
+        $mSlide      = new  Slide();
+        $oListSlide  =  $mSlide->getAll();
+        return view('backend.slide.index' , [
+            '_object'=>$oListSlide,
+            '_title'=>'Danh sách Slide',
+            '_param'=>$request->only('page', 1)
+        ]);
     }
 
     /**
@@ -35,10 +38,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-
-
-
-        return view('backend.product.create', ['_title'=>'Thêm sản phẩm']);
+        return view('backend.slide.create',[
+            '_title'=>'Danh sách slide'
+        ]);
     }
 
     /**
@@ -50,24 +52,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
-            'product_name'              => 'required',
-            'product_price'             => 'required',
-            'product_image'             => 'required|mimes:jpeg,jpg,png',
-//            'product_description'       => 'required'
-        ],[
-            'product_name.required'         => 'Tên sản phẩm bắt buộc !',
-            'product_price.required'        => 'Giá bắt buộc !',
-            'product_image.required'        => 'Hình bắt buộc !',
-//            'product_content.required'      => 'Nội dung bắt buộc ',
-//
-//            'product_description.required'  => 'Mô tả bắt buộc'
-        ]);
-       $param = $request->all();
-       echo '<pre>';
-       print_r($param) ;
-        echo '</pre>';
-        die();
     }
 
     /**

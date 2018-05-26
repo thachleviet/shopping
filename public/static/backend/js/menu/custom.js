@@ -1,4 +1,4 @@
-var Product = {
+var Menu = {
     remove:function (obj , id) {
         swal({
             title: 'Are you sure?',
@@ -17,7 +17,7 @@ var Product = {
         }).then(function(result) {
             if (result)
             {
-                $.get(laroute.route('product.destroy', {id:id}), function(data) {
+                $.get(laroute.route('menu.destroy', {id:id}), function(data) {
                     console.log(data);
                     swal(
                         'Deleted!',
@@ -30,18 +30,7 @@ var Product = {
             }
         });
     },
-    removeRows: function(obj)
-    {
-        $(obj).closest('.sortne').remove();
-        this.balanceNo();
-    },
-    balanceNo: function()
-    {
-        var i = 1;
-        $('.sortne').each(function() {
-            $(this).find('.no').val(i++);
-        });
-    },
+
     changeStatus:function (obj , id , action) {
         $.post(laroute.route('customer-group.change-status'), {id: id, action: action}, function (data) {
             // $('#autotable').PioTable('refresh');

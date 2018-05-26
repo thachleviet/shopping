@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-5">
         <ul class="pagination">
-            <li>Showing {{ $object->firstItem() }} to {{ $object->lastItem() }} of {{ $object->total() }} entries</li>
+            <li>Đang xem {{ $_object->firstItem() }} đến {{ $_object->lastItem() }} trong  tổng số {{ $_object->total() }}</li>
         </ul>
     </div>
     <div class="col-sm-7 text-right">
-        {{$object->appends($param)->links()}}
+        {{$object->appends($_param)->links()}}
     </div>
 </div>

@@ -18,7 +18,7 @@
         <div class="row">
 
             <div class="col-md-7 col-lg-offset-2">
-                <form role="form" method="post" action="{{route('menu.update', $_object['id'])}}">
+                <form role="form" method="post" action="{{route('menu.store')}}">
                     <div class="box box-danger">
                         <div class="box-header with-border">
                             <h3 class="box-title">{{$_title}}</h3>
@@ -36,7 +36,7 @@
 
                             <div class="form-group {{($errors->has('menu_name')) ? 'has-error': ''}}" >
                                 <label >Tên danh mục</label>
-                                <input type="text" class="form-control" name="menu_name" placeholder="Tên danh mục" value="{{$_object['menu_name']}}">
+                                <input type="text" class="form-control" name="menu_name" placeholder="Tên danh mục">
                                 @if ($errors->has('menu_name'))
                                     <span class="help-block">{{ $errors->first('menu_name')}}</span>
                                 @endif
@@ -47,10 +47,10 @@
                                 <label class="col-sm-2 col-sx-12">Thể loại : </label>
 
                                 <div class="col-sm-10 col-sx-12">
-                                    <label ><input type="radio" name="menu_type" {{($_object['menu_type'] =='product') ? 'checked' : ''}} checked value="product"></label>
+                                    <label ><input type="radio" name="menu_type" checked value="product"></label>
                                     <span >Sản phẩm </span>
 
-                                    <label ><input type="radio"  name="menu_type" {{($_object['menu_type'] =='new') ? 'checked' : ''}} value="new"></label>
+                                    <label ><input type="radio"  name="menu_type" value="new"></label>
 
                                     <span >Tin tức</span>
                                 </div>

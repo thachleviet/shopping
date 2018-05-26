@@ -45,31 +45,28 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::post('/update/{id}', 'PermissionController@update')->name('permissions.update');
         Route::get('destroy/{id}', 'PermissionController@destroy')->name('permissions.destroy-roles');
     });
-    Route::group(['prefix' => 'category'], function(){
-        Route::get('/', 'CategoriesController@indexAction')->name('category');
-        Route::get('add', 'CategoriesController@addAction')->name('category.add');
-        Route::post('add', 'CategoriesController@submitAddAction')->name('category.submit');
-        Route::get('edit/{id}', 'CategoriesController@editAction')->name('category.edit');
-        Route::post('edit', 'CategoriesController@submitEditAction')->name('category.submit-edit');
-        Route::get('delete/{id}', 'CategoriesController@removeAction')->name('category.delete');
-        Route::post('delete-multi-row','CategoriesController@removeMultiAction')->name('category.delete-multi-row');
-        Route::post('ordering', 'CategoriesController@orderingAction')->name('category.ordering');
-        Route::post('filter-category', 'CategoriesController@filterCategoryAction')->name('category.filter-category');
+    Route::group(['prefix' => 'menu'], function(){
+        Route::get('/', 'MenuController@index')->name('menu');
+        Route::get('/add', 'MenuController@create')->name('menu.create');
+        Route::post('/add', 'MenuController@store')->name('menu.store');
+        Route::get('/edit/{id}', 'MenuController@edit')->name('menu.edit');
+        Route::get('/destroy/{id}', 'MenuController@destroy')->name('menu.destroy');
+        Route::post('/update/{id}', 'MenuController@update')->name('menu.update');
     });
-
     Route::group(['prefix' => 'product'], function(){
-        Route::get('', 'ProductController@indexAction')->name('product');
-        Route::get('add', 'ProductController@addAction')->name('product.add');
-        Route::post('add', 'ProductController@submitAddAction')->name('product.submit');
-        Route::get('edit/{id}', 'ProductController@editAction')->name('product.edit');
-        Route::post('edit', 'ProductController@submitEditAction')->name('product.submit-edit');
-        Route::get('delete/{id}', 'ProductController@removeAction')->name('product.delete');
-        Route::post('delete-multi-row', 'ProductController@removeMultiAction')->name('product.delete-multi-row');
-        Route::post('ordering', 'ProductController@orderingAction')->name('product.ordering');
-        Route::post('change-status', 'ProductController@changeStatusAction')->name('product.change-status');
-        Route::post('filter-product', 'ProductController@filterProductAction')->name('product.filter-product');
-
+        Route::get('/', 'ProductController@index')->name('product');
+        Route::get('/add', 'ProductController@create')->name('product.create');
+        Route::post('/add', 'ProductController@store')->name('product.store');
+        Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
+        Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
+        Route::post('/update/{id}', 'ProductController@update')->name('product.update');
     });
+    Route::group(['prefix' => 'slide'], function(){
+        Route::get('/', 'SlideController@index')->name('slide');
+        Route::get('/add', 'SlideController@create')->name('slide.create');
+        Route::post('/add', 'SlideController@store')->name('slide.store');
+    });
+
 
     Route::group(['prefix' => 'slider'], function(){
         Route::get('', 'SliderController@indexAction')->name('slider');

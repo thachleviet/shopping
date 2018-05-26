@@ -18,7 +18,7 @@ class AdminTable extends Authenticatable
 
     use HasRoles;
     use Notifiable;
-    protected $table = 'admins';
+    protected $table = 'admin';
     protected $guard = 'admin' ;
 
     /**
@@ -30,7 +30,7 @@ class AdminTable extends Authenticatable
 
 
     protected $fillable = [
-        'name', 'email', 'password', 'phone' , 'id', 'gender', 'status'
+        'id', 'name', 'email', 'phone', 'gender', 'avatar', 'ward_id', 'district_id', 'province_id', 'is_admin', 'password', 'remember_token', 'created_at', 'updated_at', 'status'
     ];
 
     /**

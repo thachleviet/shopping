@@ -1,5 +1,7 @@
-var Product = {
+var Menu = {
+
     remove:function (obj , id) {
+
         swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -17,31 +19,19 @@ var Product = {
         }).then(function(result) {
             if (result)
             {
-                $.get(laroute.route('product.destroy', {id:id}), function(data) {
-                    console.log(data);
+                $.get(laroute.route('category.delete', {id:id}), function() {
                     swal(
                         'Deleted!',
-                        data.option.messages,
+                        'Your selected Item has been deleted.',
                         'success'
                     );
-                    $(obj).closest('tr').remove().draw();
+                    $(obj).closest('tr').remove();
 
                 });
             }
         });
     },
-    removeRows: function(obj)
-    {
-        $(obj).closest('.sortne').remove();
-        this.balanceNo();
-    },
-    balanceNo: function()
-    {
-        var i = 1;
-        $('.sortne').each(function() {
-            $(this).find('.no').val(i++);
-        });
-    },
+
     changeStatus:function (obj , id , action) {
         $.post(laroute.route('customer-group.change-status'), {id: id, action: action}, function (data) {
             // $('#autotable').PioTable('refresh');
@@ -50,7 +40,7 @@ var Product = {
 
 };
 
-var table = $('#tb_menu').DataTable( {
+var table = $('#tb_slide').DataTable( {
     responsive: true,
     columnDefs: [
         { "targets": [0], "searchable": false, "orderable": false, "visible": true }

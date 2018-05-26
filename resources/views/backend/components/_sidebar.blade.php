@@ -30,7 +30,7 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="{{((Request::is('admin/category')) ? 'active': '' || Request::is('admin/product'))? 'active': ''}} treeview">
+            <li class="{{((Request::is('admin/menu')) ? 'active': '' || Request::is('admin/product'))? 'active': ''}} treeview">
                 <a href="#">
                     <i class="fa fa-table"></i>  <span>Quản lý sản phẩm</span>
                     <span class="pull-right-container">
@@ -39,8 +39,8 @@
                 </a>
                 <ul class="treeview-menu">
 
-                    <li class="{{ Request::is('admin/category') ? 'active' : '' }}"><a href="{{route('category')}}"><i class="fa fa-circle-o"></i> Danh mục sản phẩm</a></li>
-                    <li class="{{ Request::is('admin/product') ? 'active' : '' }}"><a href="{{route('product')}}"><i class="fa fa-circle-o"></i> Sản phẩm </a></li>
+                    <li class="{{ Request::is('admin/menu') ? 'active' : '' }}"><a href="{{route('menu')}}"><i class="fa fa-circle-o"></i> Danh mục </a></li>
+                    {{--<li class="{{ Request::is('admin/product') ? 'active' : '' }}"><a href="{{route('product')}}"><i class="fa fa-circle-o"></i> Sản phẩm </a></li>--}}
                 </ul>
             </li>
             <li class="{{((Request::is('admin/transaction-user')) ? 'active': '' || Request::is('admin/transaction-user'))? 'active': ''}} treeview">
