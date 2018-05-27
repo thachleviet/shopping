@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Dashboard
-            <small> <a href="{{asset(route('menu'))}}"> <i class="fa fa-angle-double-right"></i> Danh mục </a></small>
+            <small> <a href="{{asset(route('slide'))}}"> <i class="fa fa-angle-double-right"></i> Danh mục </a></small>
             <small><i class="fa fa-angle-double-right"></i> {{$_title}}</small>
         </h1>
         <ol class="breadcrumb">

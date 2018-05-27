@@ -34,7 +34,7 @@
                     <td class="text-center">{{\Carbon\Carbon::parse($item['created_at'])->format('d/m/Y H:i')}}</td>
                     <td class="text-center">
                         <a href="{{route('product.edit', $item['id'])}}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Chỉnh sửa</a>
-                        <a class="btn btn-xs btn-warning"><i class="fa fa-lock"></i> Khóa</a>
+                        <a href='javascript:void(0)' class="btn btn-xs btn-warning" onclick="Product.changeStatus(this, '{{$item['id']}}', '{{($item["product_status"] == 1) ? "active" :"un-active"}}')"><i class="{{($item["product_status"] == 1) ? "fa fa-lock" :"fa fa-unlock-alt"}}"></i> Khóa</a>
                         <a href='javascript:void(0)' onclick="Product.remove(this, '{{$item['id']}}')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xóa</a>
                     </td>
                 </tr>

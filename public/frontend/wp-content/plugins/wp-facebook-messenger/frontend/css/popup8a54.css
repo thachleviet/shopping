@@ -1,0 +1,30 @@
+.facebook_messenger_popup {
+    background: #fff;
+    display: none;
+}
+body .drag-wrapper .thing .facebook-messenger-avatar-type1 img {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 50%;
+    height: 100%;
+}
+.facebook_messenger_popup .send-app a {
+    border-radius: 0;
+}
+.send-app {
+    margin-top: 15px;
+    padding: 0px 15px;
+}
+.send-app a {
+    background: #0075ff;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.send-app a:hover {
+    opacity: 0.8;
+}

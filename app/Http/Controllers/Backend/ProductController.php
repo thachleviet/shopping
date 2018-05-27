@@ -143,9 +143,18 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function changeStatus(Request $request)
     {
-        //
+        $param  = $request->all();
+
+        $data  = [
+            'product_status'=>($param['action'] == 'active') ? 0 : 1
+        ];
+
+
+        $this->_product->updates($data, $param['id']);
+
+        return $this->setResponse(true, null , array('messages'=>'Cập nhật dữ liệu thành công !'));
     }
 
     /**

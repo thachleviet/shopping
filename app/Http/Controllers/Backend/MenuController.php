@@ -15,6 +15,8 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $_menu ;
+
+
     public function __construct()
     {
         $this->_menu = new Menu();
@@ -72,9 +74,18 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function changeStatus(Request $request)
     {
-        //
+        $param  = $request->all();
+
+        $data  = [
+            'menu_status'=>($param['action'] == 'active') ? 0 : 1
+        ];
+
+
+        $this->_menu->updates($data, $param['id']);
+
+        return $this->setResponse(true, null , array('messages'=>'Cập nhật dữ liệu thành công !'));
     }
 
     /**

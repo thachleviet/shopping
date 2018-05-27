@@ -83,14 +83,21 @@ var Product = {
         });
     },
     changeStatus:function (obj , id , action) {
-        $.post(laroute.route('customer-group.change-status'), {id: id, action: action}, function (data) {
-            // $('#autotable').PioTable('refresh');
+        $.ajaxSetup(
+        {
+            headers:
+                {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                }
+        });
+        $.post(laroute.route('product.change-status'), {id: id, action: action}, function (data) {
+            window.location.reload();
         }, 'JSON');
     },
 
 };
 
-var table = $('#tb_menu').DataTable( {
+var table = $('#tb_product').DataTable( {
     responsive: true,
     columnDefs: [
         { "targets": [0], "searchable": false, "orderable": false, "visible": true }

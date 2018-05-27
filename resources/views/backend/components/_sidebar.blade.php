@@ -56,8 +56,8 @@
                     {{--<li class="{{ Request::is('admin/product') ? 'active' : '' }}"><a href="{{route('product')}}"><i class="fa fa-circle-o"></i> Sản phẩm </a></li>--}}
                 </ul>
             </li>
-            <li class="{{ Request::is('admin/slider') ? 'active' : '' }} ">
-                <a href="{{route('slider')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý Slider</span>
+            <li class="{{ Request::is('admin/slide') ? 'active' : '' }} ">
+                <a href="{{route('slide')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý Slider</span>
                 </a>
             </li>
 

@@ -52,6 +52,7 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::get('/edit/{id}', 'MenuController@edit')->name('menu.edit');
         Route::get('/destroy/{id}', 'MenuController@destroy')->name('menu.destroy');
         Route::post('/update/{id}', 'MenuController@update')->name('menu.update');
+        Route::post('/change-status', 'MenuController@changeStatus')->name('menu.change-status');
     });
     Route::group(['prefix' => 'product'], function(){
         Route::get('/', 'ProductController@index')->name('product');
@@ -60,14 +61,12 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
         Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
         Route::post('/update/{id}', 'ProductController@update')->name('product.update');
+        Route::post('/change-status', 'ProductController@changeStatus')->name('product.change-status');
+
     });
     Route::group(['prefix' => 'image-product'], function(){
         Route::get('/destroy/{id}', 'ProductController@destroy')->name('image-product-destroy');
     });
-
-
-
-
 
     Route::group(['prefix' => 'slide'], function(){
         Route::get('/', 'SlideController@index')->name('slide');
@@ -75,19 +74,6 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::post('/add', 'SlideController@store')->name('slide.store');
     });
 
-
-    Route::group(['prefix' => 'slider'], function(){
-        Route::get('', 'SliderController@indexAction')->name('slider');
-        Route::get('add', 'SliderController@addAction')->name('slider.add');
-        Route::post('add', 'SliderController@submitAddAction')->name('slider.submit');
-        Route::get('edit/{id}', 'SliderController@editAction')->name('slider.edit');
-        Route::post('edit', 'SliderController@submitEditAction')->name('slider.submit-edit');
-        Route::get('delete/{id}', 'SliderController@removeAction')->name('slider.delete');
-        Route::post('delete-multi-row', 'SliderController@removeMultiAction')->name('slider.delete-multi-row');
-        Route::post('change-status', 'SliderController@changeStatusAction')->name('slider.change-status');
-        Route::post('filter-product', 'SliderController@filterProductAction')->name('slider.filter-product');
-
-    });
 
     Route::group(['prefix' => 'transaction-user'], function(){
         Route::get('', 'TransactionController@indexAction')->name('transaction-user');
@@ -100,7 +86,7 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::post('generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction-user.generate-order-fill');
         Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
         Route::get('detail-guest/{id}', 'TransactionController@getDetailUserTransactionNoAccount')->name('transaction-user.detail-guest');
-//
+
     });
     Route::group(['prefix' => 'inventory'], function(){
         Route::get('', 'InventoryController@indexAction')->name('inventory');

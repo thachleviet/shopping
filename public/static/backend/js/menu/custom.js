@@ -28,11 +28,17 @@ var Menu = {
     },
 
     changeStatus:function (obj , id , action) {
-        $.post(laroute.route('customer-group.change-status'), {id: id, action: action}, function (data) {
-
+        $.ajaxSetup(
+            {
+                headers:
+                    {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
+        $.post(laroute.route('menu.change-status'), {id: id, action: action}, function (data) {
+            window.location.reload();
         }, 'JSON');
     },
-
 };
 
 var table = $('#tb_menu').DataTable( {

@@ -20,14 +20,10 @@ class HomeController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth:admin');
-
-
 	}
 
 	public function indexAction(){
 		$title = 'Trang chủ ' ;
-//		$mTransaction  = new TransactionTable();
-
 		return view('backend.home.index' ,array(
 		    'object'=>$title,
             'totalTransaction'=>0
