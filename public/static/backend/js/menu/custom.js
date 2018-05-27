@@ -9,11 +9,7 @@ var Menu = {
             successMode: true,
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
-            onClose: function()
-            {
-                $(obj).closest('tr').removeClass('label-warning');
-                $("input[name=quantity]").removeClass('text-danger');
-            }
+
         }).then(function(result) {
             if (result)
             {
@@ -33,7 +29,7 @@ var Menu = {
 
     changeStatus:function (obj , id , action) {
         $.post(laroute.route('customer-group.change-status'), {id: id, action: action}, function (data) {
-            // $('#autotable').PioTable('refresh');
+
         }, 'JSON');
     },
 

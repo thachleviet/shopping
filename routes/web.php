@@ -61,6 +61,14 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
         Route::post('/update/{id}', 'ProductController@update')->name('product.update');
     });
+    Route::group(['prefix' => 'image-product'], function(){
+        Route::get('/destroy/{id}', 'ProductController@destroy')->name('image-product-destroy');
+    });
+
+
+
+
+
     Route::group(['prefix' => 'slide'], function(){
         Route::get('/', 'SlideController@index')->name('slide');
         Route::get('/add', 'SlideController@create')->name('slide.create');

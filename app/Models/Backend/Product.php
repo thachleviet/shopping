@@ -9,7 +9,7 @@ class Product extends Model
     protected $table = 'product' ;
 
 
-    protected $fillable = ['id', 'menu_id', 'product_name', 'product_alias', 'product_image', 'product_price', 'product_discount', 'product_type', 'product_image_multi', 'created_at', 'updated_at', 'product_status'];
+    protected $fillable = ['id', 'product_menu_id', 'product_name', 'product_alias', 'product_image', 'product_price', 'product_discount', 'product_type', 'product_image_multi', 'created_at', 'updated_at', 'product_status'];
 
 
     public function getAll(){
@@ -17,7 +17,7 @@ class Product extends Model
     }
 
     public function store(array  $attribute){
-        return $this->insert($attribute);
+        return $this->create($attribute);
     }
 
     public function getItem($id){
@@ -26,6 +26,7 @@ class Product extends Model
 
     public function updates(array $attributes, $id)
     {
+
 
         return $this->where('id', (int)$id)->update($attributes);
     }

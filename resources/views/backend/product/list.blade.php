@@ -17,8 +17,8 @@
             @foreach($_object as $key=>$item)
                 <tr>
                     <td  class="text-center">{{($key+1)}}</td>
-                    <td>
-                        <a href="{{asset($item['product_image'])}}"><img  width="80" height="80" src="{{asset($item['product_image'])}}"></a>
+                    <td class="text-center">
+                        <a href="{{asset($item['product_image'])}}"><img  width="60" height="60" src="{{asset($item['product_image'])}}"></a>
                     </td>
                     <td>
                        {{$item['product_name']}}

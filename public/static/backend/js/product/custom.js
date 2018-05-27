@@ -9,11 +9,7 @@ var Product = {
             successMode: true,
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
-            onClose: function()
-            {
-                $(obj).closest('tr').removeClass('label-warning');
-                $("input[name=quantity]").removeClass('text-danger');
-            }
+
         }).then(function(result) {
             if (result)
             {
@@ -21,19 +17,63 @@ var Product = {
                     console.log(data);
                     swal(
                         'Deleted!',
-                        data.option.messages,
+                         data.option.messages,
                         'success'
                     );
-                    $(obj).closest('tr').remove().draw();
 
                 });
+
+                $(obj).closest('tr').remove().draw();
+                location.reload();
             }
+
+
         });
     },
     removeRows: function(obj)
     {
         $(obj).closest('.sortne').remove();
         this.balanceNo();
+    },
+    removeRow: function(obj)
+    {
+        // if($id){
+        //     swal({
+        //         title: 'Are you sure?',
+        //         text: "You won't be able to revert this!",
+        //         type: 'warning',
+        //         icon: 'warning',
+        //         buttons: true,
+        //         successMode: true,
+        //         showCancelButton: true,
+        //         confirmButtonText: 'Yes, delete it!',
+        //
+        //     }).then(function(result) {
+        //         if (result)
+        //         {
+        //
+        //             $.get(laroute.route('product.destroy', {id:id}), function(data) {
+        //                 console.log(data);
+        //                 swal(
+        //                     'Deleted!',
+        //                      data.option.messages,
+        //                     'success'
+        //                 );
+        //                 location.reload();
+        //             });
+        //
+        //         }
+        //     });
+        // }
+        $(obj).closest('.sortnes').remove();
+        this.balanceNos();
+    },
+    balanceNos: function()
+    {
+        var i = 1;
+        $('.sortnes').each(function() {
+            $(this).find('.no').val(i++);
+        });
     },
     balanceNo: function()
     {

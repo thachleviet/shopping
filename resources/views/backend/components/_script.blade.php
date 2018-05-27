@@ -43,3 +43,11 @@
 <script src="{{asset('js')}}/sweetalert.min.js"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+
+    setTimeout(function () {
+        var selectedEffect = 'blind';
+        var options = {};
+        $('.alert-success').hide(selectedEffect, options, 500)
+    }, 1000);
+</script>
