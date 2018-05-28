@@ -9,7 +9,7 @@ class Product extends Model
     protected $table = 'product' ;
 
 
-    protected $fillable = ['id', 'product_menu_id', 'product_name', 'product_alias', 'product_image', 'product_price', 'product_discount', 'product_type', 'product_image_multi', 'created_at', 'updated_at', 'product_status'];
+    protected $fillable = ['id', 'product_menu_id', 'product_name','product_content', 'product_alias', 'product_image', 'product_price', 'product_discount', 'product_type','created_at', 'updated_at', 'product_status'];
 
 
     public function getAll(){

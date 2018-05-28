@@ -202,46 +202,14 @@
                             <a href="danh-muc-san-pham/index.html" class="nav-top-link">DANH MỤC SẢN PHẨM<i
                                         class="icon-angle-down"></i></a>
                             <ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>
-                                <li id="menu-item-1900"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1900">
-                                    <a href="dong-ho-bentley/index.html">Bentley</a>
-                                </li>
-                                <li id="menu-item-92"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-92">
-                                    <a href="dong-ho-olym-pianus/index.html">Olym Pianus</a>
-                                </li>
-                                <li id="menu-item-146"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-146">
-                                    <a href="dong-ho-olympia-star/index.html">Olympia Star</a>
-                                </li>
-                                <li id="menu-item-267"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-267">
-                                    <a href="danh-muc-san-pham/ogival/index.html">Ogival</a>
-                                </li>
-                                <li id="menu-item-365"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-365">
-                                    <a href="dong-ho-lotusman/index.html">Lotusman</a>
-                                </li>
-                                <li id="menu-item-35"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-35">
-                                    <a href="dong-ho-orient/index.html">Orient</a>
-                                </li>
-                                <li id="menu-item-34"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-34">
-                                    <a href="dong-ho-citizen/index.html">Citizen</a>
-                                </li>
-                                <li id="menu-item-36"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-36">
-                                    <a href="danh-muc-san-pham/dong-ho-seiko/index.html">Seiko</a>
-                                </li>
-                                <li id="menu-item-37"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-37">
-                                    <a href="dong-ho-tissot/index.html">Tissot</a>
-                                </li>
-                                <li id="menu-item-752"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-752">
-                                    <a href="danh-muc-san-pham/dong-ho-thuy-si/index.html">Đồng hồ Thụy Sĩ</a>
-                                </li>
+                                @foreach($MenuTypeProduct as $key=>$item)
+                                    <li id="menu-item-1900"
+                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1900">
+                                        <a href="#">{{$item['menu_name']}}</a>
+                                    </li>
+                                @endforeach
+
+
                             </ul>
                         </li>
                         <li id="menu-item-265"
@@ -278,21 +246,18 @@
                                     href="dong-ho-doi/index.html" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
                         <li id="menu-item-3182"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children  menu-item-3182 has-dropdown">
-                            <a href="blog/index.html" class="nav-top-link">Blog<i class="icon-angle-down"></i></a>
+                            <a href="blog/index.html" class="nav-top-link">Blog
+                                <i class="icon-angle-down"></i></a>
+                            @if(!empty($MenuTypeNew))
                             <ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>
-                                <li id="menu-item-3183"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-category  menu-item-3183">
-                                    <a href="blog/kien-thuc-chung/index.html">Kiến Thức Chung</a>
-                                </li>
-                                <li id="menu-item-3184"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-category  menu-item-3184">
-                                    <a href="blog/review/index.html">Review</a>
-                                </li>
-                                <li id="menu-item-3185"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-category  menu-item-3185">
-                                    <a href="blog/tu-van/index.html">Tư vấn chọn đồng hồ</a>
-                                </li>
+                                @foreach($MenuTypeNew as $key=>$item)
+                                    <li id="menu-item-1900"
+                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1900">
+                                        <a href="#">{{$item['menu_name']}}</a>
+                                    </li>
+                                @endforeach
                             </ul>
+                            @endif
                         </li>
                     </ul>
                 </div>

@@ -35,6 +35,7 @@
     <link rel='stylesheet' id='flatsome-shop-css'  href="{{asset('frontend/wp-content')}}/themes/flatsome/assets/css/flatsome-shop46df.css" type='text/css' media='all' />
     <link rel='stylesheet' id='flatsome-style-css'  href="{{asset('frontend/wp-content')}}/themes/flatsome-child/style46df.css" type='text/css' media='all' />
     <link rel='stylesheet' id='popup-messenger-css'  href="{{asset('frontend/wp-content')}}/plugins/wp-facebook-messenger/frontend/css/popup8a54.css" type='text/css' media='all' />
+    @yield('after_style')
     <script type='text/javascript' src="{{asset('frontend')}}/wp-includes/js/jquery/jqueryb8ff.js"></script>
     <script type='text/javascript' src="{{asset('frontend')}}/wp-includes/js/jquery/jquery-migrate.min330a.js"></script>
     <link rel='https://api.w.org/' href='wp-json/index.html' />

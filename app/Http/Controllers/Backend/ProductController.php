@@ -44,7 +44,7 @@ class ProductController extends Controller
 
         return view('backend.product.create', [
             '_title'=>'Thêm sản phẩm',
-            '_menu'=>$mMenu->getListMenuOfProduct()]);
+            '_menu'=>$mMenu->getListMenuOfProduct('product')]);
     }
 
     /**
@@ -73,9 +73,9 @@ class ProductController extends Controller
                 DB::table('image_product')->insert($imageChild) ;
             }
         }
-        $param  = $request->all()['attribute'];
+        $param  = !empty($request->all()['attribute']) ? $request->all()['attribute'] : '';
         $attribute = [];
-        if($param['key']){
+        if($param){
            for ($i=0 ; $i < count($param['key']); $i++){
                 $attributes['key']          = ($param['key']) ? $param['key'][$i] : '';
                 $attributes['value']        = ($param['value']) ? $param['value'][$i] : '';
@@ -170,7 +170,7 @@ class ProductController extends Controller
         $mImageProduct = new ImageProduct();
         $oProduct   =   $this->_product->getItem($id) ;
         return view('backend.product.edit', [
-                        '_menu'         => $mMenu->getListMenuOfProduct(),
+                        '_menu'         => $mMenu->getListMenuOfProduct('product'),
                         '_object'       => $oProduct,
                         '_attribute'    => $mAttribute->getAttributeOfProduct($id),
                         '_image'       => $mImageProduct->getImageOfProduct($id),

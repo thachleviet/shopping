@@ -90,3 +90,4 @@
     /* ]]> */
 </script>
 <script type='text/javascript' src='{{asset('frontend')}}/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.minb12b.js?ver=3.1.1'></script>
+@yield('after_script')

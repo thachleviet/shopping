@@ -118,10 +118,10 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::post('update-cart', 'CartController@updateCartAction')->name('cart.update');
         Route::post('delete-cart', 'CartController@deleteCartAction')->name('cart.delete');
     });
-    Route::group(['prefix' => 'products'], function(){
+    Route::group(['prefix' => 'product'], function(){
         Route::get('/', 'ProductController@indexAction')->name('products');
         Route::get('list-item', 'ProductController@SearchAction')->name('products.search');
-        Route::get('product-detail/{id}', 'ProductController@detailProductAction')->name('products.detail');
+        Route::get('product-detail/{id}', 'ProductController@detail')->name('products.detail');
     });
     Route::group(['prefix' => 'order'], function(){
         Route::get('/', 'OrderController@indexAction')->name('order');

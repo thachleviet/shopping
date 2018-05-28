@@ -40,8 +40,8 @@ class Menu extends Model
         return $this->where('id', (int)$id)->delete();
     }
 
-    public function getListMenuOfProduct(){
-        return $this->from($this->table)->where('menu_type', 'new')->get()->pluck('menu_name', 'id');
+    public function getListMenuOfProduct($type){
+        return $this->from($this->table)->where('menu_type', $type)->get()->pluck('menu_name', 'id');
     }
 
 
