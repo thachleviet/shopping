@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         View::composer('*', 'App\Http\ViewComposers\Frontend\MenuComposers');
-
+        View::composer('*', 'App\Http\ViewComposers\Frontend\CartComposers');
     }
 
     /**

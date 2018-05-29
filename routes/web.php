@@ -113,10 +113,11 @@ Route::group(['namespace' => 'Auth','prefix' => ''], function(){
 Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'], function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::group(['prefix' => 'cart'], function(){
+        Route::get('', 'CartController@index')->name('cart');
         Route::post('add-cart', 'CartController@addCartAction')->name('cart.add');
-        Route::get('show', 'CartController@showAction')->name('cart.show');
-        Route::post('update-cart', 'CartController@updateCartAction')->name('cart.update');
-        Route::post('delete-cart', 'CartController@deleteCartAction')->name('cart.delete');
+
+//
+        Route::get('destroy/{id}/route/{route}/product/{product_id}', 'CartController@destroy')->name('cart.destroy');
     });
     Route::group(['prefix' => 'product'], function(){
         Route::get('/', 'ProductController@indexAction')->name('products');

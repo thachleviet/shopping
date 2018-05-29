@@ -104,30 +104,17 @@
                         </li>
                     </ul>
                 </div>
+
                 <!-- Right Elements -->
                 <div class="flex-col hide-for-medium flex-right">
                     <ul class="header-nav header-nav-main nav nav-right  nav-line-bottom nav-uppercase">
-                        <li class="header-wishlist-icon">
-                            <div class="header-button"><a href="wishlist/index.html"
-                                                          class="wishlist-link icon button circle is-outline is-small">
-                        <span class="hide-for-medium header-wishlist-title">
-                        Yêu Thích  	</span>
-                                    <i class="wishlist-icon icon-heart"
-                                    >
-                                    </i>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="header-divider"></li>
+
                         <li class="cart-item has-icon
                      has-dropdown">
                             <div class="header-button">
-                                <a href="cart/index.html" title="Giỏ hàng"
-                                   class="header-cart-link icon button circle is-outline is-small">
-                        <span class="header-cart-title">
-                        Giỏ hàng   /      <span class="cart-price"><span class="woocommerce-Price-amount amount">0&nbsp;<span
-                                            class="woocommerce-Price-currencySymbol">&#8363;</span></span></span>
-                        </span>
+                                <a href="{{route('cart')}}" title="Giỏ hàng"
+                                   class="header-cart-link icon button circle is-outline is-small"><span class="header-cart-title">Giỏ hàng   /      <span class="cart-price"><span class="woocommerce-Price-amount amount">{{$countCart}}&nbsp;<span
+                                            class="woocommerce-Price-currencySymbol">&#8363;</span></span></span></span>
                                     <i class="icon-shopping-cart"
                                        data-icon-label="0">
                                     </i>
@@ -136,9 +123,41 @@
                             <ul class="nav-dropdown nav-dropdown-default dropdown-uppercase">
                                 <li class="html widget_shopping_cart">
                                     <div class="widget_shopping_cart_content">
-                                        <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ
-                                            hàng.
-                                        </p>
+                                        <?php
+                                        $param = array();
+                                        if(\Illuminate\Support\Facades\Route::currentRouteName() == 'products.detail'){
+//                                                $id  =  URL::current();
+                                                $param = array('product_id'=>collect(request()->segments())->last(),'route'=>'products.detail');
+                                        }else{
+                                            $param = array('route'=>\Illuminate\Support\Facades\Route::currentRouteName());
+                                        }
+                                        ?>
+
+                                        @if($listCart->count())
+                                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                @foreach($listCart as $key=>$value)
+
+                                                    <li class="woocommerce-mini-cart-item mini_cart_item">
+                                                        <a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>
+                                                        <a href="{{route('products.detail', $value->id)}}">
+                                                            <img width="180" height="180" src="{{asset($value->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">{{$value->name}}&nbsp;							</a>
+                                                        <span class="quantity">{{$value->qty}} × <span class="woocommerce-Price-amount amount">{{$value->price}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span>					</li>
+                                                @endforeach
+
+
+                                            </ul>
+
+                                            <p class="woocommerce-mini-cart__total total"><strong>Tổng phụ:</strong> <span class="woocommerce-Price-amount amount">{{$totalCart}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></p>
+
+
+                                            <p class="woocommerce-mini-cart__buttons buttons"><a href="{{route('cart')}}" class="button wc-forward">Xem giỏ</a><a href="http://donghogoldtime.vn/checkout/" class="button checkout wc-forward">Thanh toán</a></p>
+                                            @else
+                                            <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ
+                                                hàng.
+                                            </p>
+                                        @endif
+
+
                                     </div>
                                 </li>
                             </ul>
@@ -146,6 +165,7 @@
                         </li>
                     </ul>
                 </div>
+
                 <!-- Mobile Right Elements -->
                 <div class="flex-col show-for-medium flex-right">
                     <ul class="mobile-nav nav nav-right ">
