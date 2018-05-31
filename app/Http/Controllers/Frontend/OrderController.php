@@ -86,7 +86,7 @@ class OrderController extends Controller
                 ->from('doanthihuynhnhu1996@gmail.com', 'Như Shop')
                 ->subject('Xác nhận thông tin đặt hàng ');
         });
-        return redirect()->route('home');
+        return redirect()->route('order.order-success');
 
     }
 
