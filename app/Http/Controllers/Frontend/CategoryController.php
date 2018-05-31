@@ -20,10 +20,12 @@ class CategoryController extends Controller
 
 
     public function category(Request $request,$id){
+
         $param['page'] 		          = Input::get('page', 1);
-        $param['limit']       = !empty($request->get('limit')) ? $request->get('limit') : 12;
+        $param['limit']        = !empty($request->get('limit')) ? $request->get('limit') : 12;
         $mMenu                 = new Menu();
         $objectMenu            = $mMenu->getItem($id);
+
         $mProduct              = new Product();
         $objectProduct         = $mProduct->getListItemOfIdMenu($id, $param ,true) ;
         $objectDiscount        = $mProduct->getListItemDiscount();
@@ -31,7 +33,8 @@ class CategoryController extends Controller
             '_objectMenu'       => $objectMenu,
             '_objectProduct'    => $objectProduct,
             '_objectDiscount'   => $objectDiscount,
-            'param'=>$param
+            'param'=>$param,
+            'title'=>$mMenu['menu_name']
         ]);
     }
 
@@ -45,7 +48,9 @@ class CategoryController extends Controller
 
         $objectDiscount         = $mProduct->getListItemDiscount();
         return view('frontend.category.list-male',[
-            '_objectProduct'=>$object, '_objectDiscount'   => $objectDiscount,'param'=>$param]);
+            '_objectProduct'=>$object, '_objectDiscount'   => $objectDiscount,
+            'param'=>$param,
+            'title'=>"Đồng hồ nam"]);
     }
 
     public function getListItemTypeFeMale(Request $request){
@@ -55,7 +60,9 @@ class CategoryController extends Controller
         $object         =  $mProduct->getListItemType('female', $param ,true);
         $objectDiscount         = $mProduct->getListItemDiscount();
         return view('frontend.category.list-female',[
-            '_objectProduct'=>$object, '_objectDiscount'   => $objectDiscount,'param'=>$param]);
+            '_objectProduct'=>$object, '_objectDiscount'   => $objectDiscount,
+            'param'=>$param,
+            'title'=>"Đồng hồ nữ"]);
     }
 
     public function getListItemTypeDouble(Request $request){
@@ -68,7 +75,8 @@ class CategoryController extends Controller
 
             '_objectProduct'    => $object,
             '_objectDiscount'   => $objectDiscount,
-            'param'=>$param
+            'param'=>$param,
+            'title'=>"Đồng hồ cặp"
         ]);
     }
 }

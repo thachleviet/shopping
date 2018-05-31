@@ -30,9 +30,11 @@ class CartController extends Controller
     public function index(){
 
         return  view('frontend.cart.index', [
-            '_object'=>Cart::content(),
-            'count'=>Cart::count(),
-            'total'=>Cart::subtotal()]);
+            '_object'   => Cart::content(),
+            'count'     => Cart::count(),
+            'total'     => Cart::subtotal(),
+            'title'      => "Thông tin giỏ hàng"]);
+
     }
 
     public function updateCartAction(Request $request){

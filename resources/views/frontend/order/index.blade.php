@@ -1,4 +1,5 @@
 @extends('frontend.layouts')
+@section('title', "Thông tin giỏ hàng")
 @section('content')
     <div class="checkout-page-title page-title">
         <div class="page-title-inner flex-row medium-flex-wrap container">

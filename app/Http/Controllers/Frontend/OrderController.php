@@ -36,7 +36,8 @@ class OrderController extends Controller
         return view('frontend.order.index',[
             '_provinceOption'   => $mProvince->getProvinceOption(),
             '_total_pay'        => Cart::subtotal(),
-            '_listCart'         => Cart::content()
+            '_listCart'         => Cart::content(),
+            'title'             => "Thông tin người dùng"
         ]) ;
     }
     public function orderCartAction(Request $request){

@@ -1,4 +1,12 @@
 @extends('frontend.layouts')
+@section('title', $title)
+@section('after_meta')
+    <meta itemprop="image" content="{{$_image}}">
+    @if(!empty($keyword))
+        <meta name="keywords" content="{{$keyword}}"/>
+    @endif
+@stop
+
 @section('content')
     <style>
         .nav-dropdown > li.html {

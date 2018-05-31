@@ -31,6 +31,7 @@ class ProductController extends Controller
     public function detail($id){
 
         $mProduct               = new Product();
+        echo $mProduct->slug;
         $object                 = $mProduct->getItem($id);
         $attributeProduct       = new AttributeProduct();
         $related                = $mProduct->related($object['product_menu_id'],$id);
@@ -44,6 +45,9 @@ class ProductController extends Controller
             '_attributeProduct' => $listAttributeProduct,
             '_related'          => $related,
             '_imageProduct'     => $ImageProduct,
+            'title'             => $object['product_name'],
+            '_image'            => asset($object['product_image']),
+            'keyword'           => $object['product_keyword'],
 //            '_price'            => $object
         ]);
     }

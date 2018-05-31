@@ -176,7 +176,7 @@
                     <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2050305156">
                         <a href='javascript:void(0)' target="_self" class="">
                             <div class="img-inner dark" >
-                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b1.png')}}" class="attachment-large size-large" alt="Giao hàng" srcset="http://donghogoldtime.vn/wp-content/uploads/2017/08/b1.png 500w, http://donghogoldtime.vn/wp-content/uploads/2017/08/b1-300x90.png 300w" sizes="(max-width: 500px) 100vw, 500px" />
+                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b1.png')}}" class="attachment-large size-large" alt="Giao hàng"  sizes="(max-width: 500px) 100vw, 500px" />
                             </div>
                         </a>
                         <style scope="scope">
@@ -189,7 +189,7 @@
                     <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1305025343">
                         <a href='javascript:void(0)' target="_self" class="">
                             <div class="img-inner dark" >
-                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b2.png')}}" class="attachment-large size-large" alt="Cam kết chính hãng" srcset="http://donghogoldtime.vn/wp-content/uploads/2017/08/b2.png 500w, http://donghogoldtime.vn/wp-content/uploads/2017/08/b2-300x90.png 300w" sizes="(max-width: 500px) 100vw, 500px" />
+                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b2.png')}}" class="attachment-large size-large" alt="Cam kết chính hãng"   sizes="(max-width: 500px) 100vw, 500px" />
                             </div>
                         </a>
                         <style scope="scope">
@@ -201,7 +201,7 @@
             <div class="col medium-4 small-12 large-4"  ><div class="col-inner"  >
                     <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_904396708">
                         <a href='javascript:void(0)' target="_self" class="">            <div class="img-inner dark" >
-                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b3.png')}}" class="attachment-large size-large" alt="Chính sách đổi trả" srcset="http://donghogoldtime.vn/wp-content/uploads/2017/08/b3.png 500w, http://donghogoldtime.vn/wp-content/uploads/2017/08/b3-300x90.png 300w" sizes="(max-width: 500px) 100vw, 500px" />
+                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b3.png')}}" class="attachment-large size-large" alt="Chính sách đổi trả"  sizes="(max-width: 500px) 100vw, 500px" />
                             </div>
                         </a>
                         <style scope="scope">

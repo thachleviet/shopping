@@ -15,9 +15,9 @@ use App\Models\Frontend\SliderTable;
 
 class HomeController extends  Controller
 {
-
-
+//    use
     public function index(){
+
         $mProduct       = new Product();
         $mSlide         = new SliderTable();
         // lấy danh sách sản phẩm mới

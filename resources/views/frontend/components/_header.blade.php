@@ -81,7 +81,7 @@
                         <li class="header-search-form search-form html relative has-icon">
                             <div class="header-search-form-wrapper">
                                 <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-                                    <form method="get" class="searchform" action="http://donghogoldtime.vn/"
+                                    <form method="get" class="searchform" action="#"
                                           role="search">
                                         <div class="flex-row relative">
                                             <div class="flex-col flex-grow">

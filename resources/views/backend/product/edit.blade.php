@@ -130,6 +130,12 @@
 
                                 </div>
                                 <div class="col-md-7" >
+                                    <div class="form-group " >
+                                        <label class="col-sm-2 col-sx-12">Từ khóa</label>
+                                        <div class="col-sm-10 col-sx-12">
+                                            <input type="text" class="form-control"  value="{{$_object['product_keyword']}}" name="product_keyword" placeholder="Nhập từ keyword">
+                                        </div>
+                                    </div>
                                     <div class="form-group row{{($errors->has('product_discount')) ? 'has-error': ''}}" >
                                         <label class="col-sm-2 col-sx-12">Giảm giá</label>
                                         <div class="col-sm-10 col-sx-12">

@@ -6,13 +6,10 @@
     <link rel="pingback" href="xmlrpc.php" />
 
 
-    <title>Gold Time Watch - Đồng hồ chính hãng tại Việt Nam</title>
-    <style>
-        .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt { border-radius: 16px; -moz-border-radius: 16px; -webkit-border-radius: 16px; }</style>
-    <meta name="description" content="Chuyên buôn đồng hồ chính hãng Orient, Seiko, Citizen, OP. Đại lí, cửa hàng liên hệ 097.145.3333. Cam kết chính hãng 100%."/>
-    <link rel="canonical" href="index.html" />
-
-
+    <title>@yield('title')</title>
+    <style>.wishlist_table .add_to_cart, a.add_to_wishlist.button.alt { border-radius: 16px; -moz-border-radius: 16px; -webkit-border-radius: 16px; }</style>
+    <meta name="description" content="@yield('title')"/>
+    @yield('after_meta')
     <style type="text/css">
 
         img.wp-smiley,

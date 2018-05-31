@@ -34,7 +34,8 @@
         <ul class="nav nav-sidebar  nav-vertical nav-uppercase">
             <li class="header-search-form search-form html relative has-icon">
                 <div class="header-search-form-wrapper">
-                    <div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form method="get" class="searchform" action="http://donghogoldtime.vn/" role="search">
+                    <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
+                        <form method="get" class="searchform" action="#" role="search">
                             <div class="flex-row relative">
                                 <div class="flex-col flex-grow">
                                     <input type="search" class="search-field mb-0" name="s" value="" placeholder="Tìm kiếm . . . " />
@@ -83,7 +84,7 @@
                 </ul>
             </li>
             <li class="account-item has-icon menu-item">
-                <a href="my-account/index.html"
+                <a href='javascript:void(0)'
                    class="nav-top-link nav-top-not-logged-in">
     <span class="header-account-title">
     Đăng nhập  </span>

@@ -4,18 +4,22 @@ namespace App\Models\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
+    use Sluggable;
+
     protected $table = 'product' ;
 
 
-    protected $fillable = ['id', 'product_menu_id','product_content', 'product_name', 'product_alias', 'product_image', 'product_price', 'product_discount', 'product_type','created_at', 'updated_at', 'product_status'];
+    protected $fillable = ['id','product_keyword', 'product_menu_id','product_content', 'product_name', 'product_alias', 'product_image', 'product_price', 'product_discount', 'product_type','created_at', 'updated_at', 'product_status'];
 
 
 
     public function getItem($id){
         return $this->select(
+            'product_keyword',
                     'menu_name',
                     'product_menu_id',
                     'product_discount',
@@ -25,6 +29,16 @@ class Product extends Model
             ->where('product.id', $id)->first();
     }
 
+
+    public function sluggable()
+    {
+
+        return [
+            'slug' =>[
+                'source' => ['product.product_name','title','id']
+            ]
+        ];
+    }
 
     // Product Related
     public function related($menu, $id){
@@ -42,6 +56,7 @@ class Product extends Model
     public function getListItemType($type,$attribute, $isPagination){
 
         $oSelect =   $this->select(
+            'product_keyword',
             'product.id',
             'product_menu_id',
             'product_discount',
@@ -58,6 +73,7 @@ class Product extends Model
     public function getListItemOfIdMenu($type, $attribute, $isPagination){
         $oSelect =  $this->select(
             'product.id',
+            'product_keyword',
             'menu_name',
             'product_menu_id',
             'product_discount',

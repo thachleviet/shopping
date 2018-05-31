@@ -4,9 +4,9 @@
     <div class="page-title-inner flex-row medium-flex-wrap container">
         <div class="flex-col flex-grow medium-text-center">
             <nav class="breadcrumbs heading-font checkout-breadcrumbs text-center h2 strong">
-                <a href="http://donghogoldtime.vn/cart/" class="current">Thông tin giỏ hàng</a>
+                <a href="{{route('cart')}}" class="current">Thông tin giỏ hàng</a>
                 <span class="divider hide-for-small"><i class="icon-angle-right"></i></span>
-                <a href="http://donghogoldtime.vn/checkout/" class="hide-for-small">Thông tin chi tiết</a>
+                <a href="{{route('order')}}" class="hide-for-small">Thông tin chi tiết</a>
                 <span class="divider hide-for-small"><i class="icon-angle-right"></i></span>
                 <a href="#" class="no-click hide-for-small">Hoàn tất mua hàng</a>
             </nav>

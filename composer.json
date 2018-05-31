@@ -15,7 +15,8 @@
         "spatie/laravel-permission": "^2.12",
         "unisharp/laravel-filemanager": "~1.8",
         "nexmo/laravel": "dev-master as 1.0",
-        "nexmo/client": "dev-master as 1.0"
+        "nexmo/client": "dev-master as 1.0",
+        "cviebrock/eloquent-sluggable":"4.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
