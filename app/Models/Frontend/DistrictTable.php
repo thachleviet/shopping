@@ -22,6 +22,6 @@ class DistrictTable extends Model
         return $this->from($this->table)->get();
     }
     public function getDistrictOptionIdProvince($idProvince){
-        return $this->from($this->table)->where('province_id',$idProvince)->get();
+        return $this->from($this->table)->where('province_id',$idProvince)->get()->pluck('name', 'district_id');
     }
 }

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <!--[if IE 9 ]> <html lang="vi" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class="ie9 loading-site no-js"> <![endif]-->
 <!--[if IE 8 ]> <html lang="vi" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class="ie8 loading-site no-js"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="vi" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class="loading-site no-js"> <!--<![endif]-->
 
 <!-- Mirrored from donghogoldtime.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 May 2018 08:40:46 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @include('frontend.components._head')
 
 <body class="home page-template page-template-page-blank page-template-page-blank-php page page-id-11 boxed lightbox nav-dropdown-has-arrow">
@@ -21,9 +21,6 @@
     <main id="main" class="">
 
         @yield('content')
-
-
-
 
     </main><!-- #main -->
 

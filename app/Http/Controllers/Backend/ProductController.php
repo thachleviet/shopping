@@ -117,16 +117,18 @@ class ProductController extends Controller
                 'created_at'            => date('Y-m-d H:i:s'),
                 'product_content'       => $request->input('product_content'),
                 'product_description'   => $request->input('product_description'),
+                'product_discount'      => $request->input('product_discount'),
             ];
         }else{
             $array  =  [
-            'product_name'          => $request->input('product_name'),
+                'product_name'          => $request->input('product_name'),
                 'product_status'        => $request->input('product_status'),
                 'product_price'         => preg_replace("~\D~", "", (str_replace('.00', '',$request->input('product_price')))),
                 'product_menu_id'       => $request->input('menu'),
                 'created_at'            => date('Y-m-d H:i:s'),
                 'product_content'       => $request->input('product_content'),
                 'product_description'   => $request->input('product_description'),
+                'product_discount'      => !empty($request->input('product_discount'))  ? $request->input('product_discount'):0,
             ];
             if($request->hasFile('product_image')){
                 $array['product_image'] =  'uploads/'.$this->uploadFiles($request, 'product_image', 'product_image','uploads', time()) ;

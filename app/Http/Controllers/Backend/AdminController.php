@@ -42,12 +42,12 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
+
 
         $title = "Thêm quản trị viên";
         return view('backend.admin.create',[
             'title'=>$title,
-            'roles'=>$roles
+
         ]);
     }
 
@@ -61,8 +61,8 @@ class AdminController extends Controller
     {
         $this->validate($request, [
             'name'=>'required|max:120',
-            'email'=>'required|email|unique:admins',
-            'phone'=>'required|unique:admins',
+            'email'=>'required|email|unique:admin',
+            'phone'=>'required|unique:admin',
             'gender'=>'required'
         ]);
         $data['name']       = $request->input('name');
@@ -70,17 +70,9 @@ class AdminController extends Controller
         $data['phone']      = $request->input('phone');
         $data['gender']     = $request->input('gender');
         $mAdmin  =  new Admin() ;
-        $admin = $mAdmin->store($data);
+        $mAdmin->store($data);
 
-        $roles = $request['roles'];
-        if (isset($roles)) {
-
-            foreach ($roles as $role) {
-                $role_r = Role::where('id', '=', $role)->firstOrFail();
-                $admin->assignRole($role_r);
-            }
-        }
-        return redirect()->route('backend.admin.index')
+        return redirect()->route('admin')
             ->with('flash_message',
                 'User successfully added.');
     }
@@ -95,11 +87,10 @@ class AdminController extends Controller
     {
         $admin  =  Admin::findOrFail($id);
 
-        $roles = $admin->roles->pluck('name','id');
 
-        return view('backend.admin.detail', [
+        return view('admin.detail', [
             'object'=>$admin,
-            'roles'=>$roles,
+
             'title'=>'Thông tin quản trị viên' ,
         ]);
     }
@@ -112,16 +103,13 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-//        if(Auth::user()->id != $id || (!Auth::user()->is_admin)){
-//            Session::flash('warning',"Bạn không có quyền truy cập chức năng này");
-//            return redirect()->route('admin-admin');
-//        }
+
         $admin  =  Admin::findOrFail($id);
-        $roles = $admin->roles->pluck('name','id');
-        return view('backend.admin.edit',[
+
+        return view('admin.edit',[
             'user'=>$admin,
-            'roles'=>Role::get(),
-             'checkRole'=>$roles,
+
+
             'title'=>'Cập nhât thông tin quản trị viên'
         ]);
     }
@@ -139,22 +127,15 @@ class AdminController extends Controller
         $admin       = $mAdmin->findOrFail($id);
         $this->validate($request ,[
             'name'=>'required',
-            'email'=>'required|email|unique:admins,email,'.$id.',id',
-            'phone'=>'required|unique:admins,phone,'.$id.',id'
+            'email'=>'required|email|unique:admin,email,'.$id.',id',
+            'phone'=>'required|unique:admin,phone,'.$id.',id'
         ]);
 
         $param          = $request->only(['name', 'email', 'phone']);
-        $roles          = $request->roles;
 
         $admin->fill($param)->save();
 
 
-        if (isset($roles)) {
-            $admin->roles()->sync($roles);
-        }
-        else {
-            $admin->roles()->detach();
-        }
 
         return redirect()->route('admin-admin')
             ->with('flash_message',

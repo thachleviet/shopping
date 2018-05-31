@@ -45,6 +45,6 @@
     <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
     <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
     <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
-    <script src="{{asset('static/backend')}}/js/slide/custom.js"></script>
+    <script src="{{asset('static/backend')}}/js/slider/custom.js"></script>
 @stop
 

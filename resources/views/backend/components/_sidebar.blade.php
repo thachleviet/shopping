@@ -30,44 +30,25 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="{{((Request::is('admin/menu')) ? 'active': '' || Request::is('admin/product'))? 'active': ''}} treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i>  <span>Quản lý sản phẩm</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
 
-                    <li class="{{ Request::is('admin/menu') ? 'active' : '' }}"><a href="{{route('menu')}}"><i class="fa fa-circle-o"></i> Danh mục </a></li>
-                    {{--<li class="{{ Request::is('admin/product') ? 'active' : '' }}"><a href="{{route('product')}}"><i class="fa fa-circle-o"></i> Sản phẩm </a></li>--}}
-                </ul>
-            </li>
-            <li class="{{((Request::is('admin/transaction-user')) ? 'active': '' || Request::is('admin/transaction-user'))? 'active': ''}} treeview">
-                <a href="#">
-                    <i class="fa fa-laptop"></i>  <span>Quản lý đặt hàng</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <li class="{{ Request::is('admin/menu') ? 'active' : '' }} ">
+                <a href="{{route('menu')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý danh mục</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/transaction-user') ? 'active' : '' }}"><a href="{{route('transaction-user')}}"><i class="fa fa-circle-o"></i> Khách thành viên</a></li>
-                    <li class="{{ Request::is('admin/transaction-user/list-transaction') ? 'active' : '' }}"><a href="{{route('transaction-user.list-transaction')}}"><i class="fa fa-circle-o"></i>Khách vãng lai</a></li>
-                    {{--<li class="{{ Request::is('admin/product') ? 'active' : '' }}"><a href="{{route('product')}}"><i class="fa fa-circle-o"></i> Sản phẩm </a></li>--}}
-                </ul>
+            </li>
+            <li class="{{ Request::is('admin/product') ? 'active' : '' }} ">
+                <a href="{{route('product')}}"><i class="fa fa-pie-chart"></i> <span>Sản phẩm</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('admin/transaction') ? 'active' : '' }} ">
+                <a href="{{route('transaction')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý đơn hàng</span>
+                </a>
             </li>
             <li class="{{ Request::is('admin/slide') ? 'active' : '' }} ">
                 <a href="{{route('slide')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý Slider</span>
                 </a>
             </li>
 
-            <li class="{{ Request::is('admin/inventory') ? 'active' : '' }} ">
-                <a href="{{route('inventory')}}"><i class="fa fa-calendar"></i> <span>Quản lý hàng tồn</span></a>
-            </li>
-            <li class="{{ Request::is('admin/revenue') ? 'active' : '' }} ">
-                <a href="{{route('revenue')}}"><i class="fa fa-pie-chart"></i> <span>Thống kê doanh thu </span>
-                </a>
-            </li>
+
             <li class="{{((Request::is('admin/user-admin')) ? 'active': '' || Request::is('admin/user-admin'))? 'active': ''}} treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>  <span>Quản lý người dùng</span>
@@ -76,11 +57,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/user-admin') ? 'active' : '' }} ">
-                        <a href="{{route('user-admin')}}"><i class="fa fa-circle-o"></i> <span>Người dùng</span></a>
-                    </li>
+
                     <li class="{{ Request::is('admin/admin') ? 'active' : '' }} ">
-                        <a href="{{route('admin-admin')}}"><i class="fa fa-circle-o"></i> <span>Quản trị viên</span></a>
+                        <a href="{{route('admin')}}"><i class="fa fa-circle-o"></i> <span>Quản trị viên</span></a>
                     </li>
 
                 </ul>

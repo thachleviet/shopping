@@ -79,9 +79,8 @@
             <th class="text-center" >Số điện thoại</th>
             <th class="text-center" >Email</th>
             <th class="text-center" >Đại chỉ</th>
-
             <th class="text-center" >Trạng thái </th>
-            <th class="text-center">Hình thức thanh toán </th>
+
             <th class="text-center">Ngày giao dịch </th>
         </tr>
         </thead>
@@ -98,18 +97,13 @@
                     <td class="text-center">
                         @if (empty($item['transaction_status']))
                             <a href='javascript:void(0)' onclick="Transaction.confirmOrder2(this, '{{$item['transaction_id']}}')"><span class="label label-warning"> Chưa xác nhận </span></a><br>
-                            <a href="{{route('transaction-user.detail-guest',$item['transaction_id'])}}">Xem chi tiết</a>
+                            <a href="{{route('transaction.detail-guest',$item['transaction_id'])}}">Xem chi tiết</a>
                         @else
                             <span class="label label-success"> Đã duyệt </span><br>
-                            <a href="{{route('transaction-user.detail-guest',$item['transaction_id'])}}">Xem chi tiết</a>
+                            <a href="{{route('transaction.detail-guest',$item['transaction_id'])}}">Xem chi tiết</a>
                         @endif
                     </td>
-                    <td class="text-center">
-                        @if ($item['transaction_type'] == 'home')
-                            <span class="label label-primary">Tại nhà</span>
-                        @else
-                            <span class="label label-primary">Ngân hàng</span>
-                    @endif
+
                     <td class="text-center">{{\Carbon\Carbon::parse($item['transaction_created_at'])->format('d-m-Y H:i')}}</td>
                 </tr>
             @endforeach

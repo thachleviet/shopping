@@ -22,6 +22,6 @@ class WardTable extends Model
         return $this->pluck('name', 'ward_id')->toArray();
     }
     public function getWardOptionIdDistrict($idDistrict){
-        return $this->from($this->table)->where('district_id', $idDistrict)->get();
+        return $this->from($this->table)->where('district_id', $idDistrict)->get()->pluck('name','ward_id');
     }
 }

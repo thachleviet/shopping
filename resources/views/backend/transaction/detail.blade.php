@@ -27,11 +27,11 @@
                     <div class="box-header">
 
                     </div>
-                    <form method="post" action="{{route('transaction-user.generate-order-fill')}}">
+                    <form method="post" action="{{route('transaction.generate-order-fill')}}">
                     <div class="box-body" >
                         <div id="content">
                             <div class="form-group row">
-                                <div class="col-md-12" style="color: red; font-size: 22px; font-weight: bold"> <img class="col-md-3" src="{{asset('images/logo_nhu.PNG')}}" width="150" />&nbsp;HÓA ĐƠN THANH TOÁN GIAO HÀNG</div>
+                                <div class="col-md-12" style="color: red; font-size: 22px; font-weight: bold"> &nbsp;HÓA ĐƠN THANH TOÁN GIAO HÀNG</div>
                             </div>
                             <div class="box-header with-border">
                                 <h3 class="box-title">{{$title}}</h3>
@@ -60,19 +60,7 @@
                                         <?php  $total = 0;?>
                                         @foreach($object as $key=>$item)
                                             <tr>
-                                                {{--'phone_customer',
-            'email_customer',
-            'fullname_customer',
-            'address_customer',
-            't.transaction_status as transaction_status',
-            'transaction_type',
-            'transaction_amount',
-            't.created_at as transaction_created_at',
-            't.transaction_id as transaction_id',
-            't.transaction_user_id as transaction_user_id',
-            'ward.name as ward_name',
-            'district.name as district_name',
-            'province.name as city_name'--}}
+
                                                 <td class="text-center">{{($key+1)}}</td>
                                                 <td class="text-center">{{$item['product_name']}}</td>
                                                 <td class="text-center"><img src="{{asset($item['product_image'])}}" width="80" height="100"></td>
@@ -88,8 +76,8 @@
                                 <div class="col-md-12">
                                     <div class="col-md-offset-6 col-md-6 text-right">
                                         <label class="col-md-6 text-right">Tổng tiền trước thuế : </label> <label class="col-md-5 text-right">{{number_format($total,2)}} vnđ</label><br>
-                                        <label class="col-md-6 text-right">Thuế VAT  :</label> <label class="col-md-5 text-right">5% </label><br>
-                                        <label class="col-md-6 text-right">Tổng tiền thanh toán  : </label> <label class="col-md-5 text-right">{{number_format((int)$total + (int)$total*(5/100),2) }} vnđ</label>
+                                        <label class="col-md-6 text-right">Thuế VAT  :</label> <label class="col-md-5 text-right">0% </label><br>
+                                        <label class="col-md-6 text-right">Tổng tiền thanh toán  : </label> <label class="col-md-5 text-right">{{number_format($total,2)}} vnđ</label>
                                     </div>
                                 </div>
                                 <div class="col-md-12" style="width: 100%">

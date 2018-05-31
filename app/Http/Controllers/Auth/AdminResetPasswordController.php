@@ -46,7 +46,7 @@ class AdminResetPasswordController extends Controller
 
     protected function broker()
     {
-        return Password::broker('admins');
+        return Password::broker('admin');
     }
 
     public function showResetForm(Request $request, $token = null)

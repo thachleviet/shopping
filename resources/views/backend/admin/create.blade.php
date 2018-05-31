@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Dashboard
-            <small> <a href="{{asset(route('admin-admin'))}}"> <i class="fa fa-angle-double-right"></i> Danh mục quản trị viên</a></small>
+            <small> <a href="{{asset(route('admin'))}}"> <i class="fa fa-angle-double-right"></i> Danh mục quản trị viên</a></small>
             <small><i class="fa fa-angle-double-right"></i> {{$title}}</small>
         </h1>
         <ol class="breadcrumb">
@@ -16,7 +16,7 @@
         <div class="row">
 
             <div class="col-md-7 col-lg-offset-2">
-                <form role="form" method="post" action="{{route('admin-admin.store')}}">
+                <form role="form" method="post" action="{{route('admin.store')}}">
                 <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">{{$title}}</h3>
@@ -53,19 +53,7 @@
                                 <input type="radio" name="gender"  value="0">
                             </div>
                         </div>
-                   <div class="box-header with-border">
-                        <h3 class="box-title">Roles</h3>
-                    </div>
 
-                    {{--`name`, `email`, `phone`, `gender`, `avatar`, `ward_id`, `district_id`, `province_id`,
-                    `is_admin`, `password`, `remember_token`, `created_at`, `updated_at`, `status`--}}
-                    <div class="box-body">
-                        <div class="form-group row {{($errors->has('name')) ? 'has-error': ''}}" >
-                            @foreach ($roles as $role)
-                                <div class="col-sm-4">  <input type="checkbox"  name="roles[]" value="{{$role->id}}" > <label >{{$role->name}}</label></div>
-                            @endforeach
-                        </div>
-                    </div>
 
 
                     <div class="box-footer">

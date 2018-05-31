@@ -52,6 +52,21 @@ class SlideController extends Controller
     public function store(Request $request)
     {
 
+      $data = array(
+          'slider_title'    =>$request->input('slider_title'),
+          'slider_status'    =>$request->input('slider_status'),
+          'slider_image'    =>'uploads/'.$this->uploadFiles($request,'slider_image','slider_image','uploads', null, null),
+          'created_at'      =>date('Y-m-d H:i:s'),
+          'slider_name'     => $request->input('slider_name'),
+          'slider_type'     => $request->input('slider_type')
+      );
+
+        if($this->slide->store($data)   ){
+            $request->session()->flash('message_success', 'Thêm dữ liệu thành công');
+            return redirect()->route('slide');
+        }
+        $request->session()->flash('message_warning', 'Đã xãy ra lỗi');
+        return redirect()->route('menu.create');
     }
 
     /**
@@ -60,9 +75,18 @@ class SlideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function changeStatus(Request $request)
     {
-        //
+        $param  = $request->all();
+
+        $data  = [
+            'slider_status'=>($param['action'] == 'active') ? 0 : 1
+        ];
+
+
+        $this->slide->updates($data, $param['id']);
+
+        return $this->setResponse(true, null , array('messages'=>'Cập nhật dữ liệu thành công !'));
     }
 
     /**
@@ -73,7 +97,9 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        //
+        $oSlide   =   $this->slide->getItem($id) ;
+
+        return view('backend.slide.edit', ['_object'=>$oSlide, '_title'=>'Cập nhật danh mục']);
     }
 
     /**
@@ -85,7 +111,28 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $item  = $this->slide->getItem($id);
+            $data['slider_title']   = $request->input('slider_title');
+            $data['slider_status']  = $request->input('slider_status');
+            $data['slider_name']    = $request->input('slider_name');
+            $data['slider_type']    = $request->input('slider_type');
+            if($request->hasFile('slider_image')){
+                if(!empty($item['slider_image'])){
+                    if(is_file(public_path().'/'.$item['slider_image'].'')){
+                        unlink(public_path().'/'.$item['slider_image'].'');
+                    }
+                }
+                $data['slider_image']= 'uploads/'.$this->uploadFiles($request,'slider_image','slider_image','uploads', null, null);
+            }
+            if($this->slide->updates($data, $id)){
+                $request->session()->flash('message_success', 'Cập nhật dữ liệu thành công');
+                return redirect()->route('slide');
+            }
+        }catch (\Exception $exception){
+            $request->session()->flash('message_warning', 'Đã xãy ra lỗi');
+        }
+        return redirect()->route('slide.edit',$id);
     }
 
     /**
@@ -96,6 +143,31 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $object     =  $this->slide->getItem($id) ;
+        if(!empty($object['slider_image'])){
+            if(is_file(public_path().'/'.$object['slider_image'].'')){
+                unlink(public_path().'/'.$object['slider_image'].'');
+            }
+        }
+        $this->slide->destroys($id);
+        return $this->setResponse(true,null, array('massages'=>'Xóa dữ liệu thành công !'));
+    }
+
+    // function upload files
+    public function uploadFiles($request , $fileName ,$prefix = null, $uploads = 'uploads', $time , $option = null){
+        $names = '';
+        if($option == 'image_child'){
+            $names 	= $time.'_'.date('d_m_Y').'_'.$prefix.'.'.$fileName->getClientOriginalExtension();
+            $destinationPath = public_path($uploads);
+            $fileName->move($destinationPath, $names);
+            return $names ;
+        }
+        if($request->hasFile($fileName)){
+            $image  = $request->file($fileName);
+            $names 	= time().'_'.date('d_m_Y').'_'.$prefix.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path($uploads);
+            $image->move($destinationPath, $names);
+        }
+        return $names ;
     }
 }

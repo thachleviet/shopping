@@ -51,16 +51,17 @@
                 <!-- Logo -->
                 <div id="logo" class="flex-col logo">
                     <!-- Header logo -->
-                    <a href="index.html"
+                    <a href="{{route('home')}}"
                        title="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam - Gold Time Watch &#8211; Quyền Năng Trên Tay Bạn"
                        rel="home">
                         <img width="551" height="156"
                              src="{{asset('frontend')}}/wp-content/uploads/2018/04/Gold-Time-Watch.jpg"
                              class="header_logo header-logo"
                              alt="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam"/>
-                        <img width="551" height="156" src="wp-content/uploads/2018/04/Gold-Time-Watch.jpg"
+                        <img width="551" height="156" src="{{asset('frontend')}}/wp-content/uploads/2018/04/Gold-Time-Watch.jpg"
                              class="header-logo-dark"
-                             alt="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam"/></a>
+                             alt="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam"/>
+                    </a>
                 </div>
                 <!-- Mobile Left Elements -->
                 <div class="flex-col show-for-medium flex-left">
@@ -116,7 +117,7 @@
                                    class="header-cart-link icon button circle is-outline is-small"><span class="header-cart-title">Giỏ hàng   /      <span class="cart-price"><span class="woocommerce-Price-amount amount">{{$countCart}}&nbsp;<span
                                             class="woocommerce-Price-currencySymbol">&#8363;</span></span></span></span>
                                     <i class="icon-shopping-cart"
-                                       data-icon-label="0">
+                                       data-icon-label="{{$countCart}}">
                                     </i>
                                 </a>
                             </div>
@@ -138,7 +139,7 @@
                                                 @foreach($listCart as $key=>$value)
 
                                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                        <a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>
+                                                        <a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>
                                                         <a href="{{route('products.detail', $value->id)}}">
                                                             <img width="180" height="180" src="{{asset($value->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">{{$value->name}}&nbsp;							</a>
                                                         <span class="quantity">{{$value->qty}} × <span class="woocommerce-Price-amount amount">{{$value->price}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span>					</li>
@@ -150,7 +151,7 @@
                                             <p class="woocommerce-mini-cart__total total"><strong>Tổng phụ:</strong> <span class="woocommerce-Price-amount amount">{{$totalCart}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></p>
 
 
-                                            <p class="woocommerce-mini-cart__buttons buttons"><a href="{{route('cart')}}" class="button wc-forward">Xem giỏ</a><a href="http://donghogoldtime.vn/checkout/" class="button checkout wc-forward">Thanh toán</a></p>
+                                            <p class="woocommerce-mini-cart__buttons buttons"><a href="{{route('cart')}}" class="button wc-forward">Xem giỏ</a><a href="{{route('order')}}" class="button checkout wc-forward">Thanh toán</a></p>
                                             @else
                                             <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ
                                                 hàng.
@@ -212,61 +213,61 @@
                     <ul class="nav header-nav header-bottom-nav nav-left  nav-divided nav-uppercase">
                         <li id="menu-item-46"
                             class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active  menu-item-46">
-                            <a href="index.html" class="nav-top-link">Trang chủ</a>
+                            <a href="{{route('home')}}" class="nav-top-link">Trang chủ</a>
                         </li>
                         <li id="menu-item-45"
                             class="menu-item menu-item-type-post_type menu-item-object-post  menu-item-45"><a
-                                    href="gioi-thieu/index.html" class="nav-top-link">Giới thiệu</a></li>
+                                    href="#" class="nav-top-link">Giới thiệu</a></li>
                         <li id="menu-item-33"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-33 has-dropdown">
-                            <a href="danh-muc-san-pham/index.html" class="nav-top-link">DANH MỤC SẢN PHẨM<i
+                            <a href='javascript:void(0)' class="nav-top-link">DANH MỤC SẢN PHẨM<i
                                         class="icon-angle-down"></i></a>
                             <ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>
                                 @foreach($MenuTypeProduct as $key=>$item)
                                     <li id="menu-item-1900"
                                         class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1900">
-                                        <a href="#">{{$item['menu_name']}}</a>
+                                        <a href="{{route('category.category', $item['id'])}}">{{$item['menu_name']}}</a>
                                     </li>
                                 @endforeach
 
 
                             </ul>
                         </li>
-                        <li id="menu-item-265"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-265 has-dropdown">
-                            <a href="#" class="nav-top-link">Phân khúc giá<i class="icon-angle-down"></i></a>
-                            <ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>
-                                <li id="menu-item-1764"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1764">
-                                    <a href="duoi-3-trieu/index.html">Dưới 3 triệu</a>
-                                </li>
-                                <li id="menu-item-40"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-40">
-                                    <a href="phan-khuc-gia/duoi-5-trieu/index.html">Dưới 5 triệu</a>
-                                </li>
-                                <li id="menu-item-42"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-42">
-                                    <a href="phan-khuc-gia/tu-5-trieu-den-10-trieu/index.html">Từ 5 triệu đến 10
-                                        triệu</a>
-                                </li>
-                                <li id="menu-item-41"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-41">
-                                    <a href="phan-khuc-gia/tren-10-trieu/index.html">Trên 10 triệu</a>
-                                </li>
-                            </ul>
-                        </li>
+                        {{--<li id="menu-item-265"--}}
+                            {{--class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-265 has-dropdown">--}}
+                            {{--<a href="#" class="nav-top-link">Phân khúc giá<i class="icon-angle-down"></i></a>--}}
+                            {{--<ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>--}}
+                                {{--<li id="menu-item-1764"--}}
+                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1764">--}}
+                                    {{--<a href="duoi-3-trieu/index.html">Dưới 3 triệu</a>--}}
+                                {{--</li>--}}
+                                {{--<li id="menu-item-40"--}}
+                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-40">--}}
+                                    {{--<a href="phan-khuc-gia/duoi-5-trieu/index.html">Dưới 5 triệu</a>--}}
+                                {{--</li>--}}
+                                {{--<li id="menu-item-42"--}}
+                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-42">--}}
+                                    {{--<a href="phan-khuc-gia/tu-5-trieu-den-10-trieu/index.html">Từ 5 triệu đến 10--}}
+                                        {{--triệu</a>--}}
+                                {{--</li>--}}
+                                {{--<li id="menu-item-41"--}}
+                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-41">--}}
+                                    {{--<a href="phan-khuc-gia/tren-10-trieu/index.html">Trên 10 triệu</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
                         <li id="menu-item-3299"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-3299"><a
-                                    href="dong-ho-nam/index.html" class="nav-top-link">Đồng hồ nam</a></li>
+                                    href="{{route('category.male')}}" class="nav-top-link">Đồng hồ nam</a></li>
                         <li id="menu-item-3298"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-3298"><a
-                                    href="dong-ho-nu/index.html" class="nav-top-link">Đồng hồ nữ</a></li>
+                                    href="{{route('category.female')}}" class="nav-top-link">Đồng hồ nữ</a></li>
                         <li id="menu-item-1526"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1526"><a
-                                    href="dong-ho-doi/index.html" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
+                                    href="{{route('category.double')}}" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
                         <li id="menu-item-3182"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children  menu-item-3182 has-dropdown">
-                            <a href="blog/index.html" class="nav-top-link">Blog
+                            <a href="#" class="nav-top-link">Blog
                                 <i class="icon-angle-down"></i></a>
                             @if(!empty($MenuTypeNew))
                             <ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>

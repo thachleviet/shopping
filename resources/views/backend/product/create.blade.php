@@ -127,7 +127,27 @@
                                             <span class="help-block">{{ $errors->first('product_description')}}</span>
                                         @endif
                                     </div>
-                                    <div class="form-group row {{($errors->has('menu_status')) ? 'has-error': ''}}" >
+
+                                </div>
+                                <div class="col-md-7" >
+                                    <div class="form-group row{{($errors->has('product_discount')) ? 'has-error': ''}}" >
+                                        <label class="col-sm-2 col-sx-12">Giảm giá</label>
+                                        <div class="col-sm-10 col-sx-12">
+                                        <input type="number" class="form-control" min="1" max="100" name="product_discount" placeholder="Giảm giá">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ">
+                                        <label class="col-sm-2 col-sx-12">Thể loại  : </label>
+                                        <div class="col-sm-10 col-sx-12">
+                                            <label ><input type="radio" name="product_type" checked value="male"></label>
+                                            <span >Nam</span>
+                                            <label ><input type="radio"  name="product_type" value="female"></label>
+                                            <span >Nữ</span>
+                                            <label ><input type="radio"  name="product_type" value="double"></label>
+                                            <span >Đôi</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row {{($errors->has('product_status')) ? 'has-error': ''}}" >
                                         <label class="col-sm-2 col-sx-12">Trạng thái : </label>
                                         <div class="col-sm-10 col-sx-12">
                                             <label ><input type="radio" name="product_status" checked value="1"></label>
@@ -138,8 +158,6 @@
                                             <span >Tạm ngưng</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-7" >
                                     <label class="col-md-12" style="color: #BD362F;"  onclick="plusThuocTinh()"><i class="fa fa-plus"></i> Thuộc tính</label>
 
                                     <div id="thuocTinh">

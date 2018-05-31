@@ -127,19 +127,37 @@
                                             <span class="help-block">{{ $errors->first('product_description')}}</span>
                                         @endif
                                     </div>
-                                    <div class="form-group row {{($errors->has('menu_status')) ? 'has-error': ''}}" >
+
+                                </div>
+                                <div class="col-md-7" >
+                                    <div class="form-group row{{($errors->has('product_discount')) ? 'has-error': ''}}" >
+                                        <label class="col-sm-2 col-sx-12">Giảm giá</label>
+                                        <div class="col-sm-10 col-sx-12">
+                                            <input type="number" class="form-control" min="1" max="100" value="{{$_object['product_discount']}}" name="product_discount" placeholder="Giảm giá">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ">
+                                        <label class="col-sm-2 col-sx-12">Giới tính : </label>
+                                        <div class="col-sm-10 col-sx-12">
+                                            <label ><input type="radio" name="product_type" {{($_object['product_type'] == 'male') ? 'checked' : ""}} value="male"></label>
+                                            <span >Nam</span>
+                                            <label ><input type="radio"  name="product_type"  {{($_object['product_type'] == 'female') ? 'checked' : ""}} value="female"></label>
+                                            <span >Nữ</span>
+                                            <label ><input type="radio"  name="product_type" {{($_object['product_type'] == 'double') ? 'checked' : ""}} value="double"></label>
+                                            <span >Đôi</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row {{($errors->has('product_status')) ? 'has-error': ''}}" >
                                         <label class="col-sm-2 col-sx-12">Trạng thái : </label>
                                         <div class="col-sm-10 col-sx-12">
-                                            <label ><input type="radio" name="product_status" checked value="1"></label>
+                                            <label ><input type="radio" name="product_status" {{($_object['product_status'] == 1) ? 'checked' : ""}} value="1"></label>
                                             <span >Hoạt động</span>
 
-                                            <label ><input type="radio"  name="product_status" value="0"></label>
+                                            <label ><input type="radio"  name="product_status" {{($_object['product_status'] == 0) ? 'checked' : ""}} value="0"></label>
 
                                             <span >Tạm ngưng</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-7" >
                                     <label class="col-md-12" style="color: #BD362F;"  onclick="plusThuocTinh()"><i class="fa fa-plus"></i> Thuộc tính</label>
 
                                     <div id="thuocTinh">

@@ -18,33 +18,18 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
 //    Route::get('api/user', 'NewsController@getListAction');
     Route::get('/', 'HomeController@indexAction')->name('admin');
     Route::group(['prefix'=>'admin'], function (){
-        Route::get('/', 'AdminController@index')->name('admin-admin');
-        Route::get('/add', 'AdminController@create')->name('admin-admin.create');
-        Route::post('/add', 'AdminController@store')->name('admin-admin.store');
-        Route::get('/edit/{id}', 'AdminController@edit')->name('admin-admin.edit');
-        Route::post('/update/{id}', 'AdminController@update')->name('admin-admin.update');
-        Route::get('/show/{id}', 'AdminController@show')->name('admin-admin.show');
-        Route::get('/destroy/{id}', 'AdminController@destroy')->name('admin-admin.destroy');
+        Route::get('/', 'AdminController@index')->name('admin');
+        Route::get('/add', 'AdminController@create')->name('admin.create');
+        Route::post('/add', 'AdminController@store')->name('admin.store');
+        Route::get('/edit/{id}', 'AdminController@edit')->name('admin.edit');
+        Route::post('/update/{id}', 'AdminController@update')->name('admin.update');
+        Route::get('/show/{id}', 'AdminController@show')->name('admin.show');
+        Route::get('/destroy/{id}', 'AdminController@destroy')->name('admin.destroy');
     });
     Route::group(['prefix'=>'news'], function (){
         Route::get('/', 'NewsController@index')->name('news');
     });
-    Route::group(['prefix'=>'roles'], function (){
-        Route::get('/', 'RoleController@index')->name('roles');//
-        Route::get('/add', 'RoleController@create')->name('roles.create');
-        Route::post('/add', 'RoleController@store')->name('roles.store');
-        Route::get('/edit/{id}', 'RoleController@edit')->name('roles.edit');
-        Route::post('/update/{id}', 'RoleController@update')->name('roles.update');
-        Route::get('destroy/{id}', 'RoleController@destroy')->name('role.destroy-roles');
-    });
-    Route::group(['prefix'=>'permissions'], function (){
-        Route::get('/', 'PermissionController@index')->name('permissions');//
-        Route::get('/add', 'PermissionController@create')->name('permissions.create');
-        Route::post('/add', 'PermissionController@store')->name('permissions.store');
-        Route::get('/edit/{id}', 'PermissionController@edit')->name('permissions.edit');
-        Route::post('/update/{id}', 'PermissionController@update')->name('permissions.update');
-        Route::get('destroy/{id}', 'PermissionController@destroy')->name('permissions.destroy-roles');
-    });
+
     Route::group(['prefix' => 'menu'], function(){
         Route::get('/', 'MenuController@index')->name('menu');
         Route::get('/add', 'MenuController@create')->name('menu.create');
@@ -72,20 +57,24 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::get('/', 'SlideController@index')->name('slide');
         Route::get('/add', 'SlideController@create')->name('slide.create');
         Route::post('/add', 'SlideController@store')->name('slide.store');
+        Route::get('/edit/{id}', 'SlideController@edit')->name('slide.edit');
+        Route::get('/destroy/{id}', 'SlideController@destroy')->name('slide.destroy');
+        Route::post('/update/{id}', 'SlideController@update')->name('slide.update');
+        Route::post('/change-status', 'SlideController@changeStatus')->name('slide.change-status');
     });
 
 
-    Route::group(['prefix' => 'transaction-user'], function(){
-        Route::get('', 'TransactionController@indexAction')->name('transaction-user');
-        Route::post('change-status', 'TransactionController@changeStatusAction')->name('transaction-user.change-status');
-        Route::post('detail-transaction-user', 'SliderController@detailAction')->name('transaction-user.detail-transaction-user');
-        Route::get('confirm-order/{id}', 'TransactionController@confirmOrderAction')->name('transaction-user.confirm-order');
-        Route::get('confirm-order-2/{id}', 'TransactionController@confirmOrderAction2')->name('transaction-user.confirm-order-2');
-        Route::get('detail-order-user/{id}', 'TransactionController@detailTransactionUserAction')->name('transaction-user.detail-order-user');
-        //Route::get('generate-order-fill/{id}', 'TransactionController@generatePDFAction')->name('transaction-user.generate-order');
-        Route::post('generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction-user.generate-order-fill');
-        Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
-        Route::get('detail-guest/{id}', 'TransactionController@getDetailUserTransactionNoAccount')->name('transaction-user.detail-guest');
+    Route::group(['prefix' => 'transaction'], function(){
+        Route::get('', 'TransactionController@indexAction')->name('transaction');
+        Route::post('change-status', 'TransactionController@confirmOrderAction2')->name('transaction-user.change-status');
+//        Route::post('detail-transaction-user', 'SliderController@detailAction')->name('transaction-user.detail-transaction-user');
+//        Route::get('confirm-order/{id}', 'TransactionController@confirmOrderAction')->name('transaction-user.confirm-order');
+//        Route::get('confirm-order-2/{id}', 'TransactionController@confirmOrderAction2')->name('transaction-user.confirm-order-2');
+//        Route::get('detail-order-user/{id}', 'TransactionController@detailTransactionUserAction')->name('transaction-user.detail-order-user');
+        Route::get('generate-order-fill/{id}', 'TransactionController@generatePDFAction')->name('transaction.generate-order');
+        Route::post('generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction.generate-order-fill');
+//        Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
+        Route::get('detail-guest/{id}', 'TransactionController@getDetailUserTransactionNoAccount')->name('transaction.detail-guest');
 
     });
     Route::group(['prefix' => 'inventory'], function(){
@@ -115,8 +104,6 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
     Route::group(['prefix' => 'cart'], function(){
         Route::get('', 'CartController@index')->name('cart');
         Route::post('add-cart', 'CartController@addCartAction')->name('cart.add');
-
-//
         Route::get('destroy/{id}/route/{route}/product/{product_id}', 'CartController@destroy')->name('cart.destroy');
     });
     Route::group(['prefix' => 'product'], function(){
@@ -125,8 +112,9 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::get('product-detail/{id}', 'ProductController@detail')->name('products.detail');
     });
     Route::group(['prefix' => 'order'], function(){
-        Route::get('/', 'OrderController@indexAction')->name('order');
+        Route::get('/', 'OrderController@index')->name('order');
         Route::post('order-cart', 'OrderController@orderCartAction')->name('order.order-cart');
+        Route::get('order-success', 'OrderController@orderSuccess')->name('order.order-success');
 
     });
     Route::group(['prefix' => 'province'], function(){
@@ -147,10 +135,14 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::get('/ward', 'AddressController@getWard')->name('address.ward');
     });
 
-    Route::group(['prefix'=>'categorys'], function (){
-        Route::get('/', 'CategoryController@indexAction')->name('categorys');
-        Route::get('/list-category/{id}', 'CategoryController@listCategoryOfIdAction')->name('categorys.list-category');
-        Route::get('/list-category/v/{id}', 'CategoryController@listCategoryVAction')->name('categorys.list-category-v');
+    Route::group(['prefix'=>'category'], function (){
+        Route::get('/', 'CategoryController@index')->name('category');
+        Route::get('category/{id}', 'CategoryController@category')->name('category.category');
+        Route::get('category-male', 'CategoryController@getListItemTypeMale')->name('category.male');
+        Route::get('category-female', 'CategoryController@getListItemTypeFeMale')->name('category.female');
+        Route::get('category-double', 'CategoryController@getListItemTypeDouble')->name('category.double');
+//        Route::get('/list-category/{id}', 'CategoryController@listCategoryOfIdAction')->name('categorys.list-category');
+//        Route::get('/list-category/v/{id}', 'CategoryController@listCategoryVAction')->name('categorys.list-category-v');
 
     });
 });

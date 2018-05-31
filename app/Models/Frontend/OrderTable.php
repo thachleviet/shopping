@@ -14,9 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 class OrderTable extends  Model
 {
     public      $timestamps = false;
-    protected   $table = 'orders';
+    protected   $table = 'order';
     protected   $primaryKey = 'order_id';
-    protected   $fillable = ['created_at','order_id', 'transaction_id', 'user_id', 'product_id', 'catecory_id', 'count_order'];
+    protected   $fillable = ['order_id', 'product_id', 'transaction_id', 'count_order', 'created_at', 'updated_at'];
 
 
     public function countProductId($id){

@@ -35,4 +35,6 @@ class Product extends Model
         return $this->where('id', (int)$id)->delete();
     }
 
+
+
 }

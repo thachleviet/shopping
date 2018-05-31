@@ -23,12 +23,11 @@ class Menu extends Model
     }
 
     public function getListMenuOfId($id){
-        return $this->where('id', $id)->get();
+        return $this->where('id', $id)->paginate(12);
     }
-//    public function getListMenuOfOption($option){
-//        return $this->where('option', $option)->get();
-//    }
 
-
+    public function getItem($id){
+        return $this->where('id', $id)->first();
+    }
 
 }

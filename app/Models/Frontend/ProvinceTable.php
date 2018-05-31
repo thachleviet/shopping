@@ -20,6 +20,6 @@ class ProvinceTable extends Model
     protected   $fillable   = ['province_id', 'name', 'type', 'location_id'];
 
     public function getProvinceOption(){
-        return $this->from($this->table)->get();
+        return $this->from($this->table)->get()->pluck('name', 'province_id');
     }
 }

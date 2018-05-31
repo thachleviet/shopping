@@ -14,21 +14,24 @@ use Illuminate\Database\Eloquent\Model;
 class SliderTable extends Model
 {
 
-        protected $table = 'slides' ;
+        protected $table = 'slider' ;
 
         protected $primaryKey = 'slide_id';
 
-        protected $fillable = ['slide_id', 'slide_title', 'slide_name', 'slide_name_alias', 'slide_title_alias', 'slide_category_id', 'slide_product_id', 'slide_created_at', 'slide_created_by', 'slide_modified_at', 'slide_modified_by', 'slide_image'] ;
+    protected $fillable =['id', 'slider_name', 'slider_type',  'slider_image', 'slider_title', 'created_at', 'updated_at', 'slider_status'];
 
         public    $timestamps = false;
 
 
-        public function getList(){
-            return $this->from($this->table)->get();
-        }
+    public function getList($type){
+    return $this->from($this->table)->where('slider_type', $type)->get();
+}
 
 
-        public function getItem($id){
-            return $this->where($this->primaryKey, $id)->first();
-        }
+    public function getItem($id){
+        return $this->where($this->primaryKey, $id)->first();
+    }
+
+
+
 }

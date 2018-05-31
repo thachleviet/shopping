@@ -34,6 +34,7 @@ class ProductController extends Controller
         $object                 = $mProduct->getItem($id);
         $attributeProduct       = new AttributeProduct();
         $related                = $mProduct->related($object['product_menu_id'],$id);
+
         $mImage                 = new ImageProduct();
         $ImageProduct           = $mImage->getImageOfProduct($id);
 
@@ -42,7 +43,8 @@ class ProductController extends Controller
             '_object'           => $object,
             '_attributeProduct' => $listAttributeProduct,
             '_related'          => $related,
-            '_imageProduct'     => $ImageProduct
+            '_imageProduct'     => $ImageProduct,
+//            '_price'            => $object
         ]);
     }
 }

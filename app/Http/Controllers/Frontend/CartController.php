@@ -29,12 +29,14 @@ class CartController extends Controller
 
     public function index(){
 
-        return  view('frontend.cart.index', ['_object'=>Cart::content()]);
+        return  view('frontend.cart.index', [
+            '_object'=>Cart::content(),
+            'count'=>Cart::count(),
+            'total'=>Cart::subtotal()]);
     }
 
     public function updateCartAction(Request $request){
         $objectProduct  = $this->product->getItem($request->input('id')) ;
-
 
         $duplicates = Cart::search(function ($cartItem) use ($request){
             return $cartItem->id === $request->input('id');
@@ -46,7 +48,6 @@ class CartController extends Controller
                 'messages'=>'Sản phẩm đã hết hàng !'
             ]) ;
         }
-
 
         if($this->request->isMethod('post')){
             Cart::update($this->request->input('id'),(int)$this->request->input('qty'));
@@ -61,7 +62,8 @@ class CartController extends Controller
     }
     public function addCartAction(Request $request){
 
-        Cart::add($request->product_id,$request->product_name,$request->quantity,$request->product_price,['product_image'=>$request->product_image]);
+
+        Cart::add($request->product_id,$request->product_name,$request->quantity,($request->product_discount>0)? ($request->product_price * (100 - $request->product_discount)/100): $request->product_price,['product_image'=>$request->product_image]);
         return redirect()->route('products.detail', $request->product_id);
     }
 

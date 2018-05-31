@@ -1,195 +1,287 @@
-
 @extends('frontend.layouts')
-@section('after_style')
-    <link rel="stylesheet" href="{{asset('frontend')}}/js/css/select2.min.css">
-@stop
 @section('content')
-    <style>
-        label.error{  display: block; color: red; vertical-align: top; }
-        input.error{
-            border: 1px solid red;
-        }
-        div.form-group{
-            margin-top: 20px;
-        }
-    </style>
-    <div class="content">
-        <!--banner-bottom-->
-        <div class="ban-bottom-w3l">
-            <div class="container">
-                <form  id="formOrderCart"  method="post"  onsubmit="return false">
-                    {!! csrf_field() !!}
-                <div class="row">
-                    <div class="col-md-12 ">
-                         <h2 class="tittle">Xác nhận đơn hàng</h2>
-                    </div>
-                    <div class="col-md-12" style="margin-top: 20px; ">
-                        <div class="col-md-6">
-                                <h3 > Nhập thông tin </h3>
-                                <div class="form-group row" style="padding-top: 20px; ">
-                                    <label class="col-md-4"> Họ tên <span >*</span></label>
-                                    <div class=" col-md-8">
-                                        <input type="text" name="customer_fullname" class="form-control" {{(!empty($object['name']) ? 'disabled': '') }} value="{{(!empty($object['name']) ? $object['name']: '')}}" placeholder="Nhập họ tên" >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="customer_email" class="col-md-4"> Email <span >*</span> </label>
-                                    <div class=" col-md-8">
-                                        <input type="email" name="customer_email" {{(!empty($object['email'])) ? 'disabled': ''}} value="{{(!empty($object['email'])) ? $object['email']: ''}}" class="form-control" placeholder="Nhập email" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4"> Số điện thoại <span >*</span></label>
-                                    <div class=" col-md-8">
-                                        <input type="text" {{!empty($object['phone']) ? 'disabled': ''}} value="{{!empty($object['phone']) ? $object['phone']: ''}}" name="customer_phone" class="form-control" placeholder="Nhập số điện thoại" aria-describedby="basic-addon1">
-                                    </div>
-                                </div >
-                                <div style="border: solid 0.5px #ccc; "></div>
-                                <h4 style="padding-top: 20px; ">Địa chỉ giao hàng</h4>
-                                    @if(empty($object))
-                                    <div class="form-group row"  style="padding-top: 20px; ">
-                                        <label class="col-md-4"> Chọn tỉnh/thành phố <span >*</span></label>
-                                        <div class=" col-md-8">
-                                            <select onclick="Main.provinceOption()"  name="province_id" class="form-control select2 s-province">
-                                                @foreach($provinceOption as $key=>$item)
-                                                    <option {{(!empty($object['province_id']) == $key) ? 'selected': ''}} value="{{$key}}">{{$item}}</option>
+    <div class="checkout-page-title page-title">
+        <div class="page-title-inner flex-row medium-flex-wrap container">
+            <div class="flex-col flex-grow medium-text-center">
+                <nav class="breadcrumbs heading-font checkout-breadcrumbs text-center h2 strong">
+                    <a href="{{route('cart')}}" class="hide-for-small">Thông tin giỏ hàng</a>
+                    <span class="divider hide-for-small"><i class="icon-angle-right"></i></span>
+                    <a href="{{route('order')}}" class="current">Thông tin chi tiết</a>
+                    <span class="divider hide-for-small"><i class="icon-angle-right"></i></span>
+                    <a href="#" class="no-click hide-for-small">Hoàn tất mua hàng</a>
+                </nav>
+            </div><!-- .flex-left -->
+        </div><!-- flex-row -->
+    </div><!-- .page-title -->
+    <div class="cart-container container page-wrapper page-checkout">
+        <div class="woocommerce">
+
+
+
+
+            <form  id="formOrderCart"  method="post"  action="{{route('order.order-cart')}}">
+                {!! csrf_field() !!}
+                <div class="row pt-0 ">
+                    <div class="large-7 col  ">
+                        <div id="customer_details">
+                            <div class="clear">
+                                <div class="woocommerce-billing-fields">
+                                    <h3>Thông tin khách hàng</h3>
+
+                                    <div class="woocommerce-billing-fields__field-wrapper">
+                                        <p  class="{{($errors->has('fullname_customer')) ? 'has-error': ''}} form-row form-row-wide" id="customer_name" data-priority="30">
+                                            <label for="customer_name" class="">Họ tên</label>
+                                            <input type="text"
+                                                                                                         class="input-text "
+                                                                                                         name="fullname_customer"
+                                                                                                         id="fullname_customer"
+                                                                                                         placeholder=""
+                                                                                                         value=""
+                                                                                                         autocomplete="organization">
+                                            @if ($errors->has('fullname_customer'))
+                                                <span class="help-block">{{ $errors->first('fullname_customer')}}</span>
+                                            @endif
+                                        </p>
+
+                                        <p class=" form-row form-row-wide address-field validate-postcode"
+                                           id="customer_postcode" data-priority="65"
+                                           data-o_class="form-row form-row-wide address-field validate-postcode"><label
+                                                    for="customer_postcode" class="">Mã bưu điện</label><input
+                                                    type="text" class="input-text " name="postcode_customer"
+                                                    id="postcode_customer" placeholder="" value=""
+                                                    autocomplete="postal-code">
+
+                                        </p>
+                                        <p class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
+                                           id="billing_country_field" data-priority="40">
+                                            <label for="billing_country" class="">Tỉnh / Thành phố <abbr
+                                                        class="required" title="bắt buộc">*</abbr></label>
+                                            <select onclick="Main.provinceOption()" name="province_id"  id="province_id">
+                                                <option value="">Chọn tỉnh thành</option>
+                                                @foreach($_provinceOption as $key=>$item)
+                                                    <option value="{{$key}}">{{$item}}</option>
                                                 @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row"  style="padding-top: 20px; ">
-                                        <label class="col-md-4"> Chọn quận/huyện <span >*</span></label>
-                                        <div class=" col-md-8">
-                                            <select  onclick="Main.districtOption()" name="district_id" class="form-control select2 s-district">
-                                                <option {{(!empty($object['district_id']) == $key) ? 'selected': ''}}value="">Chọn  quận huyện</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row"  style="padding-top: 20px; ">
-                                        <label class="col-md-4"> Chọn Xã/Phường/Thị trấn <span >*</span> </label>
-                                        <div class=" col-md-8">
-                                            <select  name="ward_id" class="form-control select2-single s-ward" >
-                                                <option {{(!empty($object['ward_id']) == $key) ? 'selected': ''}}value="">Chọn xã phường</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    @endif()
-                                    <div class="form-group row" >
 
-                                    <label class="col-md-4"> Số nhà, tên đường  <span >*</span></label>
-                                    <div class=" col-md-8">
+                                            </select>
 
-                                        <input type="text" name="customer_address" class="form-control" placeholder="Nhập địa chỉ" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group row" >
-                                    <label class="col-md-4"> Ghi chú </label>
-                                    <div class=" col-md-8">
 
-                                        <textarea  name="customer_discription" class="form-control" placeholder="Ghi chú" aria-describedby="basic-addon1"></textarea>
+                                        </p>
+                                        <p class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
+                                           id="billing_country_field" data-priority="40">
+                                            <label for="billing_country" class="">Quận / Huyện <abbr class="required" title="bắt buộc">*</abbr></label>
+                                            <select onclick="Main.districtOption()" name="district_id"  id="district_id" >
+                                                <option value="">Chọn quận huyện</option>
+                                            </select>
+
+
+                                        </p>
+                                        <p class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
+                                           id="billing_country_field" data-priority="40"><label for="billing_country"
+                                                                                                class="">Xã Phường <abbr
+                                                        class="required" title="bắt buộc">*</abbr></label>
+                                            <select  name="ward_id"  id="ward_id">
+
+                                            </select>
+
+
+                                        </p>
+                                        <p class="form-row form-row-wide address-field validate-required"
+                                           id="billing_address_1_field" data-priority="50"><label
+                                                    for="billing_address_1" class="">Địa chỉ <abbr class="required"
+                                                                                                   title="bắt buộc">*</abbr></label>
+                                            <input
+                                                    type="text" class="input-text " name="address_customer"
+                                                    id="address_customer"
+                                                    placeholder="Nhập địa chỉ cụ thể: Số nhà, Đường, Thành Phố ,..."
+                                                    value="" autocomplete="address-line1"></p>
+
+                                        <p class="form-row form-row-first validate-required validate-phone"
+                                           id="billing_phone_field" data-priority="100"><label for="billing_phone"
+                                                                                               class="">Số điện thoại
+                                                <abbr class="required" title="bắt buộc">*</abbr></label>
+                                            <input
+                                                    type="tel" class="input-text " name="phone_customer"
+                                                    id="phone_customer" placeholder="" value="" autocomplete="tel"></p>
+                                        <p class="form-row form-row-last validate-required validate-email"
+                                           id="billing_email_field" data-priority="110"><label for="billing_email"
+                                                                                               class="">Địa chỉ email
+                                                <abbr class="required" title="bắt buộc">*</abbr></label><input
+                                                    type="email" class="input-text " name="email_customer"
+                                                    id="email_customer" placeholder="" value=""
+                                                    autocomplete="email email_customer"></p>
+                                        <input name="transaction_amount" type="hidden" id="transaction_amount" value="{{$_total_pay}}">
                                     </div>
+
                                 </div>
-                                <div class="form-group row" >
-                                    <label class="col-md-4"> Hình thức thanh toán </label>
-                                    <div class=" col-md-8">
-                                        <label class="radio-inline"><input checked type="radio" name="payment" value="home">Tại nhà</label>
-                                        <label class="radio-inline"><input type="radio" name="payment" value="bank">Ngân hàng</label>
-                                    </div>
+
+                            </div>
+                            <div class="clear">
+                                <div class="woocommerce-shipping-fields">
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-lg-4 control-label"></label>
-                                    <div class="col-lg-8">
-                                        <button  style="width:auto;"  class="btn btn-danger btn-buynow" >Gửi đơn hàng</button>
-                                    </div>
+                                <div class="woocommerce-additional-fields">
+
+
+                                    <h3>Thông tin thêm</h3>
+
+
+                                    <div class="woocommerce-additional-fields__field-wrapper">
+                                        <p class="form-row notes" id="order_comments_field" data-priority=""><label
+                                                    for="order_comments" class="">Ghi chú</label>
+                                            <textarea
+                                                    name="transaction_note" class="input-text " id="transaction_note"
+                                                    placeholder="Nhập ghi chú của bạn tại đây . . ." rows="2"
+                                                    cols="5"></textarea></p></div>
+
+
                                 </div>
-                                <input id="district" name="district" value="{{!empty($object['district_id']) ? $object['district_id']: ''}}" type="hidden">
-                                <input id="ward" name="ward" value="{{!empty($object['ward_id']) ? $object['ward_id'] : ''}}" type="hidden">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h3 >Giỏ  hàng của bạn</h3>
-                                <table style="margin-top: 20px; "  class="table table-bordered cartItem" >
-                                    <thead>
-                                    <tr>
-                                        <th style="color: #b1241d; ">HÌNH</th>
-                                        <th style="color: #b1241d; ">Tên sản phẩm</th>
-                                        <th style="color: #b1241d; ">SL</th>
-                                        <th width="40%" style="color: #b1241d; "> ĐƠN GIÁ	TỔNG</th>
-                                        <th style="color: #b1241d; ">XÓA</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php $i =1 ?>
-                                    @foreach(\Gloudemans\Shoppingcart\Facades\Cart::content() as $key=>$item)
+
+
+                    </div><!-- large-7 -->
+
+                    <div class="large-5 col">
+                        <div class="col-inner has-border">
+                            <div class="checkout-sidebar sm-touch-scroll">
+                                <h3 id="order_review_heading">Đơn hàng của bạn</h3>
+
+                                <div id="order_review" class="woocommerce-checkout-review-order">
+                                    <table class="shop_table woocommerce-checkout-review-order-table">
+                                        <thead>
                                         <tr>
-                                            <td><img width="50px" height="60px" src="{{asset($item->options->product_image)}}"></td>
-                                            <td>{{$item->name}}</td>
-                                            <td>
-                                                <input onclick="Cart.updateCart(this,'{{$item->rowId}}')" class="form-control quantity input-sm" style="width:60px; text-align:center;" type="number" value="{{$item->qty}}" name="qty[]" min="1" >
-
-                                            </td>
-                                            <td>{{number_format($item->price,2)}} vnđ</td>
-                                            <td> <a   class="btn btn-primary" href='javascript:void(0)' onclick="Cart.removeCart(this,'{{$item->rowId}}')"><i class="fa fa-trash-o"></i> Xóa</a> </td>
-                                            <input type="hidden" name="product_id[]" value="{{$item->id}}">
-                                            {{--<input type="hidden" name="qty[]" value="{{$item->qty}}">--}}
-
+                                            <th class="product-name">Sản phẩm</th>
+                                            <th class="product-total">Tổng cộng</th>
                                         </tr>
-                                        <?php $i++ ?>
-                                    @endforeach
-                                    <tr> <td colspan="5"><a href="{{route('home')}}" style="float: right" class="btn btn-primary"> Tiếp tục mua</a></td></tr>
-                                    </tbody>
-                                </table>
-                        </div>
-                        <div class="col-md-5 col-md-offset-1">
-                            <h3>Tổng</h3>
-                            <table style="margin-top: 20px; " class="table table-bordered">
-                                <thead>
-                                <tr> <td>Số tiền mua hàng</td> <td align="right" id="sumTotal" >{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}} vnđ</td> </tr>
-                                <tr> <td>Thuế VAT</td> <td align="right" id="sumTotal" >{{$percent}} %</td> </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td align="right" style="">Tổng tiền :</td> <td align="right" id="sumTotalBill" price="1225000">{{$total_pay}} vnđ</td> </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($_listCart as $key=>$item)
+                                            <tr class="cart_item">
+                                                <input  class="form-control quantity input-sm" style="width:60px; text-align:center;" type="hidden" value="{{$item->qty}}" name="qty[]" min="1" >
+                                                <input  class="form-control quantity input-sm" style="width:60px; text-align:center;" type="hidden" value="{{$item->id}}" name="product_id[]" min="1" >
+                                                <td class="product-name">
+                                                    {{$item->name}}
+                                                    <strong class="product-quantity">× {{$item->qty}}</strong></td>
+                                                <td class="product-total">
+                                                <span class="woocommerce-Price-amount amount"> {{number_format($item->qty*$item->price,2)}}<span
+                                                            class="woocommerce-Price-currencySymbol">₫</span></span>
+                                                </td>
+                                            </tr>
 
-                                <tr>
-                                    <td colspan="5">
-                                    </td> </tr>
-                                </tbody>
-                            </table>
+                                        @endforeach
+
+                                        </tbody>
+                                        <tfoot>
+
+                                        <tr class="cart-subtotal">
+                                            <th>Tổng phụ</th>
+                                            <td><span class="woocommerce-Price-amount amount">{{$_total_pay}}<span
+                                                            class="woocommerce-Price-currencySymbol">₫</span></span>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr class="order-total">
+                                            <th>Tổng cộng</th>
+                                            <td><strong><span
+                                                            class="woocommerce-Price-amount amount">{{$_total_pay}}<span
+                                                                class="woocommerce-Price-currencySymbol">₫</span></span></strong>
+                                            </td>
+                                        </tr>
+
+
+                                        </tfoot>
+                                    </table>
+
+                                    <div id="payment" class="woocommerce-checkout-payment">
+                                        <ul class="wc_payment_methods payment_methods methods">
+                                            <li class="wc_payment_method payment_method_cod">
+                                                <input id="payment_method_cod" type="radio" class="input-radio"
+                                                       name="payment_method" value="cod" checked="checked"
+                                                       data-order_button_text="" style="display: none;">
+
+
+                                            </li>
+                                        </ul>
+                                        <div class="form-row place-order">
+
+
+                                            <input type="submit" class="button alt"  id="place_order" value="Đặt hàng" data-value="Đặt hàng">
+
+                                            {{--<input type="hidden" name="_wp_http_referer" value="/checkout/?wc-ajax=update_order_review">--}}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="html-checkout-sidebar pt-half"></div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                    <input name="total_mount" type="hidden" value="{{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}">
-                </form>
-            </div>
+                    </div><!-- large-5 -->
+
+                </div><!-- row -->
+            </form>
+
         </div>
     </div>
 
-@endsection
 
-@section('script_after')
-    <script src="{{asset('static/main/js/main.js?v='.time())}}"></script>
-    <script src="{{asset('js/jquery.validate.min.js?v='.time())}}"></script>
-    <script src="{{asset('js/additional-methods.min.js?v='.time())}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var val = $('.s-province').val();
-            $.get(laroute.route('address.district', { province_id: val }), function(e) {
-                $('.s-district').html(e);
-                $('.s-district').change();
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery(".chat_fb").click(function () {
+                jQuery('.fchat').toggle('slow');
             });
-            $('.s-district').change(function(){
-                var val = $(this).val();
-                $.get(laroute.route('address.ward', { district_id: val }), function(e) {
-                    $('.s-ward').html(e);
-                    $('.s-ward').change();
-                });
-            });
-            // if($("input[name=district]").val()){
-            //     let  district = $("input[name=district]").val() ;
-            //     alert( $(".s-district option").val())
-            //
-            // }
         });
-        orderSubmit._init();
+        var Main = {
+
+            provinceOption:function () {
+
+                $('select[name=province_id]').change(function () {
+
+                    $.ajaxSetup(
+                        {
+                            headers:
+                                {
+                                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                                }
+                        });
+                    $.post(laroute.route('province'),{province_id:$(this).val()}, function (data) {
+                        let  elementOption = '';
+                        $.each(data.data,(function (k, v) {
+                            elementOption +='<option value="'+k+'">'+v+'</option>'
+                        }));
+                        $('select[name=district_id]').removeAttr("disabled").empty().append(elementOption);
+                        $('select[name=ward_id]').attr("disabled", "disabled").empty().append('<option value="" >Chọn xã phường</option>');
+                    },'json');
+
+                })
+            },
+            districtOption:function () {
+                $('select[name=district_id]').change(function () {
+                    $.ajaxSetup(
+                        {
+                            headers:
+                                {
+                                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                                }
+                        });
+                    $.post(laroute.route('district'),{district_id:$(this).val()}, function (data) {
+                        let  elementOption = '';
+
+                        $.each(data.data,(function (k, v) {
+                            elementOption +='<option value="'+k+'">'+v+'</option>'
+                        }));
+                        $('select[name=ward_id]').removeAttr("disabled").empty().append(elementOption);
+                    },'json');
+
+                })
+            },
+        };
     </script>
+
+
+@endsection
+@section('after_script')
+
+    <script src="{{asset('frontend/js/jquery.min.js?v='.time())}}"></script>
+
 @stop

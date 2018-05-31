@@ -73,10 +73,10 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Frontend\UserTable::class,
-        ],
+//        'users' => [
+//            'driver' => 'eloquent',
+//            'model' => App\Models\Frontend\UserTable::class,
+//        ],
 		'admin' => [
 			'driver' => 'eloquent',
 			'model' => App\Models\Backend\AdminTable::class,

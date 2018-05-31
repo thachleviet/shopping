@@ -22,7 +22,7 @@
                         <h3 class="box-title">{{$title}}</h3>
                     </div>
                     <div class="box-header">
-                        <a href="{{route('admin-admin.create')}}" class=" btn btn-success pull-right"> <i class="fa fa-plus"></i> Thêm </a>
+                        <a href="{{route('admin.create')}}" class=" btn btn-success pull-right"> <i class="fa fa-plus"></i> Thêm </a>
                     </div>
                     <div class="box-body">
                         @if (Session::has('warning'))
