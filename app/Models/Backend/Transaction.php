@@ -30,21 +30,21 @@ class Transaction extends Model
 
     public function getItemTransaction2($id){
         return $this->select(
-//            'transaction.id as transaction_id',
-            'phone_customer',
-            'email_customer',
-            'fullname_customer',
-            'address_customer',
-            't.transaction_status as transaction_status',
-            'transaction_type',
-            'transaction_amount',
+            't.phone_customer',
+            't.email_customer',
+            't.fullname_customer',
+            't.address_customer',
+            't.transaction_status',
+            't.transaction_type',
+            't.transaction_amount',
             't.created_at as transaction_created_at',
             't.id as transaction_id',
-
             'ward.name as ward_name',
             'district.name as district_name',
             'province.name as city_name'
-        )->from($this->table.' as t')
+        )
+            ->from($this->table.' as t')
+
             ->leftJoin(
                 'province',
                 'province.province_id', '=', 't.province_id'
@@ -57,8 +57,10 @@ class Transaction extends Model
                 'ward',
                 'ward.ward_id', '=', 't.ward_id'
             )
-            ->where('t.id', $id)->first();
+            ->where('t.id', $id)
+            ->first();
     }
+
 
     public function getTransaction2($filter , $isPaging = true){
         $oSelect  = $this->from($this->table.' as transaction')

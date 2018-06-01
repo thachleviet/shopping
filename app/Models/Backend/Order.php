@@ -34,6 +34,7 @@ class Order extends Model
             ->join('transaction as t', 't.id' , '=', 'o.transaction_id')
             ->leftJoin('product as p', 'p.id' , '=', 'o.product_id')
             ->select(
+                        'p.product_discount',
                 'p.product_name' ,
                 'p.product_price',
                 'p.product_image',
@@ -43,8 +44,12 @@ class Order extends Model
                 't.address_customer as address_customer',
                 'o.transaction_id as transaction_id'
             );
+//        $oSelect
+        //number_format(($_object['product_price']*(100 - $_object['product_discount'])/100),2)
         $oSelect->selectRaw('(o.count_order*p.product_price) as total_product');
-        $oSelect->selectRaw('(SUM(o.count_order*p.product_price)) as total_pay');
+//        $oSelect->selectRaw('(SUM(o.count_order*p.product_price)) as total_pay');
+        $oSelect->selectRaw('(SUM(o.count_order*p.product_price)) as total_pay1');
+        $oSelect->selectRaw('(SUM(o.count_order*(p.product_price*100 - product_discount)/100)) as total_pay');
         $oSelect->where('o.transaction_id', $id);
         $oSelect->groupBy('o.product_id');
         return $oSelect->get();
