@@ -41,10 +41,10 @@ class Product extends Model
     }
 
     // Product Related
-    public function related($menu, $id){
+    public function related($menu, $id, $param){
 
         return $this
-            ->where('product_menu_id',$menu)->where('product.id'  ,'<>', $id)->get();
+            ->where('product_menu_id',$menu)->where('product.product_type'  , $param)->where('product.id'  ,'<>', $id)->get();
     }
 
 
@@ -114,5 +114,17 @@ class Product extends Model
         $oSelect->where('o.transaction_status',1);
         $oSelect->orderBy('count_product', 'asc');
         return $oSelect->get() ;
+    }
+
+
+    public function search($param, $attribute, $isPagination){
+
+        $oSelect =  $this->where('product_name', 'like', '%' . $param . '%');
+
+        if($isPagination){
+
+            return $oSelect->paginate($attribute['limit']);
+        }
+        return $oSelect->get();
     }
 }

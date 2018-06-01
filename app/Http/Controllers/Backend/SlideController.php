@@ -56,7 +56,7 @@ class SlideController extends Controller
           'slider_title'    =>$request->input('slider_title'),
           'slider_status'    =>$request->input('slider_status'),
           'slider_image'    =>'uploads/'.$this->uploadFiles($request,'slider_image','slider_image','uploads', null, null),
-          'created_at'      =>date('Y-m-d H:i:s'),
+          'created_at'      => date('Y-m-d H:i:s'),
           'slider_name'     => $request->input('slider_name'),
           'slider_type'     => $request->input('slider_type')
       );

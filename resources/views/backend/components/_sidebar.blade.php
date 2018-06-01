@@ -47,7 +47,10 @@
                 <a href="{{route('slide')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý Slider</span>
                 </a>
             </li>
-
+            <li class="{{ Request::is('admin/new') ? 'active' : '' }} ">
+                <a href="{{route('new')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý bài viết</span>
+                </a>
+            </li>
 
             <li class="{{((Request::is('admin/user-admin')) ? 'active': '' || Request::is('admin/user-admin'))? 'active': ''}} treeview">
                 <a href="#">
@@ -64,7 +67,12 @@
 
                 </ul>
             </li>
+
+            <li class="{{ Request::is('admin/config') ? 'active' : '' }} ">
+                <a href="{{route('config')}}"><i class="fa fa-pie-chart"></i> <span>Quản lý trang</span>
+                </a>
+            </li>
         </ul>
     </section>
-    <!-- /.sidebar -->
+
 </aside>

@@ -49,10 +49,25 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::post('/change-status', 'ProductController@changeStatus')->name('product.change-status');
 
     });
+    Route::group(['prefix' => 'new'], function(){
+        Route::get('/', 'NewController@index')->name('new');
+        Route::get('/add', 'NewController@create')->name('new.create');
+        Route::post('/add', 'NewController@store')->name('new.store');
+        Route::get('/edit/{id}', 'NewController@edit')->name('new.edit');
+        Route::get('/destroy/{id}', 'NewController@destroy')->name('new.destroy');
+        Route::post('/update/{id}', 'NewController@update')->name('new.update');
+        Route::post('/change-status', 'NewController@changeStatus')->name('new.change-status');
+
+    });
     Route::group(['prefix' => 'image-product'], function(){
         Route::get('/destroy/{id}', 'ProductController@destroy')->name('image-product-destroy');
     });
 
+    Route::group(['prefix' => 'config'], function(){
+        Route::get('/', 'ConfigController@index')->name('config');
+        Route::get('/edit/{id}', 'ConfigController@edit')->name('config.edit');
+        Route::post('/edit/{id}', 'ConfigController@update')->name('config.update');
+    });
     Route::group(['prefix' => 'slide'], function(){
         Route::get('/', 'SlideController@index')->name('slide');
         Route::get('/add', 'SlideController@create')->name('slide.create');
@@ -66,14 +81,9 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
 
     Route::group(['prefix' => 'transaction'], function(){
         Route::get('', 'TransactionController@indexAction')->name('transaction');
-        Route::post('change-status', 'TransactionController@confirmOrderAction2')->name('transaction-user.change-status');
-//        Route::post('detail-transaction-user', 'SliderController@detailAction')->name('transaction-user.detail-transaction-user');
-//        Route::get('confirm-order/{id}', 'TransactionController@confirmOrderAction')->name('transaction-user.confirm-order');
-//        Route::get('confirm-order-2/{id}', 'TransactionController@confirmOrderAction2')->name('transaction-user.confirm-order-2');
-//        Route::get('detail-order-user/{id}', 'TransactionController@detailTransactionUserAction')->name('transaction-user.detail-order-user');
+        Route::get('change-status', 'TransactionController@confirmOrderAction2')->name('transaction.confirm-order');
         Route::get('generate-order-fill/{id}', 'TransactionController@generatePDFAction')->name('transaction.generate-order');
-        Route::post('generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction.generate-order-fill');
-//        Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
+        Route::post('generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction.generate-order-fill');//        Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
         Route::get('detail-guest/{id}', 'TransactionController@getDetailUserTransactionNoAccount')->name('transaction.detail-guest');
 
     });
@@ -103,8 +113,16 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
     Route::get('/', 'HomeController@index')->name('home');
     Route::group(['prefix' => 'cart'], function(){
         Route::get('', 'CartController@index')->name('cart');
-        Route::post('add-cart', 'CartController@addCartAction')->name('cart.add');
+        Route::post('add-cart', 'CartController@add')->name('cart.add');
+        Route::post('update-cart', 'CartController@update')->name('cart.update');
         Route::get('destroy/{id}/route/{route}/product/{product_id}', 'CartController@destroy')->name('cart.destroy');
+
+    });
+    Route::group(['prefix' => 'news'], function(){
+        Route::get('/', 'NewController@index')->name('news');
+        Route::get('/detail/{id}', 'NewController@detail')->name('news.detail');
+        Route::get('/huong-dan/{id}', 'NewController@guide')->name('news.guide');
+
     });
     Route::group(['prefix' => 'product'], function(){
         Route::get('/', 'ProductController@indexAction')->name('products');
@@ -124,16 +142,16 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::post('/', 'DistrictController@indexAction')->name('district');
     });
 
-    Route::group(['prefix'=>'info-user'], function (){
-        Route::get('/', 'UserController@indexAction')->name('info-user');
-        Route::get('info-user', 'UserController@infoAction')->name('info-user.info-users');
-        Route::get('history-order', 'UserController@historyOrderAction')->name('info-user.history-order');
-
-    });
-    Route::group(['prefix'=>'address'], function (){
-        Route::get('/district', 'AddressController@getDistrict')->name('address.district');
-        Route::get('/ward', 'AddressController@getWard')->name('address.ward');
-    });
+//    Route::group(['prefix'=>'info-user'], function (){
+//        Route::get('/', 'UserController@indexAction')->name('info-user');
+//        Route::get('info-user', 'UserController@infoAction')->name('info-user.info-users');
+//        Route::get('history-order', 'UserController@historyOrderAction')->name('info-user.history-order');
+//
+//    });
+//    Route::group(['prefix'=>'address'], function (){
+//        Route::get('/district', 'AddressController@getDistrict')->name('address.district');
+//        Route::get('/ward', 'AddressController@getWard')->name('address.ward');
+//    });
 
     Route::group(['prefix'=>'category'], function (){
         Route::get('/', 'CategoryController@index')->name('category');
@@ -141,8 +159,6 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::get('category-male', 'CategoryController@getListItemTypeMale')->name('category.male');
         Route::get('category-female', 'CategoryController@getListItemTypeFeMale')->name('category.female');
         Route::get('category-double', 'CategoryController@getListItemTypeDouble')->name('category.double');
-//        Route::get('/list-category/{id}', 'CategoryController@listCategoryOfIdAction')->name('categorys.list-category');
-//        Route::get('/list-category/v/{id}', 'CategoryController@listCategoryVAction')->name('categorys.list-category-v');
-
+        Route::get('search-item', 'CategoryController@searchProduct')->name('category.search');
     });
 });

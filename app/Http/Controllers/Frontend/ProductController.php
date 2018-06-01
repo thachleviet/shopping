@@ -34,7 +34,7 @@ class ProductController extends Controller
         echo $mProduct->slug;
         $object                 = $mProduct->getItem($id);
         $attributeProduct       = new AttributeProduct();
-        $related                = $mProduct->related($object['product_menu_id'],$id);
+        $related                = $mProduct->related($object['product_menu_id'],$id, $object['product_type']);
 
         $mImage                 = new ImageProduct();
         $ImageProduct           = $mImage->getImageOfProduct($id);

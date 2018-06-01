@@ -130,7 +130,7 @@
 
                                 </div>
                                 <div class="col-md-7" >
-                                    <div class="form-group " >
+                                    <div class="form-group row" >
                                         <label class="col-sm-2 col-sx-12">Từ khóa</label>
                                         <div class="col-sm-10 col-sx-12">
                                             <input type="text" class="form-control"  value="{{$_object['product_keyword']}}" name="product_keyword" placeholder="Nhập từ keyword">

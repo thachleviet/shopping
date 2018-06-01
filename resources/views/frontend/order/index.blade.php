@@ -1,6 +1,15 @@
 @extends('frontend.layouts')
 @section('title', "Thông tin giỏ hàng")
 @section('content')
+    <style>
+        .has-error, .help-block{
+            color: #f70f0b !important;
+
+        }
+        .has-error{
+           border: 1px solid #f70f0b;
+        }
+    </style>
     <div class="checkout-page-title page-title">
         <div class="page-title-inner flex-row medium-flex-wrap container">
             <div class="flex-col flex-grow medium-text-center">
@@ -30,10 +39,10 @@
                                     <h3>Thông tin khách hàng</h3>
 
                                     <div class="woocommerce-billing-fields__field-wrapper">
-                                        <p  class="{{($errors->has('fullname_customer')) ? 'has-error': ''}} form-row form-row-wide" id="customer_name" data-priority="30">
+                                        <p  class=" form-row form-row-wide" id="customer_name" data-priority="30">
                                             <label for="customer_name" class="">Họ tên</label>
                                             <input type="text"
-                                                                                                         class="input-text "
+                                                                                                         class="{{($errors->has('fullname_customer')) ? 'has-error': ''}} input-text "
                                                                                                          name="fullname_customer"
                                                                                                          id="fullname_customer"
                                                                                                          placeholder=""
@@ -94,7 +103,10 @@
                                                     type="text" class="input-text " name="address_customer"
                                                     id="address_customer"
                                                     placeholder="Nhập địa chỉ cụ thể: Số nhà, Đường, Thành Phố ,..."
-                                                    value="" autocomplete="address-line1"></p>
+                                                    value="" autocomplete="address-line1">
+                                            @if ($errors->has('address_customer'))
+                                                <span class="help-block">{{ $errors->first('phone_customer')}}</span>
+                                            @endif</p>
 
                                         <p class="form-row form-row-first validate-required validate-phone"
                                            id="billing_phone_field" data-priority="100"><label for="billing_phone"
@@ -102,14 +114,21 @@
                                                 <abbr class="required" title="bắt buộc">*</abbr></label>
                                             <input
                                                     type="tel" class="input-text " name="phone_customer"
-                                                    id="phone_customer" placeholder="" value="" autocomplete="tel"></p>
+                                                    id="phone_customer" placeholder="" value="" autocomplete="tel">
+                                            @if ($errors->has('phone_customer'))
+                                                <span class="help-block">{{ $errors->first('phone_customer')}}</span>
+                                            @endif
+                                        </p>
                                         <p class="form-row form-row-last validate-required validate-email"
                                            id="billing_email_field" data-priority="110"><label for="billing_email"
                                                                                                class="">Địa chỉ email
                                                 <abbr class="required" title="bắt buộc">*</abbr></label><input
                                                     type="email" class="input-text " name="email_customer"
                                                     id="email_customer" placeholder="" value=""
-                                                    autocomplete="email email_customer"></p>
+                                                    autocomplete="email email_customer">
+                                            @if ($errors->has('email_customer'))
+                                                <span class="help-block">{{ $errors->first('email_customer')}}</span>
+                                            @endif</p>
                                         <input name="transaction_amount" type="hidden" id="transaction_amount" value="{{$_total_pay}}">
                                     </div>
 
@@ -194,15 +213,7 @@
                                     </table>
 
                                     <div id="payment" class="woocommerce-checkout-payment">
-                                        <ul class="wc_payment_methods payment_methods methods">
-                                            <li class="wc_payment_method payment_method_cod">
-                                                <input id="payment_method_cod" type="radio" class="input-radio"
-                                                       name="payment_method" value="cod" checked="checked"
-                                                       data-order_button_text="" style="display: none;">
 
-
-                                            </li>
-                                        </ul>
                                         <div class="form-row place-order">
 
 

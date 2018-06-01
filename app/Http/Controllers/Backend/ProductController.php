@@ -119,6 +119,8 @@ class ProductController extends Controller
                 'product_description'   => $request->input('product_description'),
                 'product_discount'      => $request->input('product_discount'),
                 'product_keyword'       => $request->input('product_keyword'),
+                'product_type'          => $request->input('product_type'),
+
             ];
         }else{
             $array  =  [
@@ -131,6 +133,7 @@ class ProductController extends Controller
                 'product_description'   => $request->input('product_description'),
                 'product_discount'      => !empty($request->input('product_discount'))  ? $request->input('product_discount'):0,
                 'product_keyword'       => $request->input('product_keyword'),
+                'product_type'          => $request->input('product_type'),
             ];
             if($request->hasFile('product_image')){
                 $array['product_image'] =  'uploads/'.$this->uploadFiles($request, 'product_image', 'product_image','uploads', time()) ;

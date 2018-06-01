@@ -19,4 +19,18 @@ class Controller extends BaseController
             'option'=>$option
         ]);
     }
+
+    public function print_r($attribute){
+        echo '<pre>';
+        print_r($attribute);
+        echo '</pre>';
+        die();
+    }
+
+    public function var_dump($attribute){
+        echo '<pre>';
+        var_dump($attribute);
+        echo '</pre>';
+        die();
+    }
 }

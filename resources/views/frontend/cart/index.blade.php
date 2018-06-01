@@ -17,10 +17,10 @@
             <div class="col large-7 pb-0 ">
 
 
-                <form action="#" method="post" class="woocommerce-cart-form">
+                <form action="{{route('cart.update')}}" method="post" class="woocommerce-cart-form">
                     <div class="cart-wrapper sm-touch-scroll">
 
-
+                        {!! csrf_field() !!}
                         <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
                             <thead>
                             <tr>
@@ -58,8 +58,11 @@
 
                                 <td class="product-quantity" data-title="Số lượng">
                                     <div class="quantity buttons_added">
-                                        <input type="button" value="-" class="minus button is-form">    <input type="number" class="input-text qty text" step="1" min="0" max="9999" name="cart[757b505cfd34c64c85ca5b5690ee5293][qty]" value="{{$item->qty}}" title="SL" size="4" pattern="[0-9]*" inputmode="numeric">
-                                        <input type="button" value="+" class="plus button is-form">  </div>
+                                        <input type="button" value="-" class="minus button is-form">
+                                        <input type="number" class="input-text qty text" step="1" min="0" max="9999" name="qty[]" value="{{$item->qty}}" title="SL" size="4" pattern="[0-9]*" inputmode="numeric">
+                                        <input type="button" value="+" class="plus button is-form">
+                                        <input value="{{$item->rowId}}" name="rowId[]" type="hidden">
+                                    </div>
                                 </td>
 
                                 <td class="product-subtotal" data-title="Tổng cộng">
@@ -76,9 +79,9 @@
                                             ← Tiếp tục mua hàng    </a>
                                     </div>
 
-                                    <input type="submit" class="button primary mt-0 pull-left small" name="update_cart" value="Cập nhatah giỏ hàng" disabled="">
+                                    <input type="submit" class="button primary mt-0 pull-left small" name="update_cart" value="Cập nhật giỏ hàng" >
 
-                                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="809aab1e6e"><input type="hidden" name="_wp_http_referer" value="/cart/">			</td>
+                                			</td>
                             </tr>
 
                             </tbody>

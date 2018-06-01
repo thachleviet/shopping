@@ -27,18 +27,20 @@ class TransactionController extends Controller
     }
 
 
-    public function confirmOrderAction2($id){
+    public function confirmOrderAction2(Request $request){
+
         $mTransaction       = new Transaction() ;
-        $object             = $mTransaction->getItemTransaction2($id) ;
-        if($mTransaction->updateTransaction(array('transaction_status'=>1), $id)){
-            Mail::send( 'backend.confirm-order-cart',array(), function($message) use ($object){
-                $message->to($object['email'], $object['name'])
-                    ->from('doanthihuynhnhu1996@gmail.com', 'Như Shop')
-                    ->subject('Xác nhận thông tin đặt hàng ');
-            });
+        $object             = $mTransaction->getItemTransaction2($request->input('id')) ;
+
+        if($mTransaction->updateTransaction(array('transaction_status'=>1), $request->input('id'))){
+//            Mail::send( 'backend.confirm-order-cart',array(), function($message) use ($object){
+//                $message->to($object['email'], $object['name'])
+//                    ->from('doanthihuynhnhu1996@gmail.com', 'Như Shop')
+//                    ->subject('Xác nhận thông tin đặt hàng ');
+//            });
             return response()->json([
                 'status' => 1,
-                'data'   => ['route' => 'transaction-user.list-transaction'],
+                'data'   => ['route' => 'transaction'],
                 'messages'=>'Xác nhận thành công'
             ]);
         }

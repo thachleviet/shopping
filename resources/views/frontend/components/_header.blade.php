@@ -4,9 +4,7 @@
             <div class="flex-row container">
                 <div class="flex-col hide-for-medium flex-left">
                     <ul class="nav nav-left medium-nav-center nav-small  nav-">
-                        <li class="html custom html_topbar_left"><strong class="uppercase">GoldTime - CS1: 108 Nguyễn
-                                Trãi, Thanh Xuân,
-                                Hà Nội - CS2: 39 Vũ Tông Phan - Thanh Xuân - Hà Nội</strong>
+                        <li class="html custom html_topbar_left"><strong class="uppercase">{{$config['header']}}</strong>
                         </li>
                     </ul>
                 </div>
@@ -20,15 +18,10 @@
                     <ul class="nav top-bar-nav nav-right nav-small  nav-">
                         <li class="html header-social-icons ml-0">
                             <div class="social-icons follow-icons ">
-                                <a href="https://www.facebook.com/profile.php?id=100015207224213" target="_blank"
+                                <a href="{{$config['link_fanpage']}}" target="_blank"
                                    data-label="Facebook" rel="nofollow" class="icon plain facebook tooltip"
                                    title="Follow on Facebook"><i class="icon-facebook"></i> </a>
-                                <a href="http://#" target="_blank" data-label="Twitter" rel="nofollow"
-                                   class="icon plain  twitter tooltip" title="Follow on Twitter"><i
-                                            class="icon-twitter"></i> </a>
-                                <a href="mailto:nguyenhoangcongtl3333@gmail.com" target="_blank" data-label="E-mail"
-                                   rel="nofollow" class="icon plain  email tooltip" title="Send us an email"><i
-                                            class="icon-envelop"></i> </a>
+
                             </div>
                         </li>
                     </ul>
@@ -36,9 +29,7 @@
                 <!-- .flex-col right -->
                 <div class="flex-col show-for-medium flex-grow">
                     <ul class="nav nav-center nav-small mobile-nav  nav-">
-                        <li class="html custom html_topbar_left"><strong class="uppercase">GoldTime - CS1: 108 Nguyễn
-                                Trãi, Thanh Xuân,
-                                Hà Nội - CS2: 39 Vũ Tông Phan - Thanh Xuân - Hà Nội</strong>
+                        <li class="html custom html_topbar_left"><strong class="uppercase">{{$config['header']}}</strong>
                         </li>
                     </ul>
                 </div>
@@ -52,15 +43,15 @@
                 <div id="logo" class="flex-col logo">
                     <!-- Header logo -->
                     <a href="{{route('home')}}"
-                       title="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam - Gold Time Watch &#8211; Quyền Năng Trên Tay Bạn"
+                       title="{{$logo['slider_title']}}"
                        rel="home">
                         <img width="551" height="156"
-                             src="{{asset('frontend')}}/wp-content/uploads/2018/04/Gold-Time-Watch.jpg"
+                             src="{{asset($logo['slider_image'])}}"
                              class="header_logo header-logo"
-                             alt="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam"/>
-                        <img width="551" height="156" src="{{asset('frontend')}}/wp-content/uploads/2018/04/Gold-Time-Watch.jpg"
+                             alt="{{$logo['slider_title']}}"/>
+                        <img width="551" height="156"   src="{{asset($logo['slider_image'])}}"
                              class="header-logo-dark"
-                             alt="Gold Time Watch &#8211; Đồng Hồ Chính Hãng Hàng Đầu Việt Nam"/>
+                             alt="{{$logo['slider_title']}}"/>
                     </a>
                 </div>
                 <!-- Mobile Left Elements -->
@@ -81,13 +72,12 @@
                         <li class="header-search-form search-form html relative has-icon">
                             <div class="header-search-form-wrapper">
                                 <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-                                    <form method="get" class="searchform" action="#"
+                                    <form method="get" class="searchform" action="{{route('category.search')}}"
                                           role="search">
                                         <div class="flex-row relative">
                                             <div class="flex-col flex-grow">
-                                                <input type="search" class="search-field mb-0" name="s" value=""
-                                                       placeholder="Tìm kiếm . . . "/>
-                                                <input type="hidden" name="post_type" value="product"/>
+                                                <input type="search" class="" name="search"  placeholder="Tìm kiếm . . . "/>
+
                                             </div>
                                             <!-- .flex-col -->
                                             <div class="flex-col">
@@ -189,13 +179,45 @@
                                         <div class="is-divider"></div>
                                     </div>
                                     <div class="widget_shopping_cart_content">
-                                        <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ
-                                            hàng.
-                                        </p>
+                                        <?php
+                                        $param = array();
+                                        if(\Illuminate\Support\Facades\Route::currentRouteName() == 'products.detail'){
+//                                                $id  =  URL::current();
+                                            $param = array('product_id'=>collect(request()->segments())->last(),'route'=>'products.detail');
+                                        }else{
+                                            $param = array('route'=>\Illuminate\Support\Facades\Route::currentRouteName());
+                                        }
+                                        ?>
+
+                                        @if($listCart->count())
+                                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                @foreach($listCart as $key=>$value)
+
+                                                    <li class="woocommerce-mini-cart-item mini_cart_item">
+                                                        <a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>
+                                                        <a href="{{route('products.detail', $value->id)}}">
+                                                            <img width="180" height="180" src="{{asset($value->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">{{$value->name}}&nbsp;							</a>
+                                                        <span class="quantity">{{$value->qty}} × <span class="woocommerce-Price-amount amount">{{$value->price}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span>					</li>
+                                                @endforeach
+
+
+                                            </ul>
+
+                                            <p class="woocommerce-mini-cart__total total"><strong>Tổng phụ:</strong> <span class="woocommerce-Price-amount amount">{{$totalCart}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></p>
+
+
+                                            <p class="woocommerce-mini-cart__buttons buttons"><a href="{{route('cart')}}" class="button wc-forward">Xem giỏ</a><a href="{{route('order')}}" class="button checkout wc-forward">Thanh toán</a></p>
+                                        @else
+                                                <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ
+                                                    hàng.
+                                                </p>
+                                        @endif
+
+
                                     </div>
-                                    <div class="cart-sidebar-content relative"></div>
-                                </div>
+                                    <div class="cart-sidebar-content relative"></div>  </div>
                             </div>
+
                         </li>
                     </ul>
                 </div>
@@ -217,7 +239,7 @@
                         </li>
                         <li id="menu-item-45"
                             class="menu-item menu-item-type-post_type menu-item-object-post  menu-item-45"><a
-                                    href="#" class="nav-top-link">Giới thiệu</a></li>
+                                    href="{{route('news.guide', $Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
                         <li id="menu-item-33"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-33 has-dropdown">
                             <a href='javascript:void(0)' class="nav-top-link">DANH MỤC SẢN PHẨM<i
@@ -233,29 +255,7 @@
 
                             </ul>
                         </li>
-                        {{--<li id="menu-item-265"--}}
-                            {{--class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-265 has-dropdown">--}}
-                            {{--<a href="#" class="nav-top-link">Phân khúc giá<i class="icon-angle-down"></i></a>--}}
-                            {{--<ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>--}}
-                                {{--<li id="menu-item-1764"--}}
-                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1764">--}}
-                                    {{--<a href="duoi-3-trieu/index.html">Dưới 3 triệu</a>--}}
-                                {{--</li>--}}
-                                {{--<li id="menu-item-40"--}}
-                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-40">--}}
-                                    {{--<a href="phan-khuc-gia/duoi-5-trieu/index.html">Dưới 5 triệu</a>--}}
-                                {{--</li>--}}
-                                {{--<li id="menu-item-42"--}}
-                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-42">--}}
-                                    {{--<a href="phan-khuc-gia/tu-5-trieu-den-10-trieu/index.html">Từ 5 triệu đến 10--}}
-                                        {{--triệu</a>--}}
-                                {{--</li>--}}
-                                {{--<li id="menu-item-41"--}}
-                                    {{--class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-41">--}}
-                                    {{--<a href="phan-khuc-gia/tren-10-trieu/index.html">Trên 10 triệu</a>--}}
-                                {{--</li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
+
                         <li id="menu-item-3299"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-3299"><a
                                     href="{{route('category.male')}}" class="nav-top-link">Đồng hồ nam</a></li>
@@ -267,18 +267,9 @@
                                     href="{{route('category.double')}}" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
                         <li id="menu-item-3182"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children  menu-item-3182 has-dropdown">
-                            <a href="#" class="nav-top-link">Blog
-                                <i class="icon-angle-down"></i></a>
-                            @if(!empty($MenuTypeNew))
-                            <ul class='nav-dropdown nav-dropdown-default dropdown-uppercase'>
-                                @foreach($MenuTypeNew as $key=>$item)
-                                    <li id="menu-item-1900"
-                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1900">
-                                        <a href="#">{{$item['menu_name']}}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                            @endif
+                            <a href="{{route('news')}}" class="nav-top-link">Bài viết
+                            </a>
+
                         </li>
                     </ul>
                 </div>
@@ -288,13 +279,13 @@
                         <li class="header-contact-wrapper">
                             <ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
                                 <li class="">
-                                    <a class="tooltip" title="08:00 - 22:00 | Mở cửa các ngày trong tuần. ">
-                                        <i class="icon-clock" style="font-size:16px;"></i> <span>08:00 - 22:00</span>
+                                    <a class="tooltip" title="{{$config['time_open']}} | Mở cửa các ngày trong tuần. ">
+                                        <i class="icon-clock" style="font-size:16px;"></i> <span>{{$config['time_open']}}</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="tel:0971453333" class="tooltip" title="0971453333">
-                                        <i class="icon-phone" style="font-size:16px;"></i> <span>0971453333</span>
+                                    <a href="tel:{{($config['phone']) ? '0'.$config['phone']: ""}}" class="tooltip" title="{{($config['phone']) ? '0'.$config['phone']: ""}}">
+                                        <i class="icon-phone" style="font-size:16px;"></i> <span>{{($config['phone']) ? '0'.$config['phone']: ""}}</span>
                                     </a>
                                 </li>
                             </ul>

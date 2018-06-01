@@ -297,8 +297,8 @@
                     <div id="text-box-1063566216" class="text-box banner-layer x5 md-x5 lg-x5 y95 md-y95 lg-y95 res-text">
                         <div class="text dark">
                             <div class="text-inner text-center">
-                                <h3 class="uppercase"><strong><span style="color: #ff0000;">Citizen</span> &#8211; Thương hiệu số 2 nhật bản</strong></h3>
-                                <p class="lead">Nơi đâu có ánh sáng-ở đó có năng lượng. Những cỗ máy nhai nuốt ánh sáng của thương hiệu người dân với nhiều ưu điểm vượt trội đã gây thương nhớ cho bao nam giới.</p>
+                                <h3 class="uppercase"><strong><span style="color: #ff0000;">Đồng hồ </span> {{$_objectQC['slider_name']}}</strong></h3>
+                                <p class="lead">{{$_objectQC['slider_title']}}.</p>
                             </div>
                         </div>
 
@@ -331,7 +331,7 @@
                     padding-top: 366px;
                 }
                 #banner-820218701 .bg.bg-loaded {
-                    background-image: url({{asset('frontend')}}/wp-content/uploads/2017/08/citizen-banner-duoi-1024x317.png);
+                    background-image: url({{asset($_objectQC['slider_image'])}});
                 }
                 #banner-820218701 .overlay {
                     background-color: rgba(0, 0, 0, 0.26);

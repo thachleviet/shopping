@@ -19,7 +19,7 @@ var Transaction  = {
         }).then(function(result) {
             if (result)
             {
-                $.get(laroute.route('transaction-user.confirm-order', {id:id}), function(data) {
+                $.get(laroute.route('transaction.confirm-order', {id:id}), function(data) {
                     swal(
                         'Xác nhận đơn đặt hàng !',
                         data.messages,
@@ -31,7 +31,7 @@ var Transaction  = {
         });
     },
     confirmOrder2 : function (obj, id) {
-        $(obj).closest('tr').addClass('label-warning text-danger');
+
 
         swal({
             title: 'Xác nhận đơn hàng ?',
@@ -42,21 +42,17 @@ var Transaction  = {
             successMode: true,
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
-            onClose: function()
-            {
-                $(obj).closest('tr').removeClass('label-warning');
 
-            }
         }).then(function(result) {
             if (result)
             {
-                $.get(laroute.route('transaction-user.confirm-order-2', {id:id}), function(data) {
+                $.get(laroute.route('transaction.confirm-order', {id:id}), function(data) {
                     swal(
                         'Xác nhận đơn đặt hàng !',
                         data.messages,
                         'success'
                     );
-                    window.location.href  = laroute.route(data.data.route)
+                    window.location.reload() ;
                 });
             }
         });

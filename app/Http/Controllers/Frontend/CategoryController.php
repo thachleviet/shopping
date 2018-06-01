@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Input;
 class CategoryController extends Controller
 {
 
+    protected $_menu;
+
+    protected $_product;
+    public function __construct(Menu $menu, Product $product)
+    {
+        $this->_menu        = $menu;
+        $this->_product     = $product;
+    }
 
     public function category(Request $request,$id){
 
@@ -72,11 +80,37 @@ class CategoryController extends Controller
         $object                 =  $mProduct->getListItemType('double', $param ,true);
         $objectDiscount         = $mProduct->getListItemDiscount();
         return view('frontend.category.list-double',[
-
             '_objectProduct'    => $object,
             '_objectDiscount'   => $objectDiscount,
             'param'=>$param,
             'title'=>"Đồng hồ cặp"
+        ]);
+    }
+
+    public function searchProduct(Request $request){
+        $param['page'] 	        = Input::get('page', 1);
+        $param['search'] 	    = $request->input('search');
+        $param['limit']         = !empty($request->get('limit')) ? $request->get('limit') : 12;
+        $listProductSearch      = array();
+        $objectDiscount         = $this->_product->getListItemDiscount();
+        if(empty($request->input('search'))){
+
+            return view('frontend.category.search', [
+                '_objectProduct'    => $listProductSearch,
+                '_objectDiscount'   => $objectDiscount,
+                'param'=>$param,
+                'title'=>$param['search']
+            ]);
+        }
+        $listProductSearch      = $this->_product->search($request->input('search'), $param ,true);
+        if($listProductSearch->count() <1){
+            $listProductSearch  = $this->_menu->search($request->input('search') , $param ,true);
+        }
+        return view('frontend.category.search', [
+            '_objectProduct'    => $listProductSearch,
+            '_objectDiscount'   => $objectDiscount,
+            'param'=>$param,
+            'title'=>$param['search']
         ]);
     }
 }

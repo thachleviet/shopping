@@ -25,7 +25,7 @@ class Transaction extends Model
 
     public function updateTransaction($attributes ,$id)
     {
-        return $this->where('transaction_id',(int)$id)->update($attributes);
+        return $this->where('id',(int)$id)->update($attributes);
     }
 
     public function getItemTransaction2($id){

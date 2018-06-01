@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: WAO
- * Date: 29/05/2018
- * Time: 1:44 SA
- */
+
 
 namespace App\Http\Controllers\Frontend;
 
@@ -12,8 +7,7 @@ use App\Http\Controllers\Controller;
 
 use  Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\URL;
+
 
 class CartController extends Controller
 {
@@ -33,56 +27,25 @@ class CartController extends Controller
             '_object'   => Cart::content(),
             'count'     => Cart::count(),
             'total'     => Cart::subtotal(),
-            'title'      => "Thông tin giỏ hàng"]);
+            'title'     => "Thông tin giỏ hàng"]);
 
     }
 
-    public function updateCartAction(Request $request){
-        $objectProduct  = $this->product->getItem($request->input('id')) ;
-
-        $duplicates = Cart::search(function ($cartItem) use ($request){
-            return $cartItem->id === $request->input('id');
-        });
-        //var_dump($this->order->countProductId($request->product_id));
-        if((int)$this->countQty($duplicates)+(int)$this->order->countProductId($request->input('id')) >  $objectProduct['product_number'] || ((int)$request->qty +(int)$this->order->countProductId($request->input('id'))) > (int)$objectProduct['product_number'] ){
-            return response()->json([
-                'status'=>2,
-                'messages'=>'Sản phẩm đã hết hàng !'
-            ]) ;
+    public function update(Request $request){
+        for ($i = 0  ; $i<count($request->input()['qty']); $i++){
+            $data['rowId']  = !empty($request->input()['rowId']) ? $request->input()['rowId'][$i] : null;
+            $data['qty']    = !empty($request->input()['rowId']) ? $request->input()['qty'][$i] : null;
+             Cart::update($data['rowId'],(int)$data['qty']);
         }
-
-        if($this->request->isMethod('post')){
-            Cart::update($this->request->input('id'),(int)$this->request->input('qty'));
-        }
-
-        return response()->json([
-            'status'=>1,
-            'count'=>Cart::count(),
-            'total'=>Cart::total() ,
-            'messages'=>'Cập nhập giỏ hàng thành công'
-        ]);
+        return redirect()->route('cart');
     }
-    public function addCartAction(Request $request){
 
-
+    public function add(Request $request){
         Cart::add($request->product_id,$request->product_name,$request->quantity,($request->product_discount>0)? ($request->product_price * (100 - $request->product_discount)/100): $request->product_price,['product_image'=>$request->product_image]);
         return redirect()->route('products.detail', $request->product_id);
     }
 
-    public function countQty($attribute){
-        $qty = 0;
-        foreach ($attribute as $item){
-            $qty = $item->qty;
-        }
-        return $qty;
-    }
-    public function deleteCartAction(){
-        if($this->request->isMethod('post')){
-            Cart::remove($this->request->input('id'));
-        }
-        return response()->json(['status'=>1, 'count'=>Cart::count(),
-            'total'=>Cart::subtotal() ,'messages'=>'Xóa dữ liệu thành công']);
-    }
+
 
     public function destroy(Request $request, $id){
 

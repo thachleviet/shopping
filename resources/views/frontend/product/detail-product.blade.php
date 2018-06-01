@@ -175,11 +175,14 @@
                     </div>
                     <!-- .row -->
                 </div>
+
                 <!-- .product-main -->
                 <div class="product-footer">
                     <div class="container">
+
                         @if(!empty($_object['product_content']))
                         <div class="woocommerce-tabs tabbed-content">
+
                             <ul class="product-tabs nav small-nav-collapse tabs nav nav-uppercase nav-line nav-left">
                                 <li class="reviews_tab active">
                                     <a href="#tab-reviews">Nội dung</a>

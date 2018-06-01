@@ -25,9 +25,14 @@ class SliderTable extends Model
 
     public function getList($type){
     return $this->from($this->table)->where('slider_type', $type)->get();
-}
+    }
 
-
+    public function getLogo(){
+        return $this->from($this->table)->where('slider_type', 'logo')->first();
+    }
+    public function getQc(){
+        return $this->from($this->table)->where('slider_type', 'qc')->first();
+    }
     public function getItem($id){
         return $this->where($this->primaryKey, $id)->first();
     }
