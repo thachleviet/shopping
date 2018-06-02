@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Backend\AdminTable as Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Role;
+
 use Auth;
 use Session;
 use Illuminate\Contracts\Validation\Validator;

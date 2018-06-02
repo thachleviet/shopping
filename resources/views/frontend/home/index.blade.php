@@ -42,11 +42,11 @@
                         <div class="product-small box has-hover box-normal box-text-bottom">
                             <div class="box-image">
                                 <div class="">
-                                    <a href="{{route('products.detail', $item['id'])}}">
+                                    <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">
                                         <img width="300" height="300"
                                              src="{{asset($item['product_image'])}}"
                                              class="show-on-hover absolute fill hide-for-small back-image" alt=""
-                                             sizes="(max-width: 300px) 100vw, 300px"/>
+                                             sizes="(max-width: 300p    x) 100vw, 300px"/>
                                         <img width="300" height="300"  src="{{asset($item['product_image'])}}"
                                              class="attachment-shop_catalog size-shop_catalog wp-post-image"
                                              alt=""
@@ -56,14 +56,14 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('products.detail', $item['id'])}}">Xem nhanh</a>
+                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
                             <div class="box-text text-center">
                                 <div class="title-wrapper">
                                     <p class="name product-title"><a
-                                                href="{{route('products.detail', $item['id'])}}">{{$item['product_name']}}</a></p>
+                                                href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">{{$item['product_name']}}</a></p>
                                 </div>
                                 <div class="price-wrapper">
                                 <span class="price">
@@ -116,7 +116,7 @@
                         <div class="product-small box has-hover box-normal box-text-bottom">
                             <div class="box-image">
                                 <div class="">
-                                    <a href="{{route('products.detail', $item['id'])}}">
+                                    <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">
                                         <img width="300" height="300"
                                              src="{{asset($item['product_image'])}}"
                                              class="show-on-hover absolute fill hide-for-small back-image" alt=""
@@ -130,14 +130,14 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('products.detail', $item['id'])}}">Xem nhanh</a>
+                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
                             <div class="box-text text-center">
                                 <div class="title-wrapper">
                                     <p class="name product-title"><a
-                                                href="{{route('products.detail', $item['id'])}}">{{$item['product_name']}}</a></p>
+                                                href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">{{$item['product_name']}}</a></p>
                                 </div>
                                 <div class="price-wrapper">
                                 <span class="price">
@@ -211,7 +211,7 @@
 
                 </div></div>
         </div>
-        <div class="container section-title-container" ><h3 class="section-title section-title-center"><b></b><span class="section-title-main" >Đồng hồ Nam</span><b></b><a href="{{route('category.male')}}" target="">Xem thêm<i class="icon-angle-right" ></i></a></h3></div><!-- .section-title -->
+        <div class="container section-title-container" ><h3 class="section-title section-title-center"><b></b><span class="section-title-main" >Đồng hồ Nam</span><b></b><a href="{{route('the-loai.male')}}" target="">Xem thêm<i class="icon-angle-right" ></i></a></h3></div><!-- .section-title -->
 
 
         <div class="row large-columns-4 medium-columns- small-columns-2 row-small">
@@ -228,7 +228,7 @@
                         <div class="product-small box has-hover box-normal box-text-bottom">
                             <div class="box-image">
                                 <div class="">
-                                    <a href="{{route('products.detail', $item['id'])}}">
+                                    <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">
                                         <img width="300" height="300"
                                              src="{{asset($item['product_image'])}}"
                                              class="show-on-hover absolute fill hide-for-small back-image" alt=""
@@ -242,14 +242,14 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('products.detail', $item['id'])}}">Xem nhanh</a>
+                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
                             <div class="box-text text-center">
                                 <div class="title-wrapper">
                                     <p class="name product-title"><a
-                                                href="{{route('products.detail', $item['id'])}}">{{$item['product_name']}}</a></p>
+                                                href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">{{$item['product_name']}}</a></p>
                                 </div>
                                 <div class="price-wrapper">
                                 <span class="price">
@@ -341,7 +341,7 @@
                 }
             </style>
         </div><!-- .banner -->
-        <div class="container section-title-container" ><h3 class="section-title section-title-center"><b></b><span class="section-title-main" >Đồng hồ nữ</span><b></b><a href="{{route('category.female')}}" target="">Xem thêm<i class="icon-angle-right" ></i></a></h3></div><!-- .section-title -->
+        <div class="container section-title-container" ><h3 class="section-title section-title-center"><b></b><span class="section-title-main" >Đồng hồ nữ</span><b></b><a href="{{route('the-loai.female')}}" target="">Xem thêm<i class="icon-angle-right" ></i></a></h3></div><!-- .section-title -->
         <div class="row large-columns-4 medium-columns- small-columns-2 row-small">
             @foreach($_objectTypeFeMale as $key=>$item)
                 <div class="col">
@@ -356,7 +356,7 @@
                         <div class="product-small box has-hover box-normal box-text-bottom">
                             <div class="box-image">
                                 <div class="">
-                                    <a href="{{route('products.detail', $item['id'])}}">
+                                    <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">
                                         <img width="300" height="300"
                                              src="{{asset($item['product_image'])}}"
                                              class="show-on-hover absolute fill hide-for-small back-image" alt=""
@@ -370,14 +370,14 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('products.detail', $item['id'])}}">Xem nhanh</a>
+                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
                             <div class="box-text text-center">
                                 <div class="title-wrapper">
                                     <p class="name product-title"><a
-                                                href="{{route('products.detail', $item['id'])}}">{{$item['product_name']}}</a></p>
+                                                href="{{route('san-pham.detail', [$item['slug'], $item['id']])}}">{{$item['product_name']}}</a></p>
                                 </div>
                                 <div class="price-wrapper">
                                 <span class="price">

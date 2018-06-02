@@ -63,7 +63,7 @@
 
 
                             <li>
-                                <a href="{{route('products.detail', $item['id'])}}">
+                                <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">
                                     <img width="180" height="180" src="{{asset($item['product_image'])}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt=""
                                          sizes="(max-width: 180px) 100vw, 180px">		<span class="product-title">{{$item['product_name']}}</span>
                                 </a>
@@ -107,7 +107,7 @@
                                 <div class="product-small box has-hover box-normal box-text-bottom">
                                     <div class="box-image">
                                         <div class="">
-                                            <a href="{{route('products.detail', $item['id'])}}">
+                                            <a href="{{route('san-pham.detail',[$item['id'],$item['slug']])}}">
                                                 <img width="300" height="300"
                                                      src="{{asset($item['product_image'])}}"
                                                      class="show-on-hover absolute fill hide-for-small back-image" alt=""
@@ -121,14 +121,14 @@
                                         </div>
 
                                         <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                            <a class="quick-view"  href="{{route('products.detail', $item['id'])}}">Xem nhanh</a>
+                                            <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                         </div>
                                     </div>
                                     <!-- box-image -->
                                     <div class="box-text text-center">
                                         <div class="title-wrapper">
                                             <p class="name product-title"><a
-                                                        href="{{route('products.detail', $item['id'])}}">{{$item['product_name']}}</a></p>
+                                                        href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">{{$item['product_name']}}</a></p>
                                         </div>
                                         <div class="price-wrapper">
                                 <span class="price">

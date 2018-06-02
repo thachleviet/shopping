@@ -14,8 +14,6 @@ Route::group(['prefix' => 'admin',  'middleware' => ['web','guest'],'namespace' 
 Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namespace' => 'Backend'], function()
 {
 
-//    Route::resource('news','NewsController');
-//    Route::get('api/user', 'NewsController@getListAction');
     Route::get('/', 'HomeController@indexAction')->name('admin');
     Route::group(['prefix'=>'admin'], function (){
         Route::get('/', 'AdminController@index')->name('admin');
@@ -25,9 +23,6 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
         Route::post('/update/{id}', 'AdminController@update')->name('admin.update');
         Route::get('/show/{id}', 'AdminController@show')->name('admin.show');
         Route::get('/destroy/{id}', 'AdminController@destroy')->name('admin.destroy');
-    });
-    Route::group(['prefix'=>'news'], function (){
-        Route::get('/', 'NewsController@index')->name('news');
     });
 
     Route::group(['prefix' => 'menu'], function(){
@@ -118,16 +113,15 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::get('destroy/{id}/route/{route}/product/{product_id}', 'CartController@destroy')->name('cart.destroy');
 
     });
-    Route::group(['prefix' => 'news'], function(){
-        Route::get('/', 'NewController@index')->name('news');
-        Route::get('/detail/{id}', 'NewController@detail')->name('news.detail');
-        Route::get('/huong-dan/{id}', 'NewController@guide')->name('news.guide');
-
+    Route::group(['prefix' => 'tin-tuc'], function(){
+        Route::get('/', 'NewController@index')->name('tin-tuc');
+        Route::get('/chi-tiet-bai-viet/{id}.html', 'NewController@detail')->name('tin-tuc.detail');
+        Route::get('/gioi-thieu/{id}', 'NewController@guide')->name('tin-tuc.guide');
     });
-    Route::group(['prefix' => 'product'], function(){
-        Route::get('/', 'ProductController@indexAction')->name('products');
-        Route::get('list-item', 'ProductController@SearchAction')->name('products.search');
-        Route::get('product-detail/{id}', 'ProductController@detail')->name('products.detail');
+    Route::group(['prefix' => 'san-pham'], function(){
+        Route::get('/', 'ProductController@indexAction')->name('san-pham');
+        Route::get('list-item', 'ProductController@SearchAction')->name('san-pham.detail');
+        Route::get('/chi-tiet-san-pham/{id}_{slug}.html', 'ProductController@detail')->name('san-pham.detail');
     });
     Route::group(['prefix' => 'order'], function(){
         Route::get('/', 'OrderController@index')->name('order');
@@ -142,23 +136,12 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
         Route::post('/', 'DistrictController@indexAction')->name('district');
     });
 
-//    Route::group(['prefix'=>'info-user'], function (){
-//        Route::get('/', 'UserController@indexAction')->name('info-user');
-//        Route::get('info-user', 'UserController@infoAction')->name('info-user.info-users');
-//        Route::get('history-order', 'UserController@historyOrderAction')->name('info-user.history-order');
-//
-//    });
-//    Route::group(['prefix'=>'address'], function (){
-//        Route::get('/district', 'AddressController@getDistrict')->name('address.district');
-//        Route::get('/ward', 'AddressController@getWard')->name('address.ward');
-//    });
-
-    Route::group(['prefix'=>'category'], function (){
-        Route::get('/', 'CategoryController@index')->name('category');
-        Route::get('category/{id}', 'CategoryController@category')->name('category.category');
-        Route::get('category-male', 'CategoryController@getListItemTypeMale')->name('category.male');
-        Route::get('category-female', 'CategoryController@getListItemTypeFeMale')->name('category.female');
-        Route::get('category-double', 'CategoryController@getListItemTypeDouble')->name('category.double');
-        Route::get('search-item', 'CategoryController@searchProduct')->name('category.search');
+    Route::group(['prefix'=>'the-loai'], function (){
+        Route::get('/', 'CategoryController@index')->name('the-loai');
+        Route::get('the-loai/{id}_{slug}.html', 'CategoryController@category')->name('the-loai.the-loai');
+        Route::get('dong-ho-nam.html', 'CategoryController@getListItemTypeMale')->name('the-loai.male');
+        Route::get('dong-ho-nu.html', 'CategoryController@getListItemTypeFeMale')->name('the-loai.female');
+        Route::get('dong-ho-doi.html', 'CategoryController@getListItemTypeDouble')->name('the-loai.double');
+        Route::get('search-item.html', 'CategoryController@searchProduct')->name('the-loai.search');
     });
 });

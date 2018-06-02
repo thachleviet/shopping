@@ -48,10 +48,11 @@
                                     <thead>
                                     <tr >
                                         <th class="text-center">STT</th>
-                                        <th class="text-center">Tên sản phẩm</th>
+                                        <th class="text-center">Tên sản phẩm </th>
                                         <th class="text-center">Hình ảnh</th>
                                         <th class="text-center">Số lượng</th>
                                         <th class="text-center">Giá</th>
+                                        <th class="text-center">Khuyến mãi</th>
                                         <th class="text-center">Tiền</th>
                                     </tr>
                                     </thead>
@@ -66,9 +67,11 @@
                                                 <td class="text-center"><img src="{{asset($item['product_image'])}}" width="80" height="100"></td>
                                                 <td class="text-center">{{$item['count_order']}}</td>
                                                 <td class="text-center">{{number_format($item['product_price'],2)}}</td>
-                                                <td class="text-center">{{number_format($item['total_product'],2)}}</td>
+                                                <td class="text-center">{{$item['product_discount']}} %</td>
+
+                                                <td class="text-center">{{number_format($item['total_pay'],2)}}</td>
                                             </tr>
-                                            <?php  $total += $item['total_product']?>
+                                            <?php  $total += $item['total_pay']?>
                                         @endforeach
                                     @endif
                                     </tbody>

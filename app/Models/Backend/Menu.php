@@ -15,7 +15,7 @@ class Menu extends Model
 {
 
     protected $table = 'menu';
-    protected $fillable = ['id', 'menu_name', 'menu_level', 'menu_status', 'menu_type', 'created_at', 'updated_at'];
+    protected $fillable = ['id','slug', 'menu_name', 'menu_level', 'menu_status', 'menu_type', 'created_at', 'updated_at'];
 
 
     public function getAll(){

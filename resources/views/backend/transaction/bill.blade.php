@@ -51,7 +51,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <div class="form-group row">
+            <div class="form-group">
                     <div class="col-md-12" style="color: red; font-size: 22px; font-weight: bold">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HÓA ĐƠN THANH TOÁN GIAO HÀNG</div>
             </div>
@@ -77,6 +77,7 @@
                                     <th>Hình ảnh</th>
                                     <th>Số lượng</th>
                                     <th>Giá</th>
+                                    <th>Khuyến mãi</th>
                                     <th>Tổng tiền</th>
                                 </tr>
                                 </thead>
@@ -90,9 +91,10 @@
                                             <td class="text-center"><img src="{{public_path().'/'.$item['product_image']}}" width="70" height="70"></td>
                                             <td class="text-center">{{$item['count_order']}}</td>
                                             <td class="text-center">{{number_format($item['product_price'],2)}} vnđ</td>
-                                            <td class="text-center">{{number_format($item['total_product'],2)}} vnđ</td>
+                                            <td class="text-center">{{$item['product_discount']}} %</td>
+                                            <td class="text-center">{{number_format($item['total_pay'],2)}} vnđ</td>
                                         </tr>
-                                        <?php  $total += $item['total_product']?>
+                                        <?php  $total += $item['total_pay']?>
                                     @endforeach
                                 @endif
                                 </tbody>

@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
     public function category(Request $request,$id){
 
-        $param['page'] 		          = Input::get('page', 1);
+        $param['page'] 		   = Input::get('page', 1);
         $param['limit']        = !empty($request->get('limit')) ? $request->get('limit') : 12;
         $mMenu                 = new Menu();
         $objectMenu            = $mMenu->getItem($id);
@@ -50,10 +50,8 @@ class CategoryController extends Controller
 
         $param['page'] 	= Input::get('page', 1);
         $param['limit'] = !empty($request->get('limit')) ? $request->get('limit') : 12;
-
         $mProduct       =  new Product();
         $object         =  $mProduct->getListItemType('male', $param ,true);
-
         $objectDiscount         = $mProduct->getListItemDiscount();
         return view('frontend.category.list-male',[
             '_objectProduct'=>$object, '_objectDiscount'   => $objectDiscount,

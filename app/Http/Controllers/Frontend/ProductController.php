@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\AttributeProduct;
 use App\Models\Frontend\ImageProduct;
 use App\Models\Frontend\Product;
+use Illuminate\Http\Request;
 
 
 class ProductController extends Controller
@@ -28,18 +29,23 @@ class ProductController extends Controller
 
     }
 
-    public function detail($id){
-
+    public function detail(Request $request, $id,$slug){
         $mProduct               = new Product();
-        echo $mProduct->slug;
-        $object                 = $mProduct->getItem($id);
+        $object                 = $mProduct->getItem((int)$id);
+        if(!$object){
+            return redirect()->route('home');
+        }
+        if($object['slug'] !== $slug) {
+            return redirect()->route('san-pham.detail', ['id' => $id, 'slug' => $object['slug']]);
+        }
         $attributeProduct       = new AttributeProduct();
         $related                = $mProduct->related($object['product_menu_id'],$id, $object['product_type']);
-
         $mImage                 = new ImageProduct();
         $ImageProduct           = $mImage->getImageOfProduct($id);
 
         $listAttributeProduct   = $attributeProduct->getAttributeOfProduct($id);
+
+
         return view('frontend.product.detail-product',[
             '_object'           => $object,
             '_attributeProduct' => $listAttributeProduct,

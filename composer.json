@@ -12,7 +12,6 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "lord/laroute": "2.*",
-        "spatie/laravel-permission": "^2.12",
         "unisharp/laravel-filemanager": "~1.8",
         "nexmo/laravel": "dev-master as 1.0",
         "nexmo/client": "dev-master as 1.0",

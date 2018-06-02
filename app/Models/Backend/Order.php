@@ -49,7 +49,7 @@ class Order extends Model
         $oSelect->selectRaw('(o.count_order*p.product_price) as total_product');
 //        $oSelect->selectRaw('(SUM(o.count_order*p.product_price)) as total_pay');
         $oSelect->selectRaw('(SUM(o.count_order*p.product_price)) as total_pay1');
-        $oSelect->selectRaw('(SUM(o.count_order*(p.product_price*100 - product_discount)/100)) as total_pay');
+        $oSelect->selectRaw('(SUM(o.count_order*(p.product_price*(100- product_discount)/100))) as total_pay');
         $oSelect->where('o.transaction_id', $id);
         $oSelect->groupBy('o.product_id');
         return $oSelect->get();

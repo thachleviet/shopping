@@ -50,9 +50,8 @@ class NewController extends Controller
 
 
 
-    public function guide(Request $request,$id){
+    public function guide($id){
 
-        $this->var_dump($id);
 //        $param['page'] 	        = Input::get('page', 1);
 //        $param['limit']         = !empty($request->get('limit')) ? $request->get('limit') : 12;
         $objectDiscount         = $this->_product->getListItemDiscount();

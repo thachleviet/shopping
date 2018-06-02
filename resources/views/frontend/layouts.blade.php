@@ -10,6 +10,53 @@
     html{
         background: white!important;
     }
+    div.footer-2{
+        background-color: #f74d18 !important;
+    }
+    div.absolute-footer {
+        background-color: #f21c0c !important;
+        color: white;
+    }
+    div.header-top {
+        background-color: #f21c0c !important;
+    }
+    div .header:not(.transparent) .header-bottom-nav.nav > li > a {
+        color: #f74d18;
+    }
+    .nav>li>a, .nav-dropdown>li>a, .nav-column>li>a {
+        color: #f74d18 !important;
+        transition: all .2s;
+    }
+    .section-title-center span, .section-title-bold-center span {
+        text-align: center;
+        background: none;
+
+        color: #fff;
+
+        font-weight: 500;
+        margin-bottom: 0;
+        padding: .5em 2em .4em;
+        text-transform: uppercase;
+        border-radius: 3px;
+    }
+    div a {
+        color: #f74d18;
+    }
+    .section-title-center span, .section-title-bold-center span {
+        text-align: center;
+
+
+        display: inline-block;
+        box-shadow: 0 0 0 #F44336 !important;
+        margin-bottom: 0;
+        padding: .5em 2em .4em;
+        text-transform: uppercase;
+        background: #fff !important;
+        color: #f74d18 !important;
+        font-weight: bold !important;
+    }
+
+    /**/
 </style>
 @include('frontend.components._head')
 
@@ -40,7 +87,7 @@
             <li class="header-search-form search-form html relative has-icon">
                 <div class="header-search-form-wrapper">
                     <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-                        <form method="get" class="searchform" action="{{route('category.search')}}" role="search">
+                        <form method="get" class="searchform" action="{{route('the-loai.search')}}" role="search">
                             <div class="flex-row relative">
                                 <div class="flex-col flex-grow">
                                     <input type="search"  name="search" value="" placeholder="Tìm kiếm . . . " />
@@ -56,14 +103,14 @@
                     </div>	</div>
             </li>
             <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-46"><a href="index.html" class="nav-top-link">Trang chủ</a></li>
-            <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-45"><a href="{{route('news.detail',$Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-45"><a href="{{route('tin-tuc.detail',$Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
             <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-33">
                 <a href="javascript:void(0)" class="nav-top-link">DANH MỤC SẢN PHẨM</a>
                 <ul class=children>
                     @foreach($MenuTypeProduct as $key=>$item)
 
                         <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1900">
-                            <a href="{{route('category.category', $item['id'])}}">{{$item['menu_name']}}</a>
+                            <a href="{{route('the-loai.the-loai', [$item['id'],$item['slug']])}}">{{$item['menu_name']}}</a>
                         </li>
                     @endforeach
 
@@ -72,15 +119,15 @@
 
 
             <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-3299">
-                <a href="{{route('category.male')}}" class="nav-top-link">Đồng hồ nam</a>
+                <a href="{{route('the-loai.male')}}" class="nav-top-link">Đồng hồ nam</a>
             </li>
             <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-3298">
                 <a
-                        href="{{route('category.female')}}" class="nav-top-link">Đồng hồ nữ</a></li>
+                        href="{{route('the-loai.female')}}" class="nav-top-link">Đồng hồ nữ</a></li>
             <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1526">
                 <a
-                        href="{{route('category.double')}}" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
-            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3182"><a href="{{route('news')}}" class="nav-top-link">Bài viết
+                        href="{{route('the-loai.double')}}" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3182"><a href="{{route('tin-tuc')}}" class="nav-top-link">Bài viết
                 </a>
             </li>
             <li class="account-item has-icon menu-item">

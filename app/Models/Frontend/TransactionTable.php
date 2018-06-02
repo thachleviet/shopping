@@ -16,7 +16,7 @@ class TransactionTable extends Model
     public      $timestamps = false;
     protected   $table = 'transaction';
     protected   $primaryKey = 'transaction_id';
-    protected   $fillable = ['transaction_month','transaction_year','transaction_quy','transaction_id','transaction_from', 'transaction_user_id', 'ward_id', 'district_id', 'province_id', 'transaction_status', 'emai_customer', 'phone_customer', 'fullname_customer', 'address_customer', 'transaction_amount', 'transaction_type', 'transaction_note', 'created_at', 'update_at'];
+    protected   $fillable = ['email_customer','transaction_month','transaction_year','transaction_quy','transaction_id','transaction_from', 'transaction_user_id', 'ward_id', 'district_id', 'province_id', 'transaction_status', 'emai_customer', 'phone_customer', 'fullname_customer', 'address_customer', 'transaction_amount', 'transaction_type', 'transaction_note', 'created_at', 'update_at'];
 
 
     public function saveCart($params){

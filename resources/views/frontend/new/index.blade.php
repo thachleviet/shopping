@@ -80,7 +80,7 @@
                                         <div class="flex-col flex-grow">
                                             <a href="{{route('news.detail', $item['id'])}}" title="{{$item['product_name']}}">[Xem] {{\Illuminate\Support\Str::words($item['new_title'],50)}}</a>
                                             <span class="post_comments oppercase op-7 block is-xsmall">
-                                                <a href="{{route('products.detail', $item['id'])}}" title="{{$item['product_name']}}">
+                                                <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}" title="{{$item['product_name']}}">
 
                                                 </a>
                                             </span>
@@ -104,7 +104,7 @@
                                     <div class="flex-row recent-blog-posts align-top pt-half pb-half">
                                         <div class="flex-col mr-half">
                                             <div class="badge post-date badge-small badge-outline">
-                                                <a href="{{route('products.detail', $item['id'])}}">
+                                                <a href="{{route('san-pham.detail',[$item['id'],$item['slug']])}}">
                                                     <img width="180" height="180" src="{{asset($item['product_image'])}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt=""
                                                          sizes="(max-width: 180px) 100vw, 180px">
 
@@ -122,7 +122,7 @@
                                                 </ins>
                                             </div>
                                         </div><!-- .flex-col -->
-                                        <a href="{{route('products.detail', $item['id'])}}">
+                                        <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">
                                             <span class="product-title">{{$item['product_name']}}</span></a>
 
                                     </div>

@@ -1,4 +1,5 @@
 @extends('frontend.layouts')
+@section('title', $title)
 @section('content')
 <div class="checkout-page-title page-title">
     <div class="page-title-inner flex-row medium-flex-wrap container">
@@ -48,10 +49,10 @@
                                     <a href="{{route('cart.destroy',array('id'=>$item->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="201" data-product_sku="OP130-03MS-GL-T">×</a>          </td>
 
                                 <td class="product-thumbnail">
-                                    <a href="{{route('products.detail', $item->id)}}"><img width="180" height="180" src="{{asset($item->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="OP130-03MS-GL-T"  sizes="(max-width: 180px) 100vw, 180px"></a>          </td>
+                                    <a href="{{route('san-pham.detail', [$item->id, $item->slug])}}"><img width="180" height="180" src="{{asset($item->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="OP130-03MS-GL-T"  sizes="(max-width: 180px) 100vw, 180px"></a>          </td>
 
                                 <td class="product-name" data-title="Sản phẩm">
-                                    <a href="{{route('products.detail', $item->id)}}">{{$item->product_name}}</a>          </td>
+                                    <a href="{{route('san-pham.detail', [$item->id, $item->slug])}}">{{$item->product_name}}</a>          </td>
 
                                 <td class="product-price" data-title="Giá">
                                     <span class="woocommerce-Price-amount amount">{{number_format($item->price)}}<span class="woocommerce-Price-currencySymbol">₫</span></span>          </td>

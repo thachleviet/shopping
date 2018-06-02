@@ -60,7 +60,7 @@ class MenuController extends Controller
         $param     = $request->all();
         unset($param['_token']);
         $param['created_at']    = date('Y-m-d H:i:s');
-
+        $param['slug']          = str_slug($request->input('menu_name'));
         if($this->_menu->store($param)){
             $request->session()->flash('message_success', 'Thêm dữ liệu thành công');
             return redirect()->route('menu');
@@ -113,6 +113,7 @@ class MenuController extends Controller
          try{
              $param  = $request->all();
              unset($param['_token']);
+             $param['slug']  = str_slug($request->input('menu_name'));
              if($this->_menu->updates($param, $id)){
                  $request->session()->flash('message_success', 'Cập nhật dữ liệu thành công');
                  return redirect()->route('menu');

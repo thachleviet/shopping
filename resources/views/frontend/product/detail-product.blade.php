@@ -8,6 +8,7 @@
 @stop
 
 @section('content')
+
     <style>
         .nav-dropdown > li.html {
             min-width: 300px !important;
@@ -103,7 +104,8 @@
                                 <span class="divider">/</span>
                                 <a href="#">
                                     {{$_object['menu_name']}}</a> <span class="divider">/</span>
-                                <a href="{{route('products.detail', $_object['product_id'])}}">{{$_object['product_name']}}</a>
+                                {{--{{route('san-pham.detail', [$value['id'],$value['slug']])}}--}}
+                                <a href="{{route('san-pham.detail', [$_object['product_id'],$_object['slug']])}}">{{$_object['product_name']}}</a>
                             </nav>
                             <h1 class="product-title entry-title">
                                 {{strtoupper($_object['product_name'])}}
@@ -164,6 +166,7 @@
                                     <input type="hidden" name="product_id" value="{{$_object['product_id']}}">
                                     <input type="hidden" name="product_price" value="{{$_object['product_price']}}">
                                     <input type="hidden" name="product_discount" value="{{$_object['product_discount']}}">
+                                    <input type="hidden" name="slug" value="{{$_object['slug']}}">
                                 </div>
                                 <button type="submit" name="add-to-cart" value="279"
                                         class="single_add_to_cart_button button alt">Thêm vào giỏ
@@ -198,7 +201,7 @@
                         @endif
                         <!-- .tabbed-content -->
                         @if($_related->count()>0)
-                        <div class="related related-products-wrapper product-section">
+                        <div class="related related-san-pham-wrapper product-section">
                             <h3 class="product-section-title product-section-title-related pt-half pb-half uppercase">
                                 Sản phẩm liên quan
                             </h3>
@@ -211,6 +214,7 @@
                                         $i = 25
                                         ?>
                                         @foreach($_related as $key=>$value)
+
                                             @if($key == 0)
                                                 <div class="product-small col has-hover post-164 product type-product status-publish has-post-thumbnail product_cat-dong-ho-nam product_cat-danh-muc-san-pham product_cat-dong-ho-olym-pianus product_cat-phan-khuc-gia product_cat-duoi-5-trieu product_tag-dong-ho-op product_tag-olym-pianus product_tag-olympianus-chinh-hang product_tag-op8974amk first instock sale shipping-taxable purchasable product-type-simple "
                                                      style="position: absolute; left: 200%;">
@@ -218,7 +222,7 @@
                                                         <div class="product-small box ">
                                                             <div class="box-image">
                                                                 <div class="image-fade_in_back">
-                                                                    <a href="{{route('products.detail', $value['id'])}}">
+                                                                    <a href="{{route('san-pham.detail', [$value['id'],$value['slug']])}}">
                                                                         <img width="300" height="300"
                                                                              src="{{asset($value['product_image'])}}"
                                                                              class="attachment-shop_catalog size-shop_catalog wp-post-image"
@@ -229,14 +233,14 @@
                                                                 </div>
                                                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
                                                                     <a class="quick-view quick-view-added" data-prod="164"
-                                                                       href="{{route('products.detail', $value['id'])}}">Xem
+                                                                       href="{{route('san-pham.detail', [$value['id'],$value['slug']])}}">Xem
                                                                         nhanh   </a>
                                                                 </div>
                                                             </div>
                                                             <!-- box-image -->
-                                                            <div class="box-text box-text-products">
+                                                            <div class="box-text box-text-san-pham">
                                                                 <div class="title-wrapper">
-                                                                    <p class="name product-title"><a href="{{route('products.detail', $value['id'])}}" style="text-align: center">{{strtoupper($value['product_name'])}}</a></p>
+                                                                    <p class="name product-title"><a href="{{route('san-pham.detail', [$value['id'],$value['slug']])}}" style="text-align: center">{{strtoupper($value['product_name'])}}</a></p>
                                                                 </div>
 
 
@@ -254,7 +258,7 @@
                                                         <div class="product-small box ">
                                                             <div class="box-image">
                                                                 <div class="image-fade_in_back">
-                                                                    <a href="{{route('products.detail', $value['id'])}}">
+                                                                    <a href="{{route('san-pham.detail', [$value['id'],$value['slug']])}}">
                                                                         <img width="300" height="300"
                                                                              src="{{asset($value['product_image'])}}"
                                                                              class="attachment-shop_catalog size-shop_catalog wp-post-image"
@@ -265,14 +269,14 @@
                                                                 </div>
                                                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
                                                                     <a class="quick-view quick-view-added" data-prod="164"
-                                                                       href="{{route('products.detail', $value['id'])}}">Xem
+                                                                       href="{{route('san-pham.detail', [$value['id'],$value['slug']])}}">Xem
                                                                         nhanh   </a>
                                                                 </div>
                                                             </div>
                                                             <!-- box-image -->
                                                             <div class="box-text box-text-products">
                                                                 <div class="title-wrapper">
-                                                                    <p class="name product-title"><a href="{{route('products.detail', $value['id'])}}" style="text-align: center">{{strtoupper($value['product_name'])}}</a></p>
+                                                                    <p class="name product-title"><a href="{{route('san-pham.detail', [$value['id'],$value['slug']])}}" style="text-align: center">{{strtoupper($value['product_name'])}}</a></p>
                                                                 </div>
 
 

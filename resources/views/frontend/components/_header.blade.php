@@ -72,7 +72,7 @@
                         <li class="header-search-form search-form html relative has-icon">
                             <div class="header-search-form-wrapper">
                                 <div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-                                    <form method="get" class="searchform" action="{{route('category.search')}}"
+                                    <form method="get" class="searchform" action="{{route('the-loai.search')}}"
                                           role="search">
                                         <div class="flex-row relative">
                                             <div class="flex-col flex-grow">
@@ -116,9 +116,9 @@
                                     <div class="widget_shopping_cart_content">
                                         <?php
                                         $param = array();
-                                        if(\Illuminate\Support\Facades\Route::currentRouteName() == 'products.detail'){
+                                        if(\Illuminate\Support\Facades\Route::currentRouteName() == 'san-pham.detail'){
 //                                                $id  =  URL::current();
-                                                $param = array('product_id'=>collect(request()->segments())->last(),'route'=>'products.detail');
+                                                $param = array('product_id'=>collect(request()->segments())->last(),'route'=>'san-pham.detail');
                                         }else{
                                             $param = array('route'=>\Illuminate\Support\Facades\Route::currentRouteName());
                                         }
@@ -129,8 +129,8 @@
                                                 @foreach($listCart as $key=>$value)
 
                                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                        <a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>
-                                                        <a href="{{route('products.detail', $value->id)}}">
+                                                        {{--<a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>--}}
+                                                        <a href="{{route('san-pham.detail', [$value->id,$value->options->slug])}}">
                                                             <img width="180" height="180" src="{{asset($value->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">{{$value->name}}&nbsp;							</a>
                                                         <span class="quantity">{{$value->qty}} × <span class="woocommerce-Price-amount amount">{{$value->price}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span>					</li>
                                                 @endforeach
@@ -162,12 +162,12 @@
                     <ul class="mobile-nav nav nav-right ">
                         <li class="cart-item has-icon">
                             <div class="header-button">
-                                <a href="cart/index.html"
+                                <a href="{{route('cart')}}"
                                    class="header-cart-link off-canvas-toggle nav-top-link icon button circle is-outline is-small"
                                    data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng"
                                    data-pos="right">
                                     <i class="icon-shopping-cart"
-                                       data-icon-label="0">
+                                       data-icon-label="{{$countCart}}">
                                     </i>
                                 </a>
                             </div>
@@ -181,9 +181,9 @@
                                     <div class="widget_shopping_cart_content">
                                         <?php
                                         $param = array();
-                                        if(\Illuminate\Support\Facades\Route::currentRouteName() == 'products.detail'){
+                                        if(\Illuminate\Support\Facades\Route::currentRouteName() == 'san-pham.detail'){
 //                                                $id  =  URL::current();
-                                            $param = array('product_id'=>collect(request()->segments())->last(),'route'=>'products.detail');
+                                            $param = array('product_id'=>collect(request()->segments())->last(),'route'=>'san-pham.detail');
                                         }else{
                                             $param = array('route'=>\Illuminate\Support\Facades\Route::currentRouteName());
                                         }
@@ -194,8 +194,8 @@
                                                 @foreach($listCart as $key=>$value)
 
                                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                        <a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>
-                                                        <a href="{{route('products.detail', $value->id)}}">
+                                                        {{--<a href="{{route('cart.destroy',array('id'=>$value->rowId,'route'=>$param['route'],'product_id'=>!empty($param['product_id']) ? $param['product_id']:0 ))}}" class="remove" aria-label="Xóa sản phẩm này" data-product_id="1896" data-product_sku="BL1684-10001">×</a>--}}
+                                                        <a href="{{route('san-pham.detail', [$value->id,$value->options->slug])}}">
                                                             <img width="180" height="180" src="{{asset($value->options->product_image)}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">{{$value->name}}&nbsp;							</a>
                                                         <span class="quantity">{{$value->qty}} × <span class="woocommerce-Price-amount amount">{{$value->price}}&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span>					</li>
                                                 @endforeach
@@ -238,8 +238,9 @@
                             <a href="{{route('home')}}" class="nav-top-link">Trang chủ</a>
                         </li>
                         <li id="menu-item-45"
-                            class="menu-item menu-item-type-post_type menu-item-object-post  menu-item-45"><a
-                                    href="{{route('news.guide', $Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
+                            class="menu-item menu-item-type-post_type menu-item-object-post  menu-item-45">
+
+                            <a href="{{route('tin-tuc.guide', $Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
                         <li id="menu-item-33"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-33 has-dropdown">
                             <a href='javascript:void(0)' class="nav-top-link">DANH MỤC SẢN PHẨM<i
@@ -248,7 +249,7 @@
                                 @foreach($MenuTypeProduct as $key=>$item)
                                     <li id="menu-item-1900"
                                         class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1900">
-                                        <a href="{{route('category.category', $item['id'])}}">{{$item['menu_name']}}</a>
+                                        <a href="{{route('the-loai.the-loai', [$item['id'],$item['slug']])}}">{{$item['menu_name']}}</a>
                                     </li>
                                 @endforeach
 
@@ -258,16 +259,16 @@
 
                         <li id="menu-item-3299"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-3299"><a
-                                    href="{{route('category.male')}}" class="nav-top-link">Đồng hồ nam</a></li>
+                                    href="{{route('the-loai.male')}}" class="nav-top-link">Đồng hồ nam</a></li>
                         <li id="menu-item-3298"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-3298"><a
-                                    href="{{route('category.female')}}" class="nav-top-link">Đồng hồ nữ</a></li>
+                                    href="{{route('the-loai.female')}}" class="nav-top-link">Đồng hồ nữ</a></li>
                         <li id="menu-item-1526"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1526"><a
-                                    href="{{route('category.double')}}" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
+                                    href="{{route('the-loai.double')}}" class="nav-top-link">ĐỒNG HỒ ĐÔI</a></li>
                         <li id="menu-item-3182"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children  menu-item-3182 has-dropdown">
-                            <a href="{{route('news')}}" class="nav-top-link">Bài viết
+                            <a href="{{route('tin-tuc')}}" class="nav-top-link">Bài viết
                             </a>
 
                         </li>

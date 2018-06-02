@@ -82,9 +82,9 @@ class OrderController extends Controller
             }
             Cart::destroy();
         }
-        Mail::send( 'frontend.mail-order-cart',array(), function($message) {
+        Mail::send('frontend.mail-order-cart',array(), function($message) {
             $message->to(Input::get('email_customer'), Input::get('fullname_customer'))
-                ->from('doanthihuynhnhu1996@gmail.com', 'Như Shop')
+                ->from('thachleviet@gmail.com', 'Đồng hồ')
                 ->subject('Xác nhận thông tin đặt hàng ');
         });
         return redirect()->route('order.order-success');

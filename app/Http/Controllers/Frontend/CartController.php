@@ -41,8 +41,8 @@ class CartController extends Controller
     }
 
     public function add(Request $request){
-        Cart::add($request->product_id,$request->product_name,$request->quantity,($request->product_discount>0)? ($request->product_price * (100 - $request->product_discount)/100): $request->product_price,['product_image'=>$request->product_image]);
-        return redirect()->route('products.detail', $request->product_id);
+        Cart::add($request->product_id,$request->product_name,$request->quantity,($request->product_discount>0)? ($request->product_price * (100 - $request->product_discount)/100): $request->product_price,['product_image'=>$request->product_image,'slug'=>$request->slug]);
+        return redirect()->route('san-pham.detail', [$request->product_id,$request->slug]);
     }
 
 

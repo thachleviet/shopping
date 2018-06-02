@@ -12,11 +12,11 @@ namespace App\Models\Backend;
 use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
+
+
 class AdminTable extends Authenticatable
 {
 
-    use HasRoles;
     use Notifiable;
     protected $table = 'admin';
     protected $guard = 'admin' ;
