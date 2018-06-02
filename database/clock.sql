@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2018 at 06:07 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.1.15
+-- Generation Time: Jun 02, 2018 at 06:31 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -50,7 +48,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `phone`, `gender`, `avatar`, `ward_id`, `district_id`, `is_admin`, `province_id`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin9999@gmail.com', NULL, 0, NULL, NULL, NULL, 1, '', '$2y$10$DxYrDZH/2UfofLw9F3uSx.F9Hs1Vop3pZdd4GsLDPZ0ubjKW8lJuO', 'F2C83azE5HDYKzrP4CQYV79zGMz0GvIot06bE4jBeef6z8xypzp8UNetLDWh', '2018-05-30 12:20:34', '0000-00-00 00:00:00'),
+(1, 'Admin', 'admin9999@gmail.com', NULL, 0, NULL, NULL, NULL, 1, '', '$2y$10$DxYrDZH/2UfofLw9F3uSx.F9Hs1Vop3pZdd4GsLDPZ0ubjKW8lJuO', '1DCNYTTqy52rmu2UCXV4FzIea79yCNkTtfXEhvHXgQ5V6VqVFIhogqOwe358', '2018-06-02 02:05:31', '0000-00-00 00:00:00'),
 (4, 'Lê Viết Thạch', 'leviet_thach@gmail.com', 934761245, 1, NULL, NULL, NULL, 0, '', '', '', '2018-05-30 16:27:29', '2018-05-30 16:27:29');
 
 -- --------------------------------------------------------
@@ -81,6 +79,7 @@ CREATE TABLE `configs` (
   `footer` text COLLATE utf8mb4_unicode_ci,
   `link_fanpage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci,
+  `map` text COLLATE utf8mb4_unicode_ci,
   `time_open` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -90,8 +89,8 @@ CREATE TABLE `configs` (
 -- Dumping data for table `configs`
 --
 
-INSERT INTO `configs` (`id`, `name`, `title`, `header`, `phone`, `footer`, `link_fanpage`, `address`, `time_open`, `created_at`, `updated_at`) VALUES
-(1, 'GOLD TIME WATCH', 'GOLD TIME WATCH – Hệ thống đồng hồ hiệu chính hãng', 'Quận 1 Thành phố Hồ Chí Minh', 934761245, 'Copyright 2018 © <strong>Goldtime Watch</strong>', 'https://www.facebook.com/thach.viet.5', 'https://www.facebook.com/thach.viet.5', '9h00 -  23h00', '0000-00-00 00:00:00', '2018-05-31 20:14:29');
+INSERT INTO `configs` (`id`, `name`, `title`, `header`, `phone`, `footer`, `link_fanpage`, `address`, `map`, `time_open`, `created_at`, `updated_at`) VALUES
+(1, 'GOLD TIME WATCH', 'GOLD TIME WATCH – Hệ thống đồng hồ hiệu chính hãng', 'Quận 1 Thành phố Hồ Chí Minh', 934761245, 'Copyright 2018 © <strong>Goldtime Watch</strong>', 'https://www.facebook.com/thach.viet.5', 'Đại học Giao thông vận tải thành phố Hồ Chí Minh, Đường D3, Bình Thạnh, Hồ Chí Minh', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0834603091607!2d106.71456031435069!3d10.804919692302228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a40f323173%3A0x7a7006b269783a40!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHaWFvIHRow7RuZyB24bqtbiB04bqjaSBUUC5I4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1527905620356\" width=\"600\" height=\"250\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '9h00 -  23h00', '0000-00-00 00:00:00', '2018-06-01 19:18:18');
 
 -- --------------------------------------------------------
 
@@ -864,19 +863,20 @@ CREATE TABLE `menu` (
   `menu_type` enum('new','product') COLLATE utf8mb4_unicode_ci DEFAULT 'product',
   `menu_option` enum('male','female','sub-male') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id`, `menu_name`, `menu_level`, `menu_status`, `menu_type`, `menu_option`, `created_at`, `updated_at`) VALUES
-(22, 'BENTLEY', 0, 1, 'product', 'male', '2018-06-01 03:27:45', '0000-00-00 00:00:00'),
-(23, 'OLYM PIANUS', 0, 1, 'product', 'male', '2018-06-01 03:27:59', '0000-00-00 00:00:00'),
-(24, 'OLYMPIA STAR', 0, 1, 'product', 'male', '2018-06-01 03:28:12', '0000-00-00 00:00:00'),
-(25, 'OGIVAL', 0, 1, 'product', 'male', '2018-06-01 03:28:28', '0000-00-00 00:00:00'),
-(26, 'LOTUSMAN', 0, 1, 'product', 'male', '2018-06-01 03:28:46', '0000-00-00 00:00:00');
+INSERT INTO `menu` (`id`, `menu_name`, `menu_level`, `menu_status`, `menu_type`, `menu_option`, `created_at`, `updated_at`, `slug`) VALUES
+(22, 'BENTLEYH', 0, 1, 'product', 'male', '2018-06-01 03:27:45', '2018-06-01 17:46:20', 'bentleyh'),
+(23, 'OLYM PIANUSV', 0, 1, 'product', 'male', '2018-06-01 03:27:59', '2018-06-01 17:46:13', 'olym-pianusv'),
+(24, 'OLYMPIA STARE', 0, 1, 'product', 'male', '2018-06-01 03:28:12', '2018-06-01 17:46:05', 'olympia-stare'),
+(25, 'OGIVAL2', 0, 1, 'product', 'male', '2018-06-01 03:28:28', '2018-06-01 17:45:50', 'ogival2'),
+(26, 'LOTUSMAN', 0, 1, 'product', 'male', '2018-06-01 03:28:46', '2018-06-01 17:45:56', 'lotusman');
 
 -- --------------------------------------------------------
 
@@ -904,7 +904,7 @@ CREATE TABLE `new` (
 --
 
 INSERT INTO `new` (`id`, `new_name`, `new_image`, `new_title`, `new_description`, `new_content`, `new_view_count`, `menu_id`, `new_status`, `new_type`, `created_at`, `updated_at`) VALUES
-(2, '', 'uploads/1527823297_01_06_2018_new_image.jpg', 'Toàn cảnh vụ MC Minh Tiệp bị tố bạo hành em vợ suốt 5 năm', 'Hoàng anh tuấn anh  12332', 'Hoàng anh tuấn anh  12332', 0, 0, 1, 'new', '2018-06-01 03:25:28', '2018-05-31 20:25:28');
+(2, '', 'uploads/1527823297_01_06_2018_new_image.jpg', 'Toàn cảnh vụ MC Minh Tiệp bị tố bạo hành em vợ suốt 5 năm', 'Hoàng anh tuấn anh  12332', '<p>Ho&agrave;ng anh tuấn anh 12332</p>', 0, 0, 1, 'guide', '2018-06-01 13:36:45', '2018-06-01 06:36:45');
 
 -- --------------------------------------------------------
 
@@ -931,7 +931,33 @@ INSERT INTO `order` (`order_id`, `product_id`, `transaction_id`, `count_order`, 
 (3, 31, 4, 1, '0000-00-00 00:00:00', NULL),
 (4, 31, 5, 7, '0000-00-00 00:00:00', NULL),
 (5, 31, 5, 7, '0000-00-00 00:00:00', NULL),
-(6, 31, 6, 19, '0000-00-00 00:00:00', NULL);
+(6, 31, 6, 19, '0000-00-00 00:00:00', NULL),
+(7, 36, 7, 5, '0000-00-00 00:00:00', NULL),
+(8, 35, 7, 1, '0000-00-00 00:00:00', NULL),
+(9, 36, 8, 5, '0000-00-00 00:00:00', NULL),
+(10, 35, 8, 1, '0000-00-00 00:00:00', NULL),
+(11, 36, 9, 5, '0000-00-00 00:00:00', NULL),
+(12, 35, 9, 1, '0000-00-00 00:00:00', NULL),
+(13, 35, 10, 5, '0000-00-00 00:00:00', NULL),
+(14, 38, 10, 4, '0000-00-00 00:00:00', NULL),
+(15, 37, 10, 10, '0000-00-00 00:00:00', NULL),
+(16, 35, 11, 5, '0000-00-00 00:00:00', NULL),
+(17, 38, 11, 4, '0000-00-00 00:00:00', NULL),
+(18, 37, 11, 10, '0000-00-00 00:00:00', NULL),
+(19, 35, 12, 5, '0000-00-00 00:00:00', NULL),
+(20, 38, 12, 4, '0000-00-00 00:00:00', NULL),
+(21, 37, 12, 10, '0000-00-00 00:00:00', NULL),
+(22, 35, 13, 2, '0000-00-00 00:00:00', NULL),
+(23, 35, 14, 2, '0000-00-00 00:00:00', NULL),
+(24, 35, 15, 2, '0000-00-00 00:00:00', NULL),
+(25, 35, 16, 2, '0000-00-00 00:00:00', NULL),
+(26, 35, 17, 1, '0000-00-00 00:00:00', NULL),
+(27, 38, 18, 3, '0000-00-00 00:00:00', NULL),
+(28, 35, 19, 2, '0000-00-00 00:00:00', NULL),
+(29, 35, 20, 1, '0000-00-00 00:00:00', NULL),
+(30, 35, 21, 1, '0000-00-00 00:00:00', NULL),
+(31, 35, 22, 1, '0000-00-00 00:00:00', NULL),
+(32, 35, 23, 3, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -945,6 +971,7 @@ CREATE TABLE `product` (
   `product_menu_id` int(11) NOT NULL,
   `product_trade_make_id` int(11) NOT NULL,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_keyword` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -962,15 +989,15 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `menu_id`, `product_menu_id`, `product_trade_make_id`, `product_name`, `product_keyword`, `product_alias`, `product_image`, `product_price`, `product_discount`, `product_content`, `product_description`, `product_type`, `created_at`, `updated_at`, `product_status`) VALUES
-(35, 0, 22, 0, 'BL1684-20471', NULL, '', 'uploads/1527824038_01_06_2018_product_image.jpg', 4900000, 3, NULL, '', 'male', '2018-06-01 03:53:06', '2018-06-01 03:53:06', 1),
-(36, 0, 22, 0, 'BL1684-20471', 'Đồng hồ đẹp', '', 'uploads/1527824239_01_06_2018_product_image.jpg', 5000000, NULL, NULL, '', 'male', '2018-06-01 03:37:19', '2018-06-01 03:49:00', 0),
-(37, 0, 23, 0, 'OP130-03MS-GL-T', 'Đồng hồ đẹp', '', 'uploads/1527824302_01_06_2018_product_image.jpg', 10000000, 10, NULL, '', 'female', '2018-06-01 03:41:13', '2018-06-01 03:41:13', 1),
-(38, 0, 22, 0, 'OPA28019DLK-D', 'Đồng hồ đẹp', '', 'uploads/1527824896_01_06_2018_product_image.jpg', 1000000, 0, NULL, '', 'male', '2018-06-01 03:49:46', '2018-06-01 03:49:46', 1),
-(39, 0, 22, 0, 'BL1684-20471', 'Đồng hồ đẹp', '', 'uploads/1527825152_01_06_2018_product_image.jpg', 21312300, NULL, NULL, '', 'female', '2018-06-01 03:52:32', '2018-06-01 03:52:32', 1),
-(40, 0, 22, 0, 'BL1694-10KWI', 'Đồng hồ đẹp', '', 'uploads/1527825275_01_06_2018_product_image.jpg', 5000000, 12, NULL, '', 'male', '2018-06-01 03:54:35', '2018-06-01 03:54:35', 1),
-(41, 0, 22, 0, 'BL1694-10KWI', 'Đồng hồ đẹp', '', 'uploads/1527825368_01_06_2018_product_image.jpg', 10000000, NULL, NULL, '', 'male', '2018-06-01 03:56:08', '2018-06-01 03:56:08', 1),
-(42, 0, 22, 0, 'BL1694-10WBI-M', 'Đồng hồ đẹp', '', 'uploads/1527825456_01_06_2018_product_image.jpg', 30000000, NULL, NULL, '', 'male', '2018-06-01 03:57:36', '2018-06-01 03:57:36', 1);
+INSERT INTO `product` (`id`, `menu_id`, `product_menu_id`, `product_trade_make_id`, `product_name`, `slug`, `product_keyword`, `product_alias`, `product_image`, `product_price`, `product_discount`, `product_content`, `product_description`, `product_type`, `created_at`, `updated_at`, `product_status`) VALUES
+(35, 0, 22, 0, 'BL1684-20471M-K', 'bl1684-20471m-k', NULL, '', 'uploads/1527824038_01_06_2018_product_image.jpg', 4900000, 3, NULL, '', 'male', '2018-06-01 14:25:10', '2018-06-01 14:25:10', 1),
+(36, 0, 22, 0, 'BL1684-20471K', 'bl1684-20471k', 'Đồng hồ đẹp', '', 'uploads/1527824239_01_06_2018_product_image.jpg', 5000000, 0, NULL, '', 'male', '2018-06-01 14:25:20', '2018-06-01 14:25:20', 0),
+(37, 0, 23, 0, 'OP130-03MS-G6', 'op130-03ms-g6', 'Đồng hồ đẹp', '', 'uploads/1527824302_01_06_2018_product_image.jpg', 10000000, 10, NULL, '', 'female', '2018-06-01 16:57:59', '2018-06-01 16:57:59', 1),
+(38, 0, 22, 0, 'OPA28019DLK', 'opa28019dlk', 'Đồng hồ đẹp', '', 'uploads/1527824896_01_06_2018_product_image.jpg', 1000000, 0, NULL, '', 'male', '2018-06-01 15:09:36', '2018-06-01 15:09:36', 1),
+(39, 0, 22, 0, 'BL1684-20471M', 'bl1684-20471m', 'Đồng hồ đẹp', '', 'uploads/1527825152_01_06_2018_product_image.jpg', 21312300, 0, NULL, '', 'female', '2018-06-01 14:24:57', '2018-06-01 14:24:57', 1),
+(40, 0, 22, 0, 'BL1694-10KWIP', 'bl1694-10kwip', 'Đồng hồ đẹp', '', 'uploads/1527825275_01_06_2018_product_image.jpg', 5000000, 12, NULL, '', 'male', '2018-06-01 14:24:46', '2018-06-01 14:24:46', 1),
+(41, 0, 22, 0, 'BL1694-10KW', 'bl1694-10kw', 'Đồng hồ đẹp', '', 'uploads/1527825368_01_06_2018_product_image.jpg', 10000000, 0, NULL, '', 'male', '2018-06-01 14:24:35', '2018-06-01 14:24:35', 1),
+(42, 0, 22, 0, 'BL1694-10WBI', 'bl1694-10wbi', 'Đồng hồ đẹp', '', 'uploads/1527825456_01_06_2018_product_image.jpg', 30000000, 0, NULL, '', 'double', '2018-06-01 16:55:54', '2018-06-01 16:55:54', 1);
 
 -- --------------------------------------------------------
 
@@ -1000,36 +1027,36 @@ INSERT INTO `product_attribute` (`id`, `product_id`, `key`, `value`, `created_at
 (107, 0, '', '', '2018-05-27 09:52:43', '2018-05-27 09:52:43'),
 (108, 0, '', '', '2018-05-27 09:53:53', '2018-05-27 09:53:53'),
 (109, 0, '', '', '2018-05-27 09:54:22', '2018-05-27 09:54:22'),
-(185, 36, 'Nhãn hiệu', 'Bentley', '2018-06-01 03:37:19', '0000-00-00 00:00:00'),
-(186, 36, 'Xuất xứ', 'Germany (Đức)', '2018-06-01 03:37:19', '0000-00-00 00:00:00'),
-(187, 36, 'Kiểu máy', 'Đồng hồ điện tử (Quartz)', '2018-06-01 03:37:19', '0000-00-00 00:00:00'),
-(192, 37, 'Nhãn hiệu', 'T-Heritage', '2018-06-01 03:41:13', '0000-00-00 00:00:00'),
-(193, 37, 'Xuất xứ', 'Hàn Quốc', '2018-06-01 03:41:13', '0000-00-00 00:00:00'),
-(206, 38, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 03:49:46', '0000-00-00 00:00:00'),
-(207, 38, 'Xuất xứ', 'Việt nam', '2018-06-01 03:49:46', '0000-00-00 00:00:00'),
-(213, 39, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 03:52:32', '0000-00-00 00:00:00'),
-(214, 39, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 03:52:32', '0000-00-00 00:00:00'),
-(215, 39, 'Dòng sản phẩm 2', 'T-Heritage 3', '2018-06-01 03:52:32', '0000-00-00 00:00:00'),
-(216, 35, 'Nhãn hiệu', 'Bentley', '2018-06-01 03:53:06', '0000-00-00 00:00:00'),
-(217, 35, 'Xuất xứ', 'Germany (Đức)', '2018-06-01 03:53:06', '0000-00-00 00:00:00'),
-(218, 35, 'Dòng sản phẩm', '', '2018-06-01 03:53:06', '0000-00-00 00:00:00'),
-(219, 35, 'Đồng hồ dành cho', 'Nam', '2018-06-01 03:53:06', '0000-00-00 00:00:00'),
-(220, 35, 'Kích cỡ', '43.0mm X 46.0mm', '2018-06-01 03:53:06', '0000-00-00 00:00:00'),
-(221, 40, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 03:54:35', '0000-00-00 00:00:00'),
-(222, 40, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 03:54:35', '0000-00-00 00:00:00'),
-(223, 40, 'Dòng sản phẩm 2', 'T-Heritage 2', '2018-06-01 03:54:35', '0000-00-00 00:00:00'),
-(224, 41, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
-(225, 41, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
-(226, 41, 'Dòng sản phẩm 2', 'T-Heritage 2', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
-(227, 41, 'Dòng sản phẩm 3', 'T-Heritage 3', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
-(228, 41, 'Dòng sản phẩm 4', 'T-Heritage 4', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
-(229, 41, 'Dòng sản phẩm 5', 'T-Heritage 5', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
-(230, 42, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
-(231, 42, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
-(232, 42, 'Dòng sản phẩm 2', 'T-Heritage 32', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
-(233, 42, 'Dòng sản phẩm 3', 'T-Heritage 3', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
-(234, 42, 'Dòng sản phẩm 4', 'T-Heritage 4', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
-(235, 42, 'Dòng sản phẩm 5', 'T-Heritage 5', '2018-06-01 03:57:36', '0000-00-00 00:00:00');
+(242, 41, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 14:24:35', '0000-00-00 00:00:00'),
+(243, 41, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 14:24:35', '0000-00-00 00:00:00'),
+(244, 41, 'Dòng sản phẩm 2', 'T-Heritage 2', '2018-06-01 14:24:35', '0000-00-00 00:00:00'),
+(245, 41, 'Dòng sản phẩm 3', 'T-Heritage 3', '2018-06-01 14:24:35', '0000-00-00 00:00:00'),
+(246, 41, 'Dòng sản phẩm 4', 'T-Heritage 4', '2018-06-01 14:24:35', '0000-00-00 00:00:00'),
+(247, 41, 'Dòng sản phẩm 5', 'T-Heritage 5', '2018-06-01 14:24:35', '0000-00-00 00:00:00'),
+(248, 40, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 14:24:46', '0000-00-00 00:00:00'),
+(249, 40, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 14:24:46', '0000-00-00 00:00:00'),
+(250, 40, 'Dòng sản phẩm 2', 'T-Heritage 2', '2018-06-01 14:24:46', '0000-00-00 00:00:00'),
+(251, 39, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 14:24:57', '0000-00-00 00:00:00'),
+(252, 39, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 14:24:57', '0000-00-00 00:00:00'),
+(253, 39, 'Dòng sản phẩm 2', 'T-Heritage 3', '2018-06-01 14:24:57', '0000-00-00 00:00:00'),
+(254, 35, 'Nhãn hiệu', 'Bentley', '2018-06-01 14:25:10', '0000-00-00 00:00:00'),
+(255, 35, 'Xuất xứ', 'Germany (Đức)', '2018-06-01 14:25:10', '0000-00-00 00:00:00'),
+(256, 35, 'Dòng sản phẩm', '', '2018-06-01 14:25:10', '0000-00-00 00:00:00'),
+(257, 35, 'Đồng hồ dành cho', 'Nam', '2018-06-01 14:25:10', '0000-00-00 00:00:00'),
+(258, 35, 'Kích cỡ', '43.0mm X 46.0mm', '2018-06-01 14:25:10', '0000-00-00 00:00:00'),
+(259, 36, 'Nhãn hiệu', 'Bentley', '2018-06-01 14:25:20', '0000-00-00 00:00:00'),
+(260, 36, 'Xuất xứ', 'Germany (Đức)', '2018-06-01 14:25:20', '0000-00-00 00:00:00'),
+(261, 36, 'Kiểu máy', 'Đồng hồ điện tử (Quartz)', '2018-06-01 14:25:20', '0000-00-00 00:00:00'),
+(262, 38, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 15:09:37', '0000-00-00 00:00:00'),
+(263, 38, 'Xuất xứ', 'Việt nam', '2018-06-01 15:09:37', '0000-00-00 00:00:00'),
+(266, 42, 'Dòng sản phẩm', 'T-Heritage', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
+(267, 42, 'Dòng sản phẩm 1', 'T-Heritage 1', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
+(268, 42, 'Dòng sản phẩm 2', 'T-Heritage 32', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
+(269, 42, 'Dòng sản phẩm 3', 'T-Heritage 3', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
+(270, 42, 'Dòng sản phẩm 4', 'T-Heritage 4', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
+(271, 42, 'Dòng sản phẩm 5', 'T-Heritage 5', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
+(272, 37, 'Nhãn hiệu', 'T-Heritage', '2018-06-01 16:57:59', '0000-00-00 00:00:00'),
+(273, 37, 'Xuất xứ', 'Hàn Quốc', '2018-06-01 16:57:59', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1139,7 +1166,8 @@ INSERT INTO `slider` (`id`, `slider_image`, `slider_name`, `slider_title`, `slid
 (10, 'uploads/1527727842_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'slide', '2018-05-31 00:50:42', '2018-05-30 17:50:42'),
 (11, 'uploads/1527727857_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'slide', '2018-05-30 17:50:57', '0000-00-00 00:00:00'),
 (12, 'uploads/1527727868_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'qc', '2018-05-31 23:41:02', '2018-05-31 16:41:02'),
-(13, 'uploads/1527809035_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'logo', '2018-05-31 16:23:55', '0000-00-00 00:00:00');
+(13, 'uploads/1527809035_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'logo', '2018-05-31 16:23:55', '0000-00-00 00:00:00'),
+(14, 'uploads/1527902714_02_06_2018_slider_image.pdf', 'ANh thuuw', 'CCCC', 1, 'slide', '2018-06-01 18:25:14', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1189,7 +1217,24 @@ INSERT INTO `transaction` (`id`, `email_customer`, `phone_customer`, `fullname_c
 (3, '', 934761245, '', '525/4/14 Lê Trọng Tấn', 0, 'home', '', NULL, 1, '20284', '494', '48', '2018-05-30 10:00:28', NULL),
 (4, '', 934761245, '', '525/4/14 Lê Trọng Tấn', 1000000, 'home', '', NULL, 1, '6325', '185', '20', '2018-05-30 10:13:49', NULL),
 (5, '', 934761245, 'Lê Viết Thạch', '525/4/14 Lê Trọng Tấn', 7000000, 'home', '', NULL, 1, '23401', '612', '62', '2018-05-30 22:01:41', NULL),
-(6, '', 934761245, 'Lê Viết Thạch', '525/4/14 Lê Trọng Tấn', 19000000, 'home', '', NULL, 1, '7234', '215', '24', '2018-05-31 16:21:10', NULL);
+(6, '', 934761245, 'Lê Viết Thạch', '525/4/14 Lê Trọng Tấn', 19000000, 'home', '', NULL, 1, '7234', '215', '24', '2018-05-31 16:21:10', NULL),
+(7, '', 1697248153, 'LE VIET THACH', '292 Ung Van Khiem', 29753000, 'home', '', NULL, 0, '9292', '259', '27', '2018-06-01 13:42:53', NULL),
+(8, '', 1697248153, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '9292', '259', '27', '2018-06-01 13:49:38', NULL),
+(9, '', 1697248153, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '9292', '259', '27', '2018-06-01 13:50:16', NULL),
+(10, 'thachleviet@gmail.com', 1697248153, 'LE VIET THACH', 'Điện Biên Phủ', 117765000, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-01 23:51:04', NULL),
+(11, 'thachleviet@gmail.com', 1697248153, 'LE VIET THACH', 'Điện Biên Phủ', 0, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-01 23:52:32', NULL),
+(12, 'thachleviet@gmail.com', 1697248153, 'LE VIET THACH', 'Điện Biên Phủ', 0, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-02 00:05:05', NULL),
+(13, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 9506000, 'home', '', NULL, 0, '4924', '152', '17', '2018-06-02 00:06:40', NULL),
+(14, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '4924', '152', '17', '2018-06-02 00:06:59', NULL),
+(15, 'thachleviet@gmail.com', 924232323, 'LE VIET THACH', '292 Ung Van Khiem', 9506000, 'home', '', NULL, 0, '6385', '186', '20', '2018-06-02 00:11:47', NULL),
+(16, 'thachleviet@gmail.com', 924232323, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '6385', '186', '20', '2018-06-02 00:12:52', NULL),
+(17, 'thachleviet@gmail.com', 2147483647, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '4303', '135', '15', '2018-06-02 00:13:27', NULL),
+(18, 'thachleviet@gmail.com', 935455454, 'LE VIET THACH', '292 Ung Van Khiem', 3000000, 'home', '', NULL, 0, '25516', '706', '72', '2018-06-02 00:17:07', NULL),
+(19, 'thachleviet@gmail.com', 934762323, 'LE VIET THACH', '292 Ung Van Khiem', 9506000, 'home', '', NULL, 0, '31342', '932', '93', '2018-06-02 00:19:21', NULL),
+(20, 'thachleviet@gmail.com', 2147483647, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-02 00:21:10', NULL),
+(21, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '4924', '152', '17', '2018-06-02 00:27:31', NULL),
+(22, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '23824', '630', '64', '2018-06-02 00:28:44', NULL),
+(23, 'thachleviet@gmail.com', 935455454, 'LE VIET THACH', '292 Ung Van Khiem', 14259000, 'home', '', NULL, 0, '25777', '720', '74', '2018-06-02 00:30:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -12426,74 +12471,61 @@ ALTER TABLE `transaction`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `configs`
 --
 ALTER TABLE `configs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `image_product`
 --
 ALTER TABLE `image_product`
   MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
 --
 -- AUTO_INCREMENT for table `new`
 --
 ALTER TABLE `new`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
 --
 -- AUTO_INCREMENT for table `product_attribute`
 --
 ALTER TABLE `product_attribute`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=274;
 --
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `trade_mark`
 --
 ALTER TABLE `trade_mark`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-COMMIT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
