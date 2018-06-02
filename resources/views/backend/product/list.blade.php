@@ -5,6 +5,7 @@
         <tr >
             <th class="text-center">STT</th>
             <th class="text-center">Hình ảnh</th>
+            <th class="text-center">Tên danh mục</th>
             <th class="text-center">Tên sản phẩm</th>
             <th class="text-center">Trạng thái</th>
             <th class="text-center">Ngày tạo</th>
@@ -17,8 +18,12 @@
             @foreach($_object as $key=>$item)
                 <tr>
                     <td  class="text-center">{{($key+1)}}</td>
+
                     <td class="text-center">
                         <a href="{{asset($item['product_image'])}}"><img  width="60" height="60" src="{{asset($item['product_image'])}}"></a>
+                    </td>
+                    <td>
+                        {{$item['menu_name']}}
                     </td>
                     <td>
                        {{$item['product_name']}}

@@ -21,7 +21,7 @@
 
     <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('static/js/app.js') }}"></script>
 
     <![endif]-->
 

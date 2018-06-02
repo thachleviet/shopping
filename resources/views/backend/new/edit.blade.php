@@ -1,7 +1,7 @@
 @extends('backend.layouts')
 @section('after_style')
-    <link rel="stylesheet" href="{{asset('static')}}/main/css/icheck/orange.css">
-    <link rel="stylesheet" href="{{asset('backend')}}/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="{{asset('static/static')}}/main/css/icheck/orange.css">
+    <link rel="stylesheet" href="{{asset('static/backend')}}/bower_components/select2/dist/css/select2.min.css">
 @stop
 @section('content')
     <style>
@@ -152,7 +152,7 @@
     </section>
 @endsection
 @section('after_script')
-    <script src="{{asset('js')}}/jquery.validate.min.js"></script>
+    <script src="{{asset('static/js')}}/jquery.validate.min.js"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
     <script>

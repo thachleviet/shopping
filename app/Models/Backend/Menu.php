@@ -41,7 +41,7 @@ class Menu extends Model
     }
 
     public function getListMenuOfProduct($type){
-        return $this->from($this->table)->where('menu_type', $type)->get()->pluck('menu_name', 'id');
+        return $this->from($this->table)->where('menu_status', 1)->where('menu_type', $type)->get()->pluck('menu_name', 'id');
     }
 
 

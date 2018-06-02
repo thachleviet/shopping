@@ -36,7 +36,8 @@ class HomeController extends  Controller
             '_objectProductPay' => $_objectProductPay,
             '_objectSlide'      => $_objectSlide,
             '_objectQC'         => $_objectQC,
-            '_objectGuide'      => $_objectGuide
+            '_objectGuide'      => $_objectGuide,
+            'title'             => "Trang chủ"
         ]);
     }
 }

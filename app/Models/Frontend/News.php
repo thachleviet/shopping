@@ -29,9 +29,20 @@ class News extends Model
 
 
     public function getListRelated($param){
-        return $this->orderBy('id', 'desc')->where('new_type', 'new')->where('id','<>', $param)->limit(4)->get();
+            $oSelect   =  $this->orderBy('id', 'desc')->where('new_status', 1);
+            $oSelect->where('new_type', 'new');
+            $oSelect->where('new_status', 1);
+            if(is_array($param)){
+
+                $oSelect->offset($param['limit'])->limit(4);
+            }else {
+
+                $oSelect->where('id', '<>', (int)$param)->limit(4);
+            }
+
+            return $oSelect->get();
     }
     public function getGuide(){
-        return $this->where('new_type', 'guide')->first();
+        return $this->where('new_type', 'guide')->where('new_status', 1)->first();
     }
 }

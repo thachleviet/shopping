@@ -41,12 +41,12 @@
 @section('after_script')
 
 
-    <script src="{{asset('backend')}}/bower_components/datatables.net/js/select2.full.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net/js/select2.full.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
     <script src="{{asset('static/backend')}}/js/config/custom.js"></script>
 @stop
 

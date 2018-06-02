@@ -36,6 +36,6 @@
 
     </div>
     <div class="cat-img">
-        <img class="img-responsive " src="images/45.jpg" alt="">
+        <img class="img-responsive " src="static/images/45.jpg" alt="">
     </div>
 </div>

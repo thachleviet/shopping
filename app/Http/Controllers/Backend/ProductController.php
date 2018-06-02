@@ -94,14 +94,14 @@ class ProductController extends Controller
         $names = '';
         if($option == 'image_child'){
             $names 	= $time.'_'.date('d_m_Y').'_'.$prefix.'.'.$fileName->getClientOriginalExtension();
-            $destinationPath = public_path($uploads);
+            $destinationPath = base_path($uploads);
             $fileName->move($destinationPath, $names);
             return $names ;
         }
         if($request->hasFile($fileName)){
             $image  = $request->file($fileName);
             $names 	= time().'_'.date('d_m_Y').'_'.$prefix.'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path($uploads);
+            $destinationPath = base_path($uploads);
             $image->move($destinationPath, $names);
         }
         return $names ;
@@ -204,8 +204,8 @@ class ProductController extends Controller
                 'product_image.mimes'         =>'Hình ảnh phải đúng đinh dạng jpeg,jpg,png',
             ]);
             if(!empty($object['product_image'])){
-                if(is_file(public_path().'/'.$object['product_image'].'')){
-                    unlink(public_path().'/'.$object['product_image'].'');
+                if(is_file(base_path().'/'.$object['product_image'].'')){
+                    unlink(base_path().'/'.$object['product_image'].'');
                 }
             }
         }
@@ -267,8 +267,8 @@ class ProductController extends Controller
         $ImageProduct = $mImageProduct->getImageOfProduct($id);
         foreach ($ImageProduct as $key=>$value){
             if(!empty($value['image_product'])){
-                if(is_file(public_path().'/'.$value['image_product'].'')){
-                    unlink(public_path().'/'.$value['image_product'].'');
+                if(is_file(base_path().'/'.$value['image_product'].'')){
+                    unlink(base_path().'/'.$value['image_product'].'');
                 }
             }
         }
@@ -282,8 +282,8 @@ class ProductController extends Controller
 
         $object     =  $this->_product->getItem($id) ;
         if(!empty($object['product_image'])){
-            if(is_file(public_path().'/'.$object['product_image'].'')){
-                unlink(public_path().'/'.$object['product_image'].'');
+            if(is_file(base_path().'/'.$object['product_image'].'')){
+                unlink(base_path().'/'.$object['product_image'].'');
             }
         }
         $mProduct->destroys($id);

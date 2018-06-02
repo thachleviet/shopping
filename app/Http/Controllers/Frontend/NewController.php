@@ -47,13 +47,7 @@ class NewController extends Controller
             'title'=>"Chi tiết  bài viết"
         ]);
     }
-
-
-
     public function guide($id){
-
-//        $param['page'] 	        = Input::get('page', 1);
-//        $param['limit']         = !empty($request->get('limit')) ? $request->get('limit') : 12;
         $objectDiscount         = $this->_product->getListItemDiscount();
         return view('frontend.new.detail',[
             '_object'=>$this->_new->getItem($id),

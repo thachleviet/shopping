@@ -13,9 +13,9 @@
             max-width: 100%!important;
         }
     </style>
-    <link rel='stylesheet' id='contact-form-7-css'  href="{{asset('css/w3.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-css'  href="{{asset('static/css/w3.css?v='.time())}}" type='text/css' media='all' />
 @endsection
-
+@section('title', $title)
 @section('content')
     <div id="content" role="main" class="content-area">
 
@@ -23,8 +23,8 @@
 
 
 
-        <div class="container section-title-container" style="margin-top:20px;"><h3 class="section-title section-title-center"><b></b><span class="section-title-main" >Sản phẩm mới</span><b></b></h3></div><!-- .section-title -->
-
+        <div class="container section-title-container" style="margin-top:20px;">
+            <h3 class="section-title section-title-center"><b></b><span class="section-title-main" >Sản phẩm mới</span><b></b></h3></div><!-- .section-title -->
 
         <div class="row large-columns-4 medium-columns- small-columns-2 row-small slider row-slider slider-nav-reveal slider-nav-push"  data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
 
@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
+                                    <a   href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
@@ -130,7 +130,7 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
+                                    <a   href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
@@ -176,7 +176,7 @@
                     <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2050305156">
                         <a href='javascript:void(0)' target="_self" class="">
                             <div class="img-inner dark" >
-                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b1.png')}}" class="attachment-large size-large" alt="Giao hàng"  sizes="(max-width: 500px) 100vw, 500px" />
+                                <img width="500" height="150" src="{{asset('static/frontend/wp-content/uploads/2017/08/b1.png')}}" class="attachment-large size-large" alt="Giao hàng"  sizes="(max-width: 500px) 100vw, 500px" />
                             </div>
                         </a>
                         <style scope="scope">
@@ -189,7 +189,7 @@
                     <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1305025343">
                         <a href='javascript:void(0)' target="_self" class="">
                             <div class="img-inner dark" >
-                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b2.png')}}" class="attachment-large size-large" alt="Cam kết chính hãng"   sizes="(max-width: 500px) 100vw, 500px" />
+                                <img width="500" height="150" src="{{asset('static/frontend/wp-content/uploads/2017/08/b2.png')}}" class="attachment-large size-large" alt="Cam kết chính hãng"   sizes="(max-width: 500px) 100vw, 500px" />
                             </div>
                         </a>
                         <style scope="scope">
@@ -201,7 +201,7 @@
             <div class="col medium-4 small-12 large-4"  ><div class="col-inner"  >
                     <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_904396708">
                         <a href='javascript:void(0)' target="_self" class="">            <div class="img-inner dark" >
-                                <img width="500" height="150" src="{{asset('frontend/wp-content/uploads/2017/08/b3.png')}}" class="attachment-large size-large" alt="Chính sách đổi trả"  sizes="(max-width: 500px) 100vw, 500px" />
+                                <img width="500" height="150" src="{{asset('static/frontend/wp-content/uploads/2017/08/b3.png')}}" class="attachment-large size-large" alt="Chính sách đổi trả"  sizes="(max-width: 500px) 100vw, 500px" />
                             </div>
                         </a>
                         <style scope="scope">
@@ -242,7 +242,7 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
+                                    <a   href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->
@@ -370,7 +370,7 @@
                                 </div>
 
                                 <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                    <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
+                                    <a   href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                 </div>
                             </div>
                             <!-- box-image -->

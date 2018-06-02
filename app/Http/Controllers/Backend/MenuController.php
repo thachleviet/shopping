@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Backend\AttributeProduct;
 use App\Models\Backend\Menu;
+use App\Models\Backend\Product;
 use Dompdf\Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,8 +42,6 @@ class MenuController extends Controller
      */
     public function create()
     {
-
-
 
         return view('backend.menu.create', ['_title'=>'Danh sách danh mục']);
     }
@@ -132,10 +132,18 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
+        $mProduct  = new Product();
+
         try{
-            if($this->_menu->destroys($id)){
-                return  $this->setResponse(true,null, ['messages'=>'Xóa dữ liệu thành công !']) ;
+            if($mProduct->getListItemIn($id)->count()>0){
+                return  $this->setResponse(false,null, ['messages'=>'Danh mục đang tồn tại sản phẩm !']) ;
+            }else{
+                if($this->_menu->destroys($id)){
+
+                    return  $this->setResponse(true,null, ['messages'=>'Xóa dữ liệu thành công !']) ;
+                }
             }
+//
         }catch(\Exception $exception){
            return $this->setResponse(false,null, ['messages'=>'Đã xảy ra lỗi']) ;
         }

@@ -22,6 +22,9 @@ class DistrictTable extends Model
         return $this->from($this->table)->get();
     }
     public function getDistrictOptionIdProvince($idProvince){
+        if($idProvince < 10){
+            $idProvince = '0'.$idProvince;
+        }
         return $this->from($this->table)->where('province_id',$idProvince)->get()->pluck('name', 'district_id');
     }
 }

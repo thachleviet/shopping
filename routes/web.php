@@ -76,10 +76,10 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
 
     Route::group(['prefix' => 'transaction'], function(){
         Route::get('', 'TransactionController@indexAction')->name('transaction');
-        Route::get('change-status', 'TransactionController@confirmOrderAction2')->name('transaction.confirm-order');
-        Route::get('generate-order-fill/{id}', 'TransactionController@generatePDFAction')->name('transaction.generate-order');
-        Route::post('generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction.generate-order-fill');//        Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
-        Route::get('detail-guest/{id}', 'TransactionController@getDetailUserTransactionNoAccount')->name('transaction.detail-guest');
+        Route::get('/change-status', 'TransactionController@confirmOrderAction2')->name('transaction.confirm-order');
+        Route::get('/generate-order-fill/{id}', 'TransactionController@generatePDFAction')->name('transaction.generate-order');
+        Route::post('/generate-order-fill', 'TransactionController@generatePDFAction')->name('transaction.generate-order-fill');//        Route::get('list-transaction', 'TransactionController@getListUserTransactionNoAccount')->name('transaction-user.list-transaction');
+        Route::get('/detail-guest/{id}', 'TransactionController@getDetailUserTransactionNoAccount')->name('transaction.detail-guest');
 
     });
     Route::group(['prefix' => 'inventory'], function(){
@@ -87,8 +87,8 @@ Route::group(['middleware' => ['web','auth:admin'], 'prefix' => 'admin', 'namesp
     });
     Route::group(['prefix' => 'user-admin'], function(){
         Route::get('', 'UserController@indexAction')->name('user-admin');
-        Route::get('user-admin-detail/{id}', 'UserController@detailAction')->name('user-admin.detail');
-        Route::post('user-admin-change-status', 'UserController@changeStatusAction')->name('user-admin.change-status');
+        Route::get('/user-admin-detail/{id}', 'UserController@detailAction')->name('user-admin.detail');
+        Route::post('/user-admin-change-status', 'UserController@changeStatusAction')->name('user-admin.change-status');
     });
     Route::group(['prefix' => 'revenue'], function(){
         Route::get('', 'RevenueController@indexAction')->name('revenue');
@@ -108,9 +108,9 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
     Route::get('/', 'HomeController@index')->name('home');
     Route::group(['prefix' => 'cart'], function(){
         Route::get('', 'CartController@index')->name('cart');
-        Route::post('add-cart', 'CartController@add')->name('cart.add');
-        Route::post('update-cart', 'CartController@update')->name('cart.update');
-        Route::get('destroy/{id}/route/{route}/product/{product_id}', 'CartController@destroy')->name('cart.destroy');
+        Route::post('/add-cart', 'CartController@add')->name('cart.add');
+        Route::post('/update-cart', 'CartController@update')->name('cart.update');
+        Route::get('/destroy/{id}/route/{route}/product/{product_id}', 'CartController@destroy')->name('cart.destroy');
 
     });
     Route::group(['prefix' => 'tin-tuc'], function(){
@@ -125,8 +125,8 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
     });
     Route::group(['prefix' => 'order'], function(){
         Route::get('/', 'OrderController@index')->name('order');
-        Route::post('order-cart', 'OrderController@orderCartAction')->name('order.order-cart');
-        Route::get('order-success', 'OrderController@orderSuccess')->name('order.order-success');
+        Route::post('/order-cart', 'OrderController@orderCartAction')->name('order.order-cart');
+        Route::get('/order-success', 'OrderController@orderSuccess')->name('order.order-success');
 
     });
     Route::group(['prefix' => 'province'], function(){
@@ -138,10 +138,10 @@ Route::group(['middleware' => ['web'], 'prefix' => '', 'namespace' => 'Frontend'
 
     Route::group(['prefix'=>'the-loai'], function (){
         Route::get('/', 'CategoryController@index')->name('the-loai');
-        Route::get('the-loai/{id}_{slug}.html', 'CategoryController@category')->name('the-loai.the-loai');
-        Route::get('dong-ho-nam.html', 'CategoryController@getListItemTypeMale')->name('the-loai.male');
-        Route::get('dong-ho-nu.html', 'CategoryController@getListItemTypeFeMale')->name('the-loai.female');
-        Route::get('dong-ho-doi.html', 'CategoryController@getListItemTypeDouble')->name('the-loai.double');
-        Route::get('search-item.html', 'CategoryController@searchProduct')->name('the-loai.search');
+        Route::get('/the-loai/{id}_{slug}.html', 'CategoryController@category')->name('the-loai.the-loai');
+        Route::get('/dong-ho-nam.html', 'CategoryController@getListItemTypeMale')->name('the-loai.male');
+        Route::get('/dong-ho-nu.html', 'CategoryController@getListItemTypeFeMale')->name('the-loai.female');
+        Route::get('/dong-ho-doi.html', 'CategoryController@getListItemTypeDouble')->name('the-loai.double');
+        Route::get('/search-item.html', 'CategoryController@searchProduct')->name('the-loai.search');
     });
 });

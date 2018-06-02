@@ -10,8 +10,9 @@
     html{
         background: white!important;
     }
+    /**/
     div.footer-2{
-        background-color: #f74d18 !important;
+        border-top: 5px solid #f21c0c !important;
     }
     div.absolute-footer {
         background-color: #f21c0c !important;

@@ -22,6 +22,12 @@ class WardTable extends Model
         return $this->pluck('name', 'ward_id')->toArray();
     }
     public function getWardOptionIdDistrict($idDistrict){
+         if($idDistrict < 10){
+             $idDistrict = '00'.$idDistrict;
+         }
+         if($idDistrict < 100 && $idDistrict >= 10) {
+             $idDistrict = '0'.$idDistrict;
+         }
         return $this->from($this->table)->where('district_id', $idDistrict)->get()->pluck('name','ward_id');
     }
 }

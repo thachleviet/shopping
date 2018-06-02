@@ -121,7 +121,7 @@
                                         </div>
 
                                         <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                            <a class="quick-view"  href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
+                                            <a   href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}">Xem nhanh</a>
                                         </div>
                                     </div>
                                     <!-- box-image -->

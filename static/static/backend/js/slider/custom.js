@@ -14,14 +14,8 @@ var Slide = {
             if (result)
             {
                 $.get(laroute.route('slide.destroy', {id:id}), function(data) {
-                    console.log(data);
-                    swal(
-                        'Deleted!',
-                        data.option.messages,
-                        'success'
-                    );
-                    $(obj).closest('tr').remove().draw();
-                    location.reload();
+
+                    window.location.reload();
 
                 });
             }

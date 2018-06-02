@@ -13,7 +13,29 @@ class Product extends Model
 
 
     public function getAll(){
-        return $this->orderBy('id', 'desc')->paginate();
+        return $this->select('p.id',
+            'p.slug',
+            'p.product_keyword',
+            'p.product_menu_id',
+            'p.product_name',
+            'p.product_content',
+            'p.product_alias',
+            'p.product_image',
+            'p.product_price',
+            'p.product_discount',
+            'p.product_type',
+            'p.created_at',
+            'p.updated_at',
+            'p.product_status',
+            'm.menu_name'
+        )
+        ->from($this->table.' as p')
+        ->join('menu as m',
+              'm.id','=',
+            'p.product_menu_id'
+        )
+        ->orderBy('id', 'desc')
+        ->paginate();
     }
 
     public function store(array  $attribute){
@@ -35,6 +57,13 @@ class Product extends Model
         return $this->where('id', (int)$id)->delete();
     }
 
+    public function deleteIn($id)
+    {
+        return $this->where('product_menu_id' , (int)$id)->delete();
+    }
 
+    public function getListItemIn($id){
+        return $this->where('product_menu_id' , (int)$id)->get();
+    }
 
 }

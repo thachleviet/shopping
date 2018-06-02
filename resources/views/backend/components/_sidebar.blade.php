@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{asset('static')}}/main/avatar/img_avatar2.png" class="img-circle" alt="User Image">
+                <img src="{{asset('static/static')}}/main/avatar/img_avatar2.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>Admin</p>
@@ -26,7 +26,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li >
-                <a href="{{route('admin')}}">
+                <a href="{{url('admin')}}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>

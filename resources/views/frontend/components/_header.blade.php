@@ -240,7 +240,7 @@
                         <li id="menu-item-45"
                             class="menu-item menu-item-type-post_type menu-item-object-post  menu-item-45">
 
-                            <a href="{{route('tin-tuc.guide', $Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
+                            <a href='{{($Guide['id']) ? route('tin-tuc.guide', $Guide['id']) : 'javascript:void(0)'}}' class="nav-top-link">Giới thiệu</a></li>
                         <li id="menu-item-33"
                             class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-33 has-dropdown">
                             <a href='javascript:void(0)' class="nav-top-link">DANH MỤC SẢN PHẨM<i

@@ -60,13 +60,13 @@
                                         <div class="flex-col mr-half">
                                             <div class="badge post-date badge-small badge-outline">
                                                 <div class="badge-inner bg-fill">
-                                                    <span class="post-date-day">03</span><br>
-                                                    <span class="post-date-month is-xsmall">Th5</span>
+                                                    <span class="post-date-day">{{date('d', strtotime($item['created_at']))}}</span><br>
+                                                    <span class="post-date-month is-xsmall">{{date('m', strtotime($item['created_at']))}}</span>
                                                 </div>
                                             </div>
                                         </div><!-- .flex-col -->
                                         <div class="flex-col flex-grow">
-                                            <a href="{{route('news.detail', $item['id'])}}" title="{{$item['product_name']}}">[Xem] {{\Illuminate\Support\Str::words($item['new_title'],50)}}</a>
+                                            <a href="{{route('tin-tuc.detail', $item['id'])}}" title="{{$item['product_name']}}">[Xem] {{\Illuminate\Support\Str::words($item['new_title'],50)}}</a>
                                             <span class="post_comments oppercase op-7 block is-xsmall">
                                                 <a href="{{route('san-pham.detail', [$item['id'], $item['slug']])}}" title="{{$item['product_name']}}">
 

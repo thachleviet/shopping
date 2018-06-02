@@ -1,7 +1,7 @@
 @extends('backend.layouts')
 @section('after_style')
-    <link rel="stylesheet" href="{{asset('static')}}/main/css/icheck/orange.css">
-    <link rel="stylesheet" href="{{asset('backend')}}/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="{{asset('static/static')}}/main/css/icheck/orange.css">
+    <link rel="stylesheet" href="{{asset('static/backend')}}/bower_components/select2/dist/css/select2.min.css">
 @stop
 @section('content')
     <style>
@@ -114,9 +114,12 @@
                                                     <span class="help-block">{{ $errors->first('new_title')}}</span>
                                                 @endif
                                             </div>
-                                            <div class="col-md-9 col-md-offset-2 form-group "  >
+                                            <div class="col-md-9 col-md-offset-2 form-group {{($errors->has('new_description')) ? 'has-error': ''}}"  >
                                                 <label >Mô tả</label>
                                                 <textarea style="height: 200px" class=" form-control" name="new_description" id="new" placeholder="Nhập mô tả"></textarea>
+                                                @if ($errors->has('new_description'))
+                                                    <span class="help-block">{{ $errors->first('new_description')}}</span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +158,7 @@
 @section('after_script')
 
 
-    <script src="{{asset('js')}}/jquery.validate.min.js"></script>
+    <script src="{{asset('static/js')}}/jquery.validate.min.js"></script>
 
 
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>

@@ -39,6 +39,7 @@
                     <td>
                         {{$_object['address']}}
                     </td>
+                    <td class="text-center">{{\Carbon\Carbon::parse($_object['created_at'])->format('d/m/Y H:i')}}</td>
                     <td class="text-center">
                         <a href="{{route('config.edit', $_object['id'])}}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Chỉnh sửa</a>
                     </td>

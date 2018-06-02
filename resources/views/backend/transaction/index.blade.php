@@ -1,6 +1,6 @@
 @extends('backend.layouts')
 @section('after_style')
-    <link rel="stylesheet" href="{{asset('css')}}/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="{{asset('static/css')}}/bootstrap-toggle.min.css">
 
 @stop
 @section('content')
@@ -47,13 +47,13 @@
 @endsection
 @section('after_script')
 
-    <script src="{{asset('backend')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
-    <script src="{{asset('js')}}/bootstrap-toggle.min.js"></script>
-    <script src="{{asset('static/backend')}}/js/transaction/custom.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+    <script src="{{asset('static/js')}}/bootstrap-toggle.min.js"></script>
+    <script src="{{asset('static/static/backend')}}/js/transaction/custom.js"></script>
     <script>
         let table = $('#tb_transaction').DataTable( {
             responsive: true,

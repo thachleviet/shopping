@@ -18,11 +18,11 @@ class Menu extends Model
     protected $fillable = ['id','slug', 'menu_name', 'menu_level', 'menu_status', 'menu_type', 'created_at', 'updated_at'];
 
     public function getListMenuType($type){
-       return $this->where('menu_type', $type)->get();
+       return $this->where('menu_status', 1)->where('menu_type', $type)->get();
     }
 
     public function getListMenuOfId($id){
-        return $this->where('id', $id)->paginate(12);
+        return $this->where('menu_status', 1)->where('id', $id)->paginate(12);
     }
 
     public function getItem($id){
@@ -45,6 +45,8 @@ class Menu extends Model
         )
         ->from('product as p')
         ->join($this->table.' as menu','menu.id', '=', 'p.product_menu_id')
+        ->where('menu_status', 1)
+        ->where('product_status', 1)
         ->where('menu_name', 'like', '%' . $param . '%');
         if($isPagination){
 

@@ -1,6 +1,6 @@
 @extends('backend.layouts')
 @section('after_style')
-    <link rel="stylesheet" href="{{asset('css')}}/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="{{asset('static/css')}}/bootstrap-toggle.min.css">
 
 @stop
 @section('content')

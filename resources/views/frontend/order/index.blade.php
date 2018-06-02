@@ -294,6 +294,6 @@
 @endsection
 @section('after_script')
 
-    <script src="{{asset('frontend/js/jquery.min.js?v='.time())}}"></script>
+    <script src="{{asset('static/frontend/js/jquery.min.js?v='.time())}}"></script>
 
 @stop

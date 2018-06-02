@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2018 at 06:31 AM
+-- Generation Time: Jun 02, 2018 at 02:49 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -54,19 +54,6 @@ INSERT INTO `admin` (`id`, `name`, `email`, `phone`, `gender`, `avatar`, `ward_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `config`
---
-
-CREATE TABLE `config` (
-  `id` int(11) NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` enum('footer','introcduce','logo','phone') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `configs`
 --
 
@@ -90,7 +77,7 @@ CREATE TABLE `configs` (
 --
 
 INSERT INTO `configs` (`id`, `name`, `title`, `header`, `phone`, `footer`, `link_fanpage`, `address`, `map`, `time_open`, `created_at`, `updated_at`) VALUES
-(1, 'GOLD TIME WATCH', 'GOLD TIME WATCH – Hệ thống đồng hồ hiệu chính hãng', 'Quận 1 Thành phố Hồ Chí Minh', 934761245, 'Copyright 2018 © <strong>Goldtime Watch</strong>', 'https://www.facebook.com/thach.viet.5', 'Đại học Giao thông vận tải thành phố Hồ Chí Minh, Đường D3, Bình Thạnh, Hồ Chí Minh', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0834603091607!2d106.71456031435069!3d10.804919692302228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a40f323173%3A0x7a7006b269783a40!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHaWFvIHRow7RuZyB24bqtbiB04bqjaSBUUC5I4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1527905620356\" width=\"600\" height=\"250\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '9h00 -  23h00', '0000-00-00 00:00:00', '2018-06-01 19:18:18');
+(1, 'GOLD TIME WATCH', 'GOLD TIME WATCH – Hệ thống đồng hồ hiệu chính hãng', 'Quận 1 Thành phố Hồ Chí Minh', 934761245, 'Copyright 2018 © <strong>Goldtime Watch</strong>', 'https://www.facebook.com/thach.viet.5', 'Đại học Giao thông vận tải thành phố Hồ Chí Minh, Đường D3, Bình Thạnh, Hồ Chí Minh', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0834603091607!2d106.71456031435069!3d10.804919692302228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a40f323173%3A0x7a7006b269783a40!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHaWFvIHRow7RuZyB24bqtbiB04bqjaSBUUC5I4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1527905620356\" width=\"600\" height=\"250\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', '9h00 -  23h00', '2018-06-01 17:00:00', '2018-06-02 03:46:06');
 
 -- --------------------------------------------------------
 
@@ -99,12 +86,12 @@ INSERT INTO `configs` (`id`, `name`, `title`, `header`, `phone`, `footer`, `link
 --
 
 CREATE TABLE `district` (
-  `district_id` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `location` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `province_id` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `district_id` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `location` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `province_id` varchar(5) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `district`
@@ -847,7 +834,17 @@ INSERT INTO `image_product` (`image_id`, `product_id`, `image_title`, `image_pro
 (24, 41, NULL, 'uploads/31527825368_01_06_2018_images.jpg', '2018-06-01 03:56:08', '0000-00-00 00:00:00'),
 (25, 42, NULL, 'uploads/01527825456_01_06_2018_images.jpg', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
 (26, 42, NULL, 'uploads/11527825456_01_06_2018_images.jpg', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
-(27, 42, NULL, 'uploads/21527825456_01_06_2018_images.jpg', '2018-06-01 03:57:36', '0000-00-00 00:00:00');
+(27, 42, NULL, 'uploads/21527825456_01_06_2018_images.jpg', '2018-06-01 03:57:36', '0000-00-00 00:00:00'),
+(29, 45, NULL, 'uploads/01527920451_02_06_2018_images.jpg', '2018-06-02 06:20:51', '0000-00-00 00:00:00'),
+(30, 46, NULL, 'uploads/01527928261_02_06_2018_images.jpg', '2018-06-02 08:31:01', '0000-00-00 00:00:00'),
+(31, 46, NULL, 'uploads/11527928261_02_06_2018_images.jpg', '2018-06-02 08:31:01', '0000-00-00 00:00:00'),
+(32, 46, NULL, 'uploads/21527928261_02_06_2018_images.jpg', '2018-06-02 08:31:01', '0000-00-00 00:00:00'),
+(33, 46, NULL, 'uploads/31527928261_02_06_2018_images.jpg', '2018-06-02 08:31:01', '0000-00-00 00:00:00'),
+(34, 47, NULL, 'uploads/01527931682_02_06_2018_images.jpg', '2018-06-02 09:28:02', '0000-00-00 00:00:00'),
+(35, 47, NULL, 'uploads/11527931682_02_06_2018_images.jpg', '2018-06-02 09:28:02', '0000-00-00 00:00:00'),
+(36, 47, NULL, 'uploads/21527931682_02_06_2018_images.jpg', '2018-06-02 09:28:02', '0000-00-00 00:00:00'),
+(37, 47, NULL, 'uploads/31527931682_02_06_2018_images.jpg', '2018-06-02 09:28:02', '0000-00-00 00:00:00'),
+(38, 47, NULL, 'uploads/41527931682_02_06_2018_images.jpg', '2018-06-02 09:28:02', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -872,11 +869,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `menu_name`, `menu_level`, `menu_status`, `menu_type`, `menu_option`, `created_at`, `updated_at`, `slug`) VALUES
-(22, 'BENTLEYH', 0, 1, 'product', 'male', '2018-06-01 03:27:45', '2018-06-01 17:46:20', 'bentleyh'),
-(23, 'OLYM PIANUSV', 0, 1, 'product', 'male', '2018-06-01 03:27:59', '2018-06-01 17:46:13', 'olym-pianusv'),
-(24, 'OLYMPIA STARE', 0, 1, 'product', 'male', '2018-06-01 03:28:12', '2018-06-01 17:46:05', 'olympia-stare'),
-(25, 'OGIVAL2', 0, 1, 'product', 'male', '2018-06-01 03:28:28', '2018-06-01 17:45:50', 'ogival2'),
-(26, 'LOTUSMAN', 0, 1, 'product', 'male', '2018-06-01 03:28:46', '2018-06-01 17:45:56', 'lotusman');
+(27, 'OGIVAL2', 0, 1, 'product', 'male', '2018-06-02 08:05:54', '2018-06-02 08:06:00', 'ogival2');
 
 -- --------------------------------------------------------
 
@@ -904,7 +897,7 @@ CREATE TABLE `new` (
 --
 
 INSERT INTO `new` (`id`, `new_name`, `new_image`, `new_title`, `new_description`, `new_content`, `new_view_count`, `menu_id`, `new_status`, `new_type`, `created_at`, `updated_at`) VALUES
-(2, '', 'uploads/1527823297_01_06_2018_new_image.jpg', 'Toàn cảnh vụ MC Minh Tiệp bị tố bạo hành em vợ suốt 5 năm', 'Hoàng anh tuấn anh  12332', '<p>Ho&agrave;ng anh tuấn anh 12332</p>', 0, 0, 1, 'guide', '2018-06-01 13:36:45', '2018-06-01 06:36:45');
+(3, '', 'uploads/1527929871_02_06_2018_new_image.jpg', 'Giới thiệu', 'Giới thiệu', '<p><strong>Về ch&uacute;ng t&ocirc;i :</strong></p>\r\n<p>Cảm ơn bạn v&igrave; bạn đ&atilde; &ldquo;đặt ch&acirc;n&rdquo; tới đ&acirc;y ! Gold Time Watch muốn c&ugrave;ng bạn chia sẻ những điều ch&acirc;n th&agrave;nh nhất !</p>\r\n<p>V&agrave;o năm 2014 Gold time Watch được th&agrave;nh lập bởi sự t&acirc;m huyết v&agrave; y&ecirc;u th&iacute;ch của những người trẻ với những &ldquo;cỗ m&aacute;y thời gian&rdquo; của Thế Giới. Với xuất ph&aacute;t điểm kh&ocirc;ng hề cao về vốn, ch&uacute;ng t&ocirc;i đ&atilde; c&ugrave;ng nhau trải qua những giai đoạn kh&oacute; khăn của &ldquo; đam m&ecirc; v&agrave; khởi nghiệp&rdquo;, ch&uacute;ng t&ocirc;i hiểu rằng, &ldquo;gi&aacute; trị thật&rdquo; sẽ gi&uacute;p Gold time Watch tồn tại v&agrave; ph&aacute;t triển. Loại bỏ tất cả c&aacute;c h&agrave;ng Fake, chỉ b&aacute;n h&agrave;ng ch&iacute;nh h&atilde;ng với chất lượng tương xứng với gi&aacute; tiền, Gold time Watch đ&atilde; l&agrave;m như vậy v&agrave; trở th&agrave;nh 1 trong những địa chỉ tin cậy của h&agrave;ng ngh&igrave;n kh&aacute;ch h&agrave;ng mong muốn sở hữu một chiếc đồng hồ ch&iacute;nh h&atilde;ng.</p>\r\n<p>Gold time Watch cũng hiểu được rằng, kh&ocirc;ng phải bất cứ ai cũng c&oacute; thể c&oacute; điều kiện để sở hữu những chiếc đồng hồ &ldquo;hiệu&rdquo; đắt đỏ. Nhưng nếu bạn kh&ocirc;ng c&oacute; điều kiện, bạn sẽ phải từ bỏ đam m&ecirc; n&agrave;y sao ? Tất nhi&ecirc;n l&agrave; KH&Ocirc;NG, v&igrave; ch&uacute;ng t&ocirc;i sẽ gi&uacute;p bạn !</p>\r\n<p>Tại Gold time Watch, ch&uacute;ng t&ocirc;i lựa chọn những thương hiệu trung cấp v&agrave; &nbsp;cao cấp, đi s&acirc;u v&agrave;o từng ph&acirc;n kh&uacute;c gi&aacute;, đa dạng về mẫu m&atilde;..gi&uacute;p bạn c&oacute; thể lựa chọn thoải m&aacute;i trong tầm điều kiện kinh tế của m&igrave;nh. Những thương hiệu được ch&uacute;ng t&ocirc;i ph&acirc;n phối c&oacute; thể kể đến như : Olym Pianus (OP), Olympia Star (OPA), Ogival Swiss, Tissot, ORIENT, SEIKO, Citizen&hellip;Trong đ&oacute;, OP như một lựa chọn ho&agrave;n hảo với độ nổi tiếng v&igrave; chất lượng trong khi gi&aacute; th&agrave;nh v&ocirc; c&ugrave;ng hợp l&yacute;.</p>\r\n<p><img class=\"size-medium wp-image-969 aligncenter\" src=\"http://donghogoldtime.vn/wp-content/uploads/2017/11/z793146529955_5ab52d696bb0eb02e2d267275f45d446-300x135.jpg\" sizes=\"(max-width: 300px) 100vw, 300px\" srcset=\"http://donghogoldtime.vn/wp-content/uploads/2017/11/z793146529955_5ab52d696bb0eb02e2d267275f45d446-300x135.jpg 300w, http://donghogoldtime.vn/wp-content/uploads/2017/11/z793146529955_5ab52d696bb0eb02e2d267275f45d446-768x347.jpg 768w, http://donghogoldtime.vn/wp-content/uploads/2017/11/z793146529955_5ab52d696bb0eb02e2d267275f45d446-1024x462.jpg 1024w\" alt=\"\" width=\"300\" height=\"135\" /></p>\r\n<p>Bạn c&oacute; thắc mắc ? Tại sao ch&uacute;ng t&ocirc;i l&agrave; &ldquo;Gold Time Watch&rdquo;?</p>\r\n<p>Người xưa c&oacute; c&acirc;u &ldquo; thời gian l&agrave; v&agrave;ng l&agrave; bạc&rdquo;, ch&uacute;ng t&ocirc;i hiểu khi bạn đeo tr&ecirc;n tay một chiếc đồng hồ, bạn đ&atilde; tr&acirc;n trọng quỹ thời gian của ch&iacute;nh m&igrave;nh. Gold time Watch đem lại một &ldquo; cỗ m&aacute;y thời gian&rdquo; tốt, đồng nghĩa với việc, ch&uacute;ng t&ocirc;i tr&acirc;n trọng thời gian của bạn &ndash; kho b&aacute;u v&ocirc; h&igrave;nh của mỗi người.</p>\r\n<p>Trong bộ nhận diện thương hiệu của Gold time Watch, bạn c&oacute; thể dễ d&agrave;ng nh&igrave;n thấy &ldquo;Chronos&rdquo;. Chronos hay n&oacute;i ch&iacute;nh x&aacute;c l&agrave; biến thể của titan Cronus l&agrave; Cha Thời Gian (Father Time), &ocirc;ng l&agrave; vị thần đ&oacute;ng&nbsp; vai tr&ograve; to lớn trong việc truyền tải &yacute; nghĩa về thời gian hay những cảm hứng nghệ thuật khi chế t&aacute;c trong thế giới đồng hồ. &Ocirc;ng c&ugrave;ng phu nh&acirc;n của m&igrave;nh cũng đ&atilde; tạo n&ecirc;n định nghĩa về thời gian v&agrave; số phận.</p>\r\n<p><img class=\" wp-image-850 aligncenter\" src=\"http://donghogoldtime.vn/wp-content/uploads/2017/07/chronos-vi-than-thoi-gian-cua-hy-lap-va-the-gioi-dong-ho-elgin-300x219.jpg\" sizes=\"(max-width: 300px) 100vw, 300px\" srcset=\"http://donghogoldtime.vn/wp-content/uploads/2017/07/chronos-vi-than-thoi-gian-cua-hy-lap-va-the-gioi-dong-ho-elgin-300x219.jpg 300w, http://donghogoldtime.vn/wp-content/uploads/2017/07/chronos-vi-than-thoi-gian-cua-hy-lap-va-the-gioi-dong-ho-elgin-768x561.jpg 768w, http://donghogoldtime.vn/wp-content/uploads/2017/07/chronos-vi-than-thoi-gian-cua-hy-lap-va-the-gioi-dong-ho-elgin.jpg 822w\" alt=\"\" width=\"300\" height=\"219\" /></p>\r\n<p>Với tất cả những biểu tượng gi&aacute; trị nhất, ch&uacute;ng t&ocirc;i đặt v&agrave;o thương hiệu của ch&iacute;nh m&igrave;nh. Gold time Watch mong muốn đem lại cho kh&aacute;ch h&agrave;ng những sản phẩm gi&aacute; trị nhất, c&ugrave;ng với đ&oacute; ch&uacute;ng t&ocirc;i hi vọng những điều may mắn v&agrave; tốt đẹp sẽ đến với bạn !</p>\r\n<p>Gold time Watch xin ch&acirc;n th&agrave;nh cảm ơn v&igrave; sự quan t&acirc;m của bạn ! Hy vọng rằng ch&uacute;ng t&ocirc;i sẽ gi&uacute;p bạn c&oacute; được chiếc đồng hồ thật ưng &yacute; !</p>\r\n<p>&bull; Website http://donghogoldtime.vn cung cấp đầy đủ kiến thức đồng hồ, hướng dẫn sử dụng,&hellip;.trở th&agrave;nh đ&iacute;ch đến tin tưởng cho những ai muốn t&igrave;m hiểu về đồng hồ.<br />Đi l&ecirc;n từ con số 0, GOLD TIME WATCH hiểu cần phải cố gắng nhiều hơn khi trước mắt c&oacute; v&ocirc; số đối thủ lớn mạnh.<br />Kh&ocirc;ng chỉ n&oacute;i, GOLD TIME WATCH l&agrave;m thật.:<br />&ldquo;Bảo h&agrave;nh 3 &ndash; 5 năm cả lỗi người d&ugrave;ng&rdquo;<br />H&ocirc;̃ trợ bảo hành mi&ecirc;̃n phí trọn đời<br />Đ&ocirc;̣i ngũ kĩ thu&acirc;̣t đã có tr&ecirc;n 20 năm kinh nghi&ecirc;̣m trong sửa chữa, bảo hành đ&ocirc;̀ng h&ocirc;̀<br />NÓI KH&Ocirc;NG VỚI Đ&Ocirc;̀NG H&Ocirc;̀ FAKE, CHỈ BÁN Đ&Ocirc;̀NG H&Ocirc;̀ CHÍNH HÃNG<br />GOLD TIME WATCH lu&ocirc;n xác định rõ ràng ngu&ocirc;̀n g&ocirc;́c, ch&acirc;́t lượng sản ph&acirc;̉m mình bán, quy&ecirc;́t t&acirc;m kh&ocirc;ng đ&ecirc;̉ hàng giả, hàng kém ch&acirc;́t lượng s&ocirc;́ng sót tr&ecirc;n thị trường đ&ocirc;̀ng h&ocirc;̀, với kh&acirc;̉u hi&ecirc;̣u:<br />&ldquo; Khai tử đồng hồ Fake&rdquo;, &ldquo; B&agrave;i trừ gian thương&rdquo;, &ldquo; V&igrave; một thị trường đồng hồ sạch&rdquo;!</p>', 0, 0, 1, 'guide', '2018-06-02 10:54:46', '2018-06-02 03:54:46');
 
 -- --------------------------------------------------------
 
@@ -920,44 +913,6 @@ CREATE TABLE `order` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `order`
---
-
-INSERT INTO `order` (`order_id`, `product_id`, `transaction_id`, `count_order`, `created_at`, `updated_at`) VALUES
-(1, 33, 2, 7, '0000-00-00 00:00:00', NULL),
-(2, 33, 3, 7, '0000-00-00 00:00:00', NULL),
-(3, 31, 4, 1, '0000-00-00 00:00:00', NULL),
-(4, 31, 5, 7, '0000-00-00 00:00:00', NULL),
-(5, 31, 5, 7, '0000-00-00 00:00:00', NULL),
-(6, 31, 6, 19, '0000-00-00 00:00:00', NULL),
-(7, 36, 7, 5, '0000-00-00 00:00:00', NULL),
-(8, 35, 7, 1, '0000-00-00 00:00:00', NULL),
-(9, 36, 8, 5, '0000-00-00 00:00:00', NULL),
-(10, 35, 8, 1, '0000-00-00 00:00:00', NULL),
-(11, 36, 9, 5, '0000-00-00 00:00:00', NULL),
-(12, 35, 9, 1, '0000-00-00 00:00:00', NULL),
-(13, 35, 10, 5, '0000-00-00 00:00:00', NULL),
-(14, 38, 10, 4, '0000-00-00 00:00:00', NULL),
-(15, 37, 10, 10, '0000-00-00 00:00:00', NULL),
-(16, 35, 11, 5, '0000-00-00 00:00:00', NULL),
-(17, 38, 11, 4, '0000-00-00 00:00:00', NULL),
-(18, 37, 11, 10, '0000-00-00 00:00:00', NULL),
-(19, 35, 12, 5, '0000-00-00 00:00:00', NULL),
-(20, 38, 12, 4, '0000-00-00 00:00:00', NULL),
-(21, 37, 12, 10, '0000-00-00 00:00:00', NULL),
-(22, 35, 13, 2, '0000-00-00 00:00:00', NULL),
-(23, 35, 14, 2, '0000-00-00 00:00:00', NULL),
-(24, 35, 15, 2, '0000-00-00 00:00:00', NULL),
-(25, 35, 16, 2, '0000-00-00 00:00:00', NULL),
-(26, 35, 17, 1, '0000-00-00 00:00:00', NULL),
-(27, 38, 18, 3, '0000-00-00 00:00:00', NULL),
-(28, 35, 19, 2, '0000-00-00 00:00:00', NULL),
-(29, 35, 20, 1, '0000-00-00 00:00:00', NULL),
-(30, 35, 21, 1, '0000-00-00 00:00:00', NULL),
-(31, 35, 22, 1, '0000-00-00 00:00:00', NULL),
-(32, 35, 23, 3, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -990,14 +945,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `menu_id`, `product_menu_id`, `product_trade_make_id`, `product_name`, `slug`, `product_keyword`, `product_alias`, `product_image`, `product_price`, `product_discount`, `product_content`, `product_description`, `product_type`, `created_at`, `updated_at`, `product_status`) VALUES
-(35, 0, 22, 0, 'BL1684-20471M-K', 'bl1684-20471m-k', NULL, '', 'uploads/1527824038_01_06_2018_product_image.jpg', 4900000, 3, NULL, '', 'male', '2018-06-01 14:25:10', '2018-06-01 14:25:10', 1),
-(36, 0, 22, 0, 'BL1684-20471K', 'bl1684-20471k', 'Đồng hồ đẹp', '', 'uploads/1527824239_01_06_2018_product_image.jpg', 5000000, 0, NULL, '', 'male', '2018-06-01 14:25:20', '2018-06-01 14:25:20', 0),
-(37, 0, 23, 0, 'OP130-03MS-G6', 'op130-03ms-g6', 'Đồng hồ đẹp', '', 'uploads/1527824302_01_06_2018_product_image.jpg', 10000000, 10, NULL, '', 'female', '2018-06-01 16:57:59', '2018-06-01 16:57:59', 1),
-(38, 0, 22, 0, 'OPA28019DLK', 'opa28019dlk', 'Đồng hồ đẹp', '', 'uploads/1527824896_01_06_2018_product_image.jpg', 1000000, 0, NULL, '', 'male', '2018-06-01 15:09:36', '2018-06-01 15:09:36', 1),
-(39, 0, 22, 0, 'BL1684-20471M', 'bl1684-20471m', 'Đồng hồ đẹp', '', 'uploads/1527825152_01_06_2018_product_image.jpg', 21312300, 0, NULL, '', 'female', '2018-06-01 14:24:57', '2018-06-01 14:24:57', 1),
-(40, 0, 22, 0, 'BL1694-10KWIP', 'bl1694-10kwip', 'Đồng hồ đẹp', '', 'uploads/1527825275_01_06_2018_product_image.jpg', 5000000, 12, NULL, '', 'male', '2018-06-01 14:24:46', '2018-06-01 14:24:46', 1),
-(41, 0, 22, 0, 'BL1694-10KW', 'bl1694-10kw', 'Đồng hồ đẹp', '', 'uploads/1527825368_01_06_2018_product_image.jpg', 10000000, 0, NULL, '', 'male', '2018-06-01 14:24:35', '2018-06-01 14:24:35', 1),
-(42, 0, 22, 0, 'BL1694-10WBI', 'bl1694-10wbi', 'Đồng hồ đẹp', '', 'uploads/1527825456_01_06_2018_product_image.jpg', 30000000, 0, NULL, '', 'double', '2018-06-01 16:55:54', '2018-06-01 16:55:54', 1);
+(48, 0, 27, 0, 'BL1694-10WBI', 'bl1694-10wbi', '12222', '', 'uploads/1527931870_02_06_2018_product_image.jpg', 35333300, 2, NULL, '', 'male', '2018-06-02 09:31:10', '2018-06-02 09:31:10', 1);
 
 -- --------------------------------------------------------
 
@@ -1056,7 +1004,14 @@ INSERT INTO `product_attribute` (`id`, `product_id`, `key`, `value`, `created_at
 (270, 42, 'Dòng sản phẩm 4', 'T-Heritage 4', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
 (271, 42, 'Dòng sản phẩm 5', 'T-Heritage 5', '2018-06-01 16:55:54', '0000-00-00 00:00:00'),
 (272, 37, 'Nhãn hiệu', 'T-Heritage', '2018-06-01 16:57:59', '0000-00-00 00:00:00'),
-(273, 37, 'Xuất xứ', 'Hàn Quốc', '2018-06-01 16:57:59', '0000-00-00 00:00:00');
+(273, 37, 'Xuất xứ', 'Hàn Quốc', '2018-06-01 16:57:59', '0000-00-00 00:00:00'),
+(281, 46, 'Nhãn hiệu', 'Bentley', '2018-06-02 08:32:49', '0000-00-00 00:00:00'),
+(282, 46, 'Xuất xứ', 'Germany (Đức)', '2018-06-02 08:32:49', '0000-00-00 00:00:00'),
+(283, 46, 'Kiểu máy', 'CHRONOGRAPH', '2018-06-02 08:32:49', '0000-00-00 00:00:00'),
+(284, 46, 'Đồng hồ dành cho', 'Nam', '2018-06-02 08:32:49', '0000-00-00 00:00:00'),
+(285, 46, 'Kích cỡ', '43.0mm X 51.2mm', '2018-06-02 08:32:49', '0000-00-00 00:00:00'),
+(286, 46, 'Chất liệu vỏ', 'Thép không gỉ/Mạ PVD', '2018-06-02 08:32:49', '0000-00-00 00:00:00'),
+(287, 46, 'Chất liệu dây', 'Dâu da', '2018-06-02 08:32:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1162,12 +1117,11 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`id`, `slider_image`, `slider_name`, `slider_title`, `slider_status`, `slider_type`, `created_at`, `updated_at`) VALUES
-(8, 'uploads/1527722634_30_05_2018_slider_image.jpg', NULL, '2321', 1, 'slide', '2018-05-30 23:26:40', '2018-05-30 16:26:40'),
-(10, 'uploads/1527727842_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'slide', '2018-05-31 00:50:42', '2018-05-30 17:50:42'),
-(11, 'uploads/1527727857_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'slide', '2018-05-30 17:50:57', '0000-00-00 00:00:00'),
-(12, 'uploads/1527727868_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'qc', '2018-05-31 23:41:02', '2018-05-31 16:41:02'),
-(13, 'uploads/1527809035_31_05_2018_slider_image.jpg', 'Hoàng anh tuấn', '2321 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'logo', '2018-05-31 16:23:55', '0000-00-00 00:00:00'),
-(14, 'uploads/1527902714_02_06_2018_slider_image.pdf', 'ANh thuuw', 'CCCC', 1, 'slide', '2018-06-01 18:25:14', '0000-00-00 00:00:00');
+(10, 'uploads/1527727842_31_05_2018_slider_image.jpg', 'THƯƠNG HIỆU SỐ 2 NHẬT BẢN', 'Nơi đâu có ánh sáng-ở đó có năng lượng. Những cỗ máy nhai nuốt ánh sáng của thương hiệu người dân với nhiều ưu điểm vượt trội đã gây thương nhớ cho bao nam giới.', 1, 'qc', '2018-06-02 08:45:06', '2018-06-02 01:45:06'),
+(13, 'uploads/1527929356_02_06_2018_slider_image.jpg', 'THƯƠNG HIỆU SỐ 2 NHẬT BẢN', 'Nơi đâu có ánh sáng-ở đó có năng lượng. Những cỗ máy nhai nuốn', 1, 'slide', '2018-06-02 01:49:16', '0000-00-00 00:00:00'),
+(14, 'uploads/1527929373_02_06_2018_slider_image.jpg', 'THƯƠNG HIỆU SỐ 2 NHẬT BẢN', 'Nơi đâu có ánh sáng-ở đó có năng lượng. Những cỗ máy nhai nuốn', 1, 'slide', '2018-06-02 01:49:33', '0000-00-00 00:00:00'),
+(15, 'uploads/1527929384_02_06_2018_slider_image.jpg', 'THƯƠNG HIỆU SỐ 2 NHẬT BẢN', 'Nơi đâu có ánh sáng-ở đó có năng lượng. Những cỗ máy nhai nuốn', 1, 'slide', '2018-06-02 01:49:44', '0000-00-00 00:00:00'),
+(16, 'uploads/1527929705_02_06_2018_slider_image.jpg', 'THƯƠNG HIỆU SỐ 2 NHẬT BẢN', 'Nơi đâu có ánh sáng-ở đó có năng lượng. Những cỗ máy nhai nuốn', 1, 'logo', '2018-06-02 01:55:05', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1207,35 +1161,6 @@ CREATE TABLE `transaction` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`id`, `email_customer`, `phone_customer`, `fullname_customer`, `address_customer`, `transaction_amount`, `transaction_type`, `postcode_customer`, `transaction_note`, `transaction_status`, `ward_id`, `district_id`, `province_id`, `created_at`, `updated_at`) VALUES
-(1, '', 934761245, '', '525/4/14 Lê Trọng Tấn', 6300000, 'home', '', NULL, 0, '20284', '494', '48', '2018-05-30 09:58:41', NULL),
-(2, '', 934761245, '', '525/4/14 Lê Trọng Tấn', 6300000, 'home', '', NULL, 1, '20284', '494', '48', '2018-05-30 09:58:58', NULL),
-(3, '', 934761245, '', '525/4/14 Lê Trọng Tấn', 0, 'home', '', NULL, 1, '20284', '494', '48', '2018-05-30 10:00:28', NULL),
-(4, '', 934761245, '', '525/4/14 Lê Trọng Tấn', 1000000, 'home', '', NULL, 1, '6325', '185', '20', '2018-05-30 10:13:49', NULL),
-(5, '', 934761245, 'Lê Viết Thạch', '525/4/14 Lê Trọng Tấn', 7000000, 'home', '', NULL, 1, '23401', '612', '62', '2018-05-30 22:01:41', NULL),
-(6, '', 934761245, 'Lê Viết Thạch', '525/4/14 Lê Trọng Tấn', 19000000, 'home', '', NULL, 1, '7234', '215', '24', '2018-05-31 16:21:10', NULL),
-(7, '', 1697248153, 'LE VIET THACH', '292 Ung Van Khiem', 29753000, 'home', '', NULL, 0, '9292', '259', '27', '2018-06-01 13:42:53', NULL),
-(8, '', 1697248153, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '9292', '259', '27', '2018-06-01 13:49:38', NULL),
-(9, '', 1697248153, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '9292', '259', '27', '2018-06-01 13:50:16', NULL),
-(10, 'thachleviet@gmail.com', 1697248153, 'LE VIET THACH', 'Điện Biên Phủ', 117765000, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-01 23:51:04', NULL),
-(11, 'thachleviet@gmail.com', 1697248153, 'LE VIET THACH', 'Điện Biên Phủ', 0, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-01 23:52:32', NULL),
-(12, 'thachleviet@gmail.com', 1697248153, 'LE VIET THACH', 'Điện Biên Phủ', 0, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-02 00:05:05', NULL),
-(13, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 9506000, 'home', '', NULL, 0, '4924', '152', '17', '2018-06-02 00:06:40', NULL),
-(14, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '4924', '152', '17', '2018-06-02 00:06:59', NULL),
-(15, 'thachleviet@gmail.com', 924232323, 'LE VIET THACH', '292 Ung Van Khiem', 9506000, 'home', '', NULL, 0, '6385', '186', '20', '2018-06-02 00:11:47', NULL),
-(16, 'thachleviet@gmail.com', 924232323, 'LE VIET THACH', '292 Ung Van Khiem', 0, 'home', '', NULL, 0, '6385', '186', '20', '2018-06-02 00:12:52', NULL),
-(17, 'thachleviet@gmail.com', 2147483647, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '4303', '135', '15', '2018-06-02 00:13:27', NULL),
-(18, 'thachleviet@gmail.com', 935455454, 'LE VIET THACH', '292 Ung Van Khiem', 3000000, 'home', '', NULL, 0, '25516', '706', '72', '2018-06-02 00:17:07', NULL),
-(19, 'thachleviet@gmail.com', 934762323, 'LE VIET THACH', '292 Ung Van Khiem', 9506000, 'home', '', NULL, 0, '31342', '932', '93', '2018-06-02 00:19:21', NULL),
-(20, 'thachleviet@gmail.com', 2147483647, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '9247', '259', '27', '2018-06-02 00:21:10', NULL),
-(21, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '4924', '152', '17', '2018-06-02 00:27:31', NULL),
-(22, 'thachleviet@gmail.com', 934761235, 'LE VIET THACH', '292 Ung Van Khiem', 4753000, 'home', '', NULL, 0, '23824', '630', '64', '2018-06-02 00:28:44', NULL),
-(23, 'thachleviet@gmail.com', 935455454, 'LE VIET THACH', '292 Ung Van Khiem', 14259000, 'home', '', NULL, 0, '25777', '720', '74', '2018-06-02 00:30:51', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -1243,12 +1168,12 @@ INSERT INTO `transaction` (`id`, `email_customer`, `phone_customer`, `fullname_c
 --
 
 CREATE TABLE `ward` (
-  `ward_id` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `location` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `district_id` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `ward_id` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `location` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `district_id` varchar(5) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `ward`
@@ -12390,12 +12315,6 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `config`
---
-ALTER TABLE `config`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `configs`
 --
 ALTER TABLE `configs`
@@ -12463,6 +12382,13 @@ ALTER TABLE `transaction`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ward`
+--
+ALTER TABLE `ward`
+  ADD PRIMARY KEY (`ward_id`) USING BTREE,
+  ADD KEY `district_id` (`district_id`) USING BTREE;
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -12472,11 +12398,6 @@ ALTER TABLE `transaction`
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `config`
---
-ALTER TABLE `config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `configs`
 --
 ALTER TABLE `configs`
@@ -12485,37 +12406,37 @@ ALTER TABLE `configs`
 -- AUTO_INCREMENT for table `image_product`
 --
 ALTER TABLE `image_product`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `new`
 --
 ALTER TABLE `new`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `product_attribute`
 --
 ALTER TABLE `product_attribute`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=274;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 --
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `trade_mark`
 --
@@ -12525,7 +12446,7 @@ ALTER TABLE `trade_mark`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

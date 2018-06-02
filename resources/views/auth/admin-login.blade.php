@@ -8,15 +8,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{asset('backend/bower_components/bootstrap/dist/css/bootstrap.min.css?v='.time())}}">
+    <link rel="stylesheet" href="{{asset('static/backend/bower_components/bootstrap/dist/css/bootstrap.min.css?v='.time())}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('backend/bower_components/font-awesome/css/font-awesome.min.css.css?v='.time())}}">
+    <link rel="stylesheet" href="{{asset('static/backend/bower_components/font-awesome/css/font-awesome.min.css.css?v='.time())}}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{asset('backend/bower_components/Ionicons/css/ionicons.min.css?v='.time())}}">
+    <link rel="stylesheet" href="{{asset('static/backend/bower_components/Ionicons/css/ionicons.min.css?v='.time())}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('backend/dist/css/AdminLTE.min.css?v='.time())}}">
+    <link rel="stylesheet" href="{{asset('static/backend/dist/css/AdminLTE.min.css?v='.time())}}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/iCheck/square/blue.css?v='.time())}}">
+    <link rel="stylesheet" href="{{asset('static/backend/plugins/iCheck/square/blue.css?v='.time())}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,11 +92,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="{{asset('backend')}}/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="{{asset('static/backend')}}/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="{{asset('backend')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{{asset('static/backend')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="{{asset('backend')}}/plugins/iCheck/icheck.min.js"></script>
+<script src="{{asset('static/backend')}}/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(function () {
         $('input').iCheck({

@@ -133,8 +133,8 @@ class NewController  extends  Controller
     public function destroy($id){
         $object     =  $this->_news->getItem($id) ;
         if(!empty($object['new_image'])){
-            if(is_file(public_path().'/'.$object['new_image'].'')){
-                unlink(public_path().'/'.$object['new_image'].'');
+            if(is_file(base_path().'/'.$object['new_image'].'')){
+                unlink(base_path().'/'.$object['new_image'].'');
             }
         }
         $this->_news->destroys($id);
@@ -145,14 +145,14 @@ class NewController  extends  Controller
         $names = '';
         if($option == 'image_child'){
             $names 	= $time.'_'.date('d_m_Y').'_'.$prefix.'.'.$fileName->getClientOriginalExtension();
-            $destinationPath = public_path($uploads);
+            $destinationPath = base_path($uploads);
             $fileName->move($destinationPath, $names);
             return $names ;
         }
         if($request->hasFile($fileName)){
             $image  = $request->file($fileName);
             $names 	= time().'_'.date('d_m_Y').'_'.$prefix.'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path($uploads);
+            $destinationPath = base_path($uploads);
             $image->move($destinationPath, $names);
         }
         return $names ;

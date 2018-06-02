@@ -15,12 +15,20 @@ var Menu = {
             {
                 $.get(laroute.route('menu.destroy', {id:id}), function(data) {
                     console.log(data);
-                    swal(
-                        'Deleted!',
-                        data.option.messages,
-                        'success'
-                    );
-                    $(obj).closest('tr').remove().draw();
+                    if(data.status){
+                        swal(
+                            'Deleted!',
+                             data.option.messages,
+                            'success'
+                        );
+                        $(obj).closest('tr').remove().draw();
+                    }else{
+                        swal(
+                            'Deleted!',
+                             data.option.messages,
+                            'warning'
+                        );
+                    }
 
                 });
             }

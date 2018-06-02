@@ -124,8 +124,8 @@ class SlideController extends Controller
             $data['slider_type']    = $request->input('slider_type');
             if($request->hasFile('slider_image')){
                 if(!empty($item['slider_image'])){
-                    if(is_file(public_path().'/'.$item['slider_image'].'')){
-                        unlink(public_path().'/'.$item['slider_image'].'');
+                    if(is_file(base_path().'/'.$item['slider_image'].'')){
+                        unlink(base_path().'/'.$item['slider_image'].'');
                     }
                 }
                 $data['slider_image']= 'uploads/'.$this->uploadFiles($request,'slider_image','slider_image','uploads', null, null);
@@ -150,8 +150,8 @@ class SlideController extends Controller
     {
         $object     =  $this->slide->getItem($id) ;
         if(!empty($object['slider_image'])){
-            if(is_file(public_path().'/'.$object['slider_image'].'')){
-                unlink(public_path().'/'.$object['slider_image'].'');
+            if(is_file(base_path().'/'.$object['slider_image'].'')){
+                unlink(base_path().'/'.$object['slider_image'].'');
             }
         }
         $this->slide->destroys($id);
@@ -163,14 +163,14 @@ class SlideController extends Controller
         $names = '';
         if($option == 'image_child'){
             $names 	= $time.'_'.date('d_m_Y').'_'.$prefix.'.'.$fileName->getClientOriginalExtension();
-            $destinationPath = public_path($uploads);
+            $destinationPath = base_path($uploads);
             $fileName->move($destinationPath, $names);
             return $names ;
         }
         if($request->hasFile($fileName)){
             $image  = $request->file($fileName);
             $names 	= time().'_'.date('d_m_Y').'_'.$prefix.'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path($uploads);
+            $destinationPath = base_path($uploads);
             $image->move($destinationPath, $names);
         }
         return $names ;

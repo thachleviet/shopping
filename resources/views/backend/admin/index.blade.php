@@ -22,7 +22,8 @@
                         <h3 class="box-title">{{$title}}</h3>
                     </div>
                     <div class="box-header">
-                        <a href="{{route('admin.create')}}" class=" btn btn-success pull-right"> <i class="fa fa-plus"></i> Thêm </a>
+                        {{--{{route('admin.create')}}--}}
+                        <a href='javascript:void(0)' class=" btn btn-success pull-right"> <i class="fa fa-plus"></i> Thêm </a>
                     </div>
                     <div class="box-body">
                         @if (Session::has('warning'))
@@ -36,13 +37,13 @@
     </section>
 @endsection
 @section('after_script')
-    <script src="{{asset('js')}}/bootstrap-toggle.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net/js/select2.full.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
-    <script src="{{asset('backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+    <script src="{{asset('static/js')}}/bootstrap-toggle.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net/js/select2.full.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.fixedHeader.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('static/backend')}}/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
 
 @stop
 

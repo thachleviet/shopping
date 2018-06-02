@@ -25,18 +25,18 @@
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='contact-form-7-css'  href="{{asset('frontend/wp-content/plugins/contact-form-7/includes/css/stylesa288.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='jquery-selectBox-css'  href="{{asset('frontend/wp-content/plugins/yith-woocommerce-wishlist/assets/css/jquery.selectBox7359.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='flatsome-icons-css'  href="{{asset('frontend/wp-content/themes/flatsome/assets/css/fl-icons6de8.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='flatsome-woocommerce-wishlist-css'  href="{{asset('frontend/wp-content/themes/flatsome/inc/integrations/wc-yith-wishlist/wishlist6de8.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='flatsome-main-css'  href="{{asset('frontend/wp-content/themes/flatsome/assets/css/flatsome46df.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='flatsome-shop-css'  href="{{asset('frontend/wp-content/themes/flatsome/assets/css/flatsome-shop46df.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='flatsome-style-css'  href="{{asset('frontend/wp-content/themes/flatsome-child/style46df.css?v='.time())}}" type='text/css' media='all' />
-    <link rel='stylesheet' id='popup-messenger-css'  href="{{asset('frontend/wp-content/plugins/wp-facebook-messenger/frontend/css/popup8a54.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-css'  href="{{asset('static/frontend/wp-content/plugins/contact-form-7/includes/css/stylesa288.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='jquery-selectBox-css'  href="{{asset('static/frontend/wp-content/plugins/yith-woocommerce-wishlist/assets/css/jquery.selectBox7359.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='flatsome-icons-css'  href="{{asset('static/frontend/wp-content/themes/flatsome/assets/css/fl-icons6de8.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='flatsome-woocommerce-wishlist-css'  href="{{asset('static/frontend/wp-content/themes/flatsome/inc/integrations/wc-yith-wishlist/wishlist6de8.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='flatsome-main-css'  href="{{asset('static/frontend/wp-content/themes/flatsome/assets/css/flatsome46df.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='flatsome-shop-css'  href="{{asset('static/frontend/wp-content/themes/flatsome/assets/css/flatsome-shop46df.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='flatsome-style-css'  href="{{asset('static/frontend/wp-content/themes/flatsome-child/style46df.css?v='.time())}}" type='text/css' media='all' />
+    <link rel='stylesheet' id='popup-messenger-css'  href="{{asset('static/frontend/wp-content/plugins/wp-facebook-messenger/frontend/css/popup8a54.css?v='.time())}}" type='text/css' media='all' />
     @yield('after_style')
-    <script src="{{asset('frontend/js/jquery.min.js?v='.time())}}"></script>
-    <script type='text/javascript' src="{{asset('frontend/wp-includes/js/jquery/jqueryb8ff.js')}}"></script>
-    <script type='text/javascript' src="{{asset('frontend/wp-includes/js/jquery/jquery-migrate.min330a.js')}}"></script>
+    <script src="{{asset('static/frontend/js/jquery.min.js?v='.time())}}"></script>
+    <script type='text/javascript' src="{{asset('static/frontend/wp-includes/js/jquery/jqueryb8ff.js')}}"></script>
+    <script type='text/javascript' src="{{asset('static/frontend/wp-includes/js/jquery/jquery-migrate.min330a.js')}}"></script>
     <link rel='https://api.w.org/' href='wp-json/index.html' />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117244527-1"></script>

@@ -1,6 +1,6 @@
 @extends('backend.layouts')
 @section('after_style')
-    <link rel="stylesheet" href="{{asset('static')}}/main/css/icheck/orange.css">
+    <link rel="stylesheet" href="{{asset('static/static')}}/main/css/icheck/orange.css">
 @stop
 @section('content')
     <section class="content-header">
@@ -60,12 +60,12 @@
 
                             <div class="form-group " >
                                 <label >Địa chỉ</label>
-                                <textarea  class="form-control" name="address" >{{$_object['address']}}</textarea>
+                                <textarea  style="height: 150px" class="form-control" name="address" >{{$_object['address']}}</textarea>
                             </div>
 
                             <div class="form-group " >
                                 <label >Địa chỉ Google MAP</label>
-                                <textarea  class="form-control" name="map" >{{$_object['map']}}</textarea>
+                                <textarea style="height: 200px" class="form-control" name="map" >{{$_object['map']}}</textarea>
                             </div>
                         </div>
 

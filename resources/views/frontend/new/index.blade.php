@@ -27,7 +27,7 @@
                 @foreach($_object as $key=>$item)
                     <div class="col post-item">
                         <div class="col-inner">
-                            <a href="{{route('news.detail', $item['id'])}}" class="plain">
+                            <a href="{{route('tin-tuc.detail', $item['id'])}}" class="plain">
                                 <div class="box box-vertical box-text-bottom box-blog-post has-hover">
                                     <div class="box-image" style="width:40%;">
                                         <div class="image-cover" style="padding-top:56%;">
@@ -72,13 +72,13 @@
                                         <div class="flex-col mr-half">
                                             <div class="badge post-date badge-small badge-outline">
                                                 <div class="badge-inner bg-fill">
-                                                    <span class="post-date-day">03</span><br>
+                                                    <span class="post-date-day">{{date('d',strtotime($item['created_at']))}}</span><br>
                                                     <span class="post-date-month is-xsmall">Th5</span>
                                                 </div>
                                             </div>
                                         </div><!-- .flex-col -->
                                         <div class="flex-col flex-grow">
-                                            <a href="{{route('news.detail', $item['id'])}}" title="{{$item['product_name']}}">[Xem] {{\Illuminate\Support\Str::words($item['new_title'],50)}}</a>
+                                            <a href="{{route('tin-tuc.detail', $item['id'])}}" title="{{$item['product_name']}}">[Xem] {{\Illuminate\Support\Str::words($item['new_title'],50)}}</a>
                                             <span class="post_comments oppercase op-7 block is-xsmall">
                                                 <a href="{{route('san-pham.detail', [$item['id'],$item['slug']])}}" title="{{$item['product_name']}}">
 

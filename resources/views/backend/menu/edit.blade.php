@@ -1,6 +1,6 @@
 @extends('backend.layouts')
 @section('after_style')
-    <link rel="stylesheet" href="{{asset('static')}}/main/css/icheck/orange.css">
+    <link rel="stylesheet" href="{{asset('static/static')}}/main/css/icheck/orange.css">
 @stop
 @section('content')
     <section class="content-header">
@@ -82,5 +82,5 @@
     </section>
 @endsection
 @section('after_script')
-    <script src="{{asset('static')}}/main/js/icheck/icheck.min.js"></script>
+    <script src="{{asset('static/static')}}/main/js/icheck/icheck.min.js"></script>
 @stop
