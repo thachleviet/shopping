@@ -16,7 +16,7 @@ class Config extends Model
 
 
     protected $table ='configs';
-    protected $fillable =['id', 'phone', 'address','link_fanpage', 'header', 'footer', 'time_open','created_at', 'updated_at'];
+    protected $fillable =['id','map', 'phone', 'address','link_fanpage', 'header', 'footer', 'time_open','created_at', 'updated_at'];
 
     public function getALl(){
         return $this->first();

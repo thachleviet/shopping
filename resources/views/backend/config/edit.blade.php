@@ -58,10 +58,15 @@
                                 <input type="text" class="form-control" name="time_open"  value="{{$_object['time_open']}}">
                             </div>
 
-                                <div class="form-group " >
-                                    <label >Địa chỉ</label>
-                                    <textarea  class="form-control" name="address" >{{$_object['address']}}</textarea>
-                                </div>
+                            <div class="form-group " >
+                                <label >Địa chỉ</label>
+                                <textarea  class="form-control" name="address" >{{$_object['address']}}</textarea>
+                            </div>
+
+                            <div class="form-group " >
+                                <label >Địa chỉ Google MAP</label>
+                                <textarea  class="form-control" name="map" >{{$_object['map']}}</textarea>
+                            </div>
                         </div>
 
                         <div class="box-footer">

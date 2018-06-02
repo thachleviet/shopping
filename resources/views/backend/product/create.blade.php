@@ -234,10 +234,10 @@
 
             },
             messages: {
-                menu: "Please enter your category",
-                product_name: "Please enter your product name",
-                product_price: "Please enter your product price",
-                product_image: "Please enter your product image",
+                menu: "Vui lòng nhập danh mục",
+                product_name: "Vui lòng nhập tên sản phẩm",
+                product_price: "Vui lòng nhập giá",
+                product_image: "Vui lòng chọn hình ảnh"
             },
         });
         $('input[name=product_price]').number( true,2);

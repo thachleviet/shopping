@@ -43,13 +43,14 @@ class NewController  extends  Controller
 
     }
     public function store(Request $request){
+
         $this->validate($request,[
             'new_title'              => 'required',
             'new_description'        => 'required',
             'new_content'            => 'required',
-            'new_image'              => 'required',
+            'new_image'              => 'required|mimes:jpeg,jpg,png'
         ],[
-
+            'new_image.mimes'                 => 'Hình ảnh phải đúng định dạng jpeg,jpg,png',
             'new_image.required'                  => 'Hình ảnh bắt buộc',
             'new_content.required'              => 'Nội dung bài viết',
             'new_title.required'                => 'Tiêu đề bài viết',
@@ -86,7 +87,25 @@ class NewController  extends  Controller
 
 
     public function update(Request $request, $id){
+
         try{
+            $this->validate($request,[
+                'new_title'              => 'required',
+                'new_description'        => 'required',
+                'new_content'            => 'required',
+            ],[
+                'new_content.required'              => 'Nội dung bài viết',
+                'new_title.required'                => 'Tiêu đề bài viết',
+                'new_description.required'          => 'Mô tả bài viết',
+            ]);
+            if($request->hasFile('new_image')){
+                $this->validate($request,[
+                    'new_image'              => 'required|mimes:jpeg,jpg,png'
+                ],[
+                    'new_image.mimes'                 => 'Hình ảnh phải đúng định dạng jpeg,jpg,png',
+                    'new_image.required'                  => 'Hình ảnh bắt buộc',
+                ]);
+            }
             $item  = $this->_news->getItem($id);
             $data['new_title']        = $request->input('new_title');
             $data['new_description']  = $request->input('new_description');

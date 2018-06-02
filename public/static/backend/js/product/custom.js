@@ -37,34 +37,7 @@ var Product = {
     },
     removeRow: function(obj)
     {
-        // if($id){
-        //     swal({
-        //         title: 'Are you sure?',
-        //         text: "You won't be able to revert this!",
-        //         type: 'warning',
-        //         icon: 'warning',
-        //         buttons: true,
-        //         successMode: true,
-        //         showCancelButton: true,
-        //         confirmButtonText: 'Yes, delete it!',
-        //
-        //     }).then(function(result) {
-        //         if (result)
-        //         {
-        //
-        //             $.get(laroute.route('product.destroy', {id:id}), function(data) {
-        //                 console.log(data);
-        //                 swal(
-        //                     'Deleted!',
-        //                      data.option.messages,
-        //                     'success'
-        //                 );
-        //                 location.reload();
-        //             });
-        //
-        //         }
-        //     });
-        // }
+
         $(obj).closest('.sortnes').remove();
         this.balanceNos();
     },

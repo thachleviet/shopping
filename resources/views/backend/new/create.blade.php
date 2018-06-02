@@ -126,14 +126,15 @@
                             <div class="row">
                                     <div class="col-md-12">
                                         <div class="row" >
-                                            <div class="col-md-9 col-md-offset-2 form-group {{($errors->has('product_content')) ? 'has-error': ''}}">
+                                            <div class="col-md-9 col-md-offset-2 form-group ">
                                                 <label>Nội dung
                                                 </label>
+                                                @if ($errors->has('new_content'))
+                                                    <span class="help-block">{{ $errors->first('new_content')}}</span>
+                                                @endif
                                                 <div >
                                                     <textarea style="min-height: 400px;"  class="form-control new_content" id="new_content" name="new_content" placeholder="Nội dung bài viết"></textarea>
-                                                    @if ($errors->has('new_content'))
-                                                        <span class="help-block">{{ $errors->first('product_content')}}</span>
-                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>

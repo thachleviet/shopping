@@ -51,7 +51,12 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->validate($request,[
+            'slider_image'             => 'required|mimes:jpeg,jpg,png',
+        ],[
+            'slider_image.required'        => 'Hình bắt buộc !',
+            'slider_image.mimes'                 => 'Hình ảnh phải đúng định dạng jpeg,jpg,png'
+        ]);
       $data = array(
           'slider_title'    =>$request->input('slider_title'),
           'slider_status'    =>$request->input('slider_status'),

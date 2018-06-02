@@ -63,6 +63,7 @@ class ProductController extends Controller
             'product_name.required'         => 'Tên sản phẩm bắt buộc !',
             'product_price.required'        => 'Giá bắt buộc !',
             'product_image.required'        => 'Hình bắt buộc !',
+            'product_image.mimes'                 => 'Hình ảnh phải đúng định dạng jpeg,jpg,png'
         ]);
         $objectId        = $this->_product->store($this->arrayObject($request , 'add')) ;
         if($objectId && $request->hasFile('images')){
