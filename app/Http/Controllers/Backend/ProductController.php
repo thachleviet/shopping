@@ -9,7 +9,7 @@ use App\Models\Backend\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use Intervention\Image\Facades;
 class ProductController extends Controller
 {
     protected $_product;
@@ -99,10 +99,12 @@ class ProductController extends Controller
             return $names ;
         }
         if($request->hasFile($fileName)){
+
             $image  = $request->file($fileName);
             $names 	= time().'_'.date('d_m_Y').'_'.$prefix.'.'.$image->getClientOriginalExtension();
-            $destinationPath = base_path($uploads);
-            $image->move($destinationPath, $names);
+            $destinationPath = base_path($uploads.'/'.$names);
+            Facades\Image::make($image->getRealPath())->resize(300, 300)->save($destinationPath);
+
         }
         return $names ;
     }

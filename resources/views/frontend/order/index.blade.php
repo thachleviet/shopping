@@ -73,7 +73,9 @@
                                                 @endforeach
 
                                             </select>
-
+                                            @if ($errors->has('province_id'))
+                                                <span class="help-block">{{ $errors->first('province_id')}}</span>
+                                            @endif
 
                                         </p>
                                         <p class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
@@ -82,7 +84,9 @@
                                             <select onclick="Main.districtOption()" name="district_id"  id="district_id" >
                                                 <option value="">Chọn quận huyện</option>
                                             </select>
-
+                                            @if ($errors->has('district_id'))
+                                                <span class="help-block">{{ $errors->first('district_id')}}</span>
+                                            @endif
 
                                         </p>
                                         <p class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
@@ -93,7 +97,9 @@
 
                                             </select>
 
-
+                                            @if ($errors->has('ward_id'))
+                                                <span class="help-block">{{ $errors->first('ward_id')}}</span>
+                                            @endif
                                         </p>
                                         <p class="form-row form-row-wide address-field validate-required"
                                            id="billing_address_1_field" data-priority="50"><label

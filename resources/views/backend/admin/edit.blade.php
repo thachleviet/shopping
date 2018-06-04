@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Dashboard
-            <small> <a href="{{asset(route('category'))}}"> <i class="fa fa-angle-double-right"></i> Danh mục sản phẩm</a></small>
+            <small> <a href="{{asset(route('admin'))}}"> <i class="fa fa-angle-double-right"></i> Danh sách thành viên</a></small>
             <small><i class="fa fa-angle-double-right"></i> {{$title}}</small>
         </h1>
         <ol class="breadcrumb">
@@ -23,11 +23,11 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" method="post" action="{{route('admin-admin.update',$user->id)}}">
+                    <form role="form" method="post" action="{{route('admin.update',$user->id)}}">
                         {!! csrf_field() !!}
                         <div class="box-body">
                             <div class="form-group {{($errors->has('name')) ? 'has-error': ''}}" >
-                                <label >Tên danh mục</label>
+                                <label >Tên người dùng</label>
                                 <input type="text" class="form-control" name="name" placeholder="Tên danh mục" value="{{$user->name}}">
                                 @if ($errors->has('name'))
                                     <span class="help-block">{{ $errors->first('name')}}</span>
@@ -41,31 +41,22 @@
                                 @endif
                             </div>
                             <div class="form-group {{($errors->has('phone')) ? 'has-error': ''}}" >
-                                <label >Số điện thoại</label>
-                                <input type="text" class="form-control" name="phone" placeholder="Số điện thoai" value="{{$user->phone}}">
-                                @if ($errors->has('phone'))
-                                    <span class="help-block">{{ $errors->first('phone')}}</span>
+                                <label >Mật khẩu</label>
+                                <input type="password" class="form-control" name="password" value="" placeholder="Nhập mật khẩu"     >
+                                @if ($errors->has('password'))
+                                    <span class="help-block">{{ $errors->first('password')}}</span>
                                 @endif
                             </div>
-                            <div class="form-group {{($errors->has('gender')) ? 'has-error': ''}}" >
-                                <label >Nam</label>
-                                <input type="radio" {{($user->gender == 1)? 'checked' : ''}} name="gender"  value="1" >
-                                <label >Nữ</label>
-                                <input type="radio" {{($user->gender == 0)? 'checked' : ''}} name="gender"  value="0">
+                            <div class="form-group {{($errors->has('phone')) ? 'has-error': ''}}" >
+                                <label >Nhập lại password</label>
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="Nhập mật khẩu"     >
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block">{{ $errors->first('password_confirmation')}}</span>
+                                @endif
                             </div>
+
                         </div>
-                        @if(Auth::user()->is_admin)
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Roles</h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="form-group row {{($errors->has('name')) ? 'has-error': ''}}" >
-                                    @foreach ($roles as $role)
-                                        <div class="col-sm-4">  <input type="checkbox" {{!empty($checkRole[$role->id]) ? 'checked': ''}}  name="roles[]" value="{{$role->id}}" > <label >{{$role->name}}</label></div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
+
                         <input type="hidden" name="id" value="{{$user->id}}">
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu</button>

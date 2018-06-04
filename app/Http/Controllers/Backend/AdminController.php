@@ -62,13 +62,12 @@ class AdminController extends Controller
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:admin',
-            'phone'=>'required|unique:admin',
-            'gender'=>'required'
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
         ]);
         $data['name']       = $request->input('name');
         $data['email']      = $request->input('email');
-        $data['phone']      = $request->input('phone');
-        $data['gender']     = $request->input('gender');
+        $data['password']   = bcrypt($request->input('password'));
         $mAdmin  =  new Admin() ;
         $mAdmin->store($data);
 
@@ -88,7 +87,7 @@ class AdminController extends Controller
         $admin  =  Admin::findOrFail($id);
 
 
-        return view('admin.detail', [
+        return view('backend.admin.detail', [
             'object'=>$admin,
 
             'title'=>'Thông tin quản trị viên' ,
@@ -106,7 +105,7 @@ class AdminController extends Controller
 
         $admin  =  Admin::findOrFail($id);
 
-        return view('admin.edit',[
+        return view('backend.admin.edit',[
             'user'=>$admin,
 
 
@@ -128,16 +127,26 @@ class AdminController extends Controller
         $this->validate($request ,[
             'name'=>'required',
             'email'=>'required|email|unique:admin,email,'.$id.',id',
-            'phone'=>'required|unique:admin,phone,'.$id.',id'
+        ],[
+            'name.required'     => "Vui lòng nhập tên !",
+            'email.required'    => "Vui lòng nhập email !",
         ]);
+        $param              = $request->only(['name', 'email']);
 
-        $param          = $request->only(['name', 'email', 'phone']);
+        if(!empty($request->input('password'))){
+
+            $this->validate($request ,[
+                'password'      => 'confirmed',
+            ],[
+                'password.required' => "Mật khẩu bắt buộc !"
+            ]);
+            $param['password']  = bcrypt($request->input('password'));
+        }
+
 
         $admin->fill($param)->save();
 
-
-
-        return redirect()->route('admin-admin')
+        return redirect()->route('admin')
             ->with('flash_message',
                 'User successfully edited.');
 

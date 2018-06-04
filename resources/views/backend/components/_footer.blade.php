@@ -1,7 +1,9 @@
+
+
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>New</b> Shop
+        <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2017-2018 <a href="{{route('home')}}">New Shop</a>.</strong> All rights
+    <strong>Copyright © 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
 </footer>

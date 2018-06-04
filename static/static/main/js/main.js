@@ -55,7 +55,7 @@ var orderSubmit = {
                 },
                 province_id: "required",
                 district_id: "required",
-                ward_id: "required",
+                ward_id:"required",
                 customer_address:"required",
 
             },

@@ -80,7 +80,7 @@ class Product extends Model
                 $join->on('menu.id', '=','p.product_menu_id');
                 $join->where('menu_status',1);
             })
-            ->where('product_status',0)
+            ->where('product_status',1)
             ->orderBy('created_at', 'desc'
             )->limit(8)
             ->get();

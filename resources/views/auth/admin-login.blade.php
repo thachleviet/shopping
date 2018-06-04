@@ -58,24 +58,24 @@
                 @endif
             </div>
 
-            {{--<div class="row">--}}
-                {{--<div class="col-xs-6">--}}
-                    {{--<div class="checkbox icheck">--}}
-                        {{--<label>--}}
-                            {{--<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me--}}
-                        {{--</label>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                        </label>
+                    </div>
+                </div>
 
-                {{--<div class="col-xs-6">--}}
+                <div class="col-xs-6">
 
 
-                    {{--<a class="btn btn-link" href="{{ route('admin.password.request') }}">--}}
-                        {{--Forgot Your Password?--}}
-                    {{--</a>--}}
-                {{--</div>--}}
+                    <a class="btn btn-link" href="{{ route('admin.password.request') }}">
+                        Forgot Your Password?
+                    </a>
+                </div>
 
-            {{--</div>--}}
+            </div>
 
             <div class="row">
 

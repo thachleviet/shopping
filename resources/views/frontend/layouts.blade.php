@@ -19,7 +19,7 @@
         color: white;
     }
     div.header-top {
-        background-color: #f21c0c !important;
+        background-color: #000000;
     }
     div .header:not(.transparent) .header-bottom-nav.nav > li > a {
         color: #f74d18;
@@ -103,7 +103,7 @@
                         </form>
                     </div>	</div>
             </li>
-            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-46"><a href="index.html" class="nav-top-link">Trang chủ</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-46"><a href="{{route('home')}}" class="nav-top-link">Trang chủ</a></li>
             <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-45"><a href="{{route('tin-tuc.detail',$Guide['id'])}}" class="nav-top-link">Giới thiệu</a></li>
             <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-33">
                 <a href="javascript:void(0)" class="nav-top-link">DANH MỤC SẢN PHẨM</a>

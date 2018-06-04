@@ -57,7 +57,11 @@
 
                                 <input type="text" class="form-control" name="time_open"  value="{{$_object['time_open']}}">
                             </div>
+                                <div class="form-group " >
+                                    <label >Số điện thoại</label>
 
+                                    <input type="text" class="form-control" name="phone"  value="{{$_object['phone']}}">
+                                </div>
                             <div class="form-group " >
                                 <label >Địa chỉ</label>
                                 <textarea  style="height: 150px" class="form-control" name="address" >{{$_object['address']}}</textarea>
