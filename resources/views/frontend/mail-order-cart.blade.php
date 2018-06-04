@@ -10,8 +10,7 @@
     </div>
     <div class="content" style="">
         <p style="color: #e3271e; font-weight: bold; font-size: 14px">
-            Cảm ơn bạn đã chọn sản phẩm tại của hàng chúng tôi ,
-            bộ phận xác nhận đơn đơn hàng sẽ liên hệ bạn để xác nhận đơn hàng
+            Hệ thống nừa nhận 1 đơn hàng từ khách , vui lòng kiểm tra thông tin đơn hàng
         </p>
 
     </div>
