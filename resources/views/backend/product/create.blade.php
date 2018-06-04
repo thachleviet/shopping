@@ -140,7 +140,7 @@
                                     <div class="form-group row{{($errors->has('product_discount')) ? 'has-error': ''}}" >
                                         <label class="col-sm-2 col-sx-12">Giảm giá</label>
                                         <div class="col-sm-10 col-sx-12">
-                                        <input type="number" class="form-control" min="1" max="100" name="product_discount" placeholder="Giảm giá">
+                                        <input type="number" class="form-control" min="0" max="100" name="product_discount" placeholder="Giảm giá">
                                         </div>
                                     </div>
                                     <div class="form-group row ">
