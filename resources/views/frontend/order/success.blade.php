@@ -16,7 +16,7 @@
     </div><!-- .page-title -->
     <div class="cart-container container page-wrapper page-checkout">
         <div class="woocommerce">
-            <h6 style="text-align: center; color: #BD362F">Chúc mừng bạn đã đặt hàng thành công vui lòng kiểm tra email để biết thêm trạng thái thành công đơn hàng </h6>
+            <h6 style="text-align: center; color: #BD362F">Chúc mừng bạn đã đặt hàng thành công  </h6>
         </div>
     </div>
 @endsection
