@@ -16,9 +16,7 @@ use App\Models\Frontend\ProvinceTable;
 use App\Models\Frontend\TransactionTable;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -74,8 +72,8 @@ class OrderController extends Controller
         $arrData['created_at']              = date('Y-m-d H:i:s');
         $arrData['transaction_amount']      = (float) str_replace(',', '', Cart::subtotal());
         $mTransaction                       = new TransactionTable();
-        DB::beginTransaction();
 
+        DB::beginTransaction();
         try{
             $objectTransaction                  = $mTransaction->saveCart($arrData);
             if($objectTransaction){
@@ -90,26 +88,20 @@ class OrderController extends Controller
                 }
                 Cart::destroy();
             }
-            Mail::send('frontend.mail-order-cart',array(), function($message) {
+
+            Mail::send('frontend.mail-order-cart',array(), function($message) use ($request){
+
                 $message->to('thachleviet@gmail.com','Đông hồ')
-                    ->from(Input::get('email_customer'), Input::get('fullname_customer'))
+                    ->from($request->input('email_customer'), $request->input('email_customer'))
                     ->subject('Xác nhận thông tin đặt hàng ');
             });
+            DB::commit();
             return redirect()->route('order.order-success');
+
         }catch (\Exception $exception){
+            DB::rollback();
             return $exception->getMessage();
         }
-<<<<<<< HEAD
-
-=======
-        Mail::send('frontend.mail-order-cart',array(), function($message) {
-            $message->to('thachleviet@gmail.com', Input::get('fullname_customer'))
-                ->from(Input::get('email_customer'), 'Đồng hồ')
-                ->subject('Xác nhận thông tin đặt hàng ');
-        });
-        return redirect()->route('order.order-success');
->>>>>>> def1c0bbd42e8bf5ecb6bcdba4374e1e74a4dde3
-
     }
 
     public function orderSuccess(){
