@@ -36,7 +36,6 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Chào mừng bạn đến với trang quản trị </p>
-
         <form method="POST" action="{{ route('admin.login.submit') }}">
             {{ csrf_field() }}
             <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}" >
