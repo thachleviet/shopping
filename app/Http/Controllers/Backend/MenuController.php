@@ -133,7 +133,6 @@ class MenuController extends Controller
     public function destroy($id)
     {
         $mProduct  = new Product();
-
         try{
             if($mProduct->getListItemIn($id)->count()>0){
                 return  $this->setResponse(false,null, ['messages'=>'Danh mục đang tồn tại sản phẩm !']) ;
@@ -143,7 +142,6 @@ class MenuController extends Controller
                     return  $this->setResponse(true,null, ['messages'=>'Xóa dữ liệu thành công !']) ;
                 }
             }
-//
         }catch(\Exception $exception){
            return $this->setResponse(false,null, ['messages'=>'Đã xảy ra lỗi']) ;
         }

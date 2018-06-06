@@ -252,7 +252,6 @@
                 '	     </div>' +
                 '   	 <div class="col-md-2">' +
                 '        <a href="javascript:void(0)" onclick="Product.removeRows(this)" class="btn btn-xs btn-danger" data-button-type="delete"><i class="fa fa-trash"></i></a>'+
-                '        <a href="javascript:void(0)" onclick="Product.removeRows(this)" class="btn btn-xs btn-primary" data-button-type="delete"><i class="fa fa-edit"></i></a>'+
                 '  	     </div>' +
                 '</div>'
             );

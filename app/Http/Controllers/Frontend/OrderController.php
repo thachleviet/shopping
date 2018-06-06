@@ -68,7 +68,7 @@ class OrderController extends Controller
         $arrData['fullname_customer']       = $request->input('fullname_customer');
         $arrData['address_customer']        = $request->input('address_customer');
         $arrData['phone_customer']          = $request->input('phone_customer');
-        $arrData['postcode_customer']          = $request->input('postcode_customer');
+        $arrData['postcode_customer']       = $request->input('postcode_customer');
         $arrData['created_at']              = date('Y-m-d H:i:s');
         $arrData['transaction_amount']      = (float) str_replace(',', '', Cart::subtotal());
         $mTransaction                       = new TransactionTable();
@@ -86,15 +86,17 @@ class OrderController extends Controller
                 foreach ($arrOrder as $key=>$value){
                     $mOrder::create($value) ;
                 }
-                Cart::destroy();
             }
-
-            Mail::send('frontend.mail-order-cart',array(), function($message) use ($request){
-
+            Mail::send('frontend.mail-order-cart',array(
+                'phone_customer'=>$request->input('phone_customer'),
+                'full_name'     =>$request->input('fullname_customer'),
+                'totalCart'     => Cart::subtotal()
+            ), function($message) use ($request){
                 $message->to('thachleviet@gmail.com','Đông hồ')
                     ->from($request->input('email_customer'), $request->input('email_customer'))
                     ->subject('Xác nhận thông tin đặt hàng ');
             });
+            Cart::destroy();
             DB::commit();
             return redirect()->route('order.order-success');
 
