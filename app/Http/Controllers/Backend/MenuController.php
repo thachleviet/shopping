@@ -54,9 +54,7 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'menu_name' => 'required',
-        ]);
+        $this->validate($request, ['menu_name' => 'required']);
         $param     = $request->all();
         unset($param['_token']);
         $param['created_at']    = date('Y-m-d H:i:s');
