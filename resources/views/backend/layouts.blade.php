@@ -32,7 +32,7 @@
 </head>
 
 
-<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<body class="skin-blue sidebar-mini">
 
 <div class="wrapper">
     @include('backend.components._header')

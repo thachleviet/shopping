@@ -9,19 +9,22 @@
         "fideloper/proxy": "^4.0",
         "barryvdh/laravel-dompdf": "^0.8.2",
         "gloudemans/shoppingcart": "^2.5",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "lord/laroute": "2.*",
         "unisharp/laravel-filemanager": "~1.8",
         "nexmo/laravel": "dev-master as 1.0",
         "nexmo/client": "dev-master as 1.0",
-        "cviebrock/eloquent-sluggable":"4.2.*"
+        "cviebrock/eloquent-sluggable":"4.2.*",
+        "phpunit/php-text-template": "^1.2.1",
+        "doctrine/instantiator": "^1.0.5",
+        "sebastian/exporter":"^3.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0",
+        "phpunit/phpunit": "^7.0",
         "filp/whoops":"~2.0"
     },
     "autoload": {
@@ -45,12 +48,10 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
